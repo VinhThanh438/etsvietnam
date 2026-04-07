@@ -1,0 +1,67 @@
+{
+  "company": {
+    "name": "ETS Vietnam",
+    "fullName": "Công ty CP Công nghệ Xử lý Nước và Môi trường ETS",
+    "slogan": "Giải pháp môi trường bền vững cho tương lai",
+    "description": "ETS Vietnam chuyên cung cấp các giải pháp xử lý nước thải, nước cấp, khí thải và tư vấn môi trường toàn diện cho các doanh nghiệp, khu công nghiệp và đô thị trên toàn quốc.",
+    "phone": "0901 234 567",
+    "email": "info@etsvietnam.vn",
+    "address": "Tàng 2, Tháp A, tòa nhà T608, Đường Tôn Quang Phiệt, P. Cổ Nhuế 1, Q.Bắc Từ Liêm, TP.Hà Nội",
+    "taxCode": "0123456789",
+    "founded": "2010",
+    "website": "https://etsvietnam.vn",
+    "facebook": "https://facebook.com/etsvietnam",
+    "zalo": "0901234567"
+  },
+  "seo": {
+    "defaultTitle": "ETS Vietnam | Giải pháp Xử lý Nước & Môi trường",
+    "titleTemplate": "%s | ETS Vietnam",
+    "defaultDescription": "ETS Vietnam chuyên xử lý nước thải, nước cấp, khí thải và tư vấn môi trường. Hơn 15 năm kinh nghiệm, 500+ dự án thành công trên toàn quốc.",
+    "siteUrl": "https://etsvietnam.vn",
+    "ogImage": "/images/og-default.jpg"
+  },
+  "stats": [
+    {
+      "value": "15+",
+      "label": "Năm kinh nghiệm"
+    },
+    {
+      "value": "500+",
+      "label": "Dự án hoàn thành"
+    },
+    {
+      "value": "200+",
+      "label": "Khách hàng tin tưởng"
+    },
+    {
+      "value": "30+",
+      "label": "Chuyên gia kỹ thuật"
+    }
+  ],
+  "nav": [
+    {
+      "label": "Trang chủ",
+      "href": "/"
+    },
+    {
+      "label": "Giới thiệu",
+      "href": "/gioi-thieu"
+    },
+    {
+      "label": "Dịch vụ",
+      "href": "/dich-vu"
+    },
+    {
+      "label": "Dự án",
+      "href": "/du-an"
+    },
+    {
+      "label": "Tin tức",
+      "href": "/tin-tuc"
+    },
+    {
+      "label": "Liên hệ",
+      "href": "/lien-he"
+    }
+  ]
+}

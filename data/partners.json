@@ -1,0 +1,10 @@
+[
+  { "id": "partner-1", "name": "Tập đoàn Vingroup", "logo": "/images/partners/partner-1.png", "website": "#" },
+  { "id": "partner-2", "name": "Tập đoàn Hòa Phát", "logo": "/images/partners/partner-2.png", "website": "#" },
+  { "id": "partner-3", "name": "Tổng Công ty Becamex", "logo": "/images/partners/partner-3.png", "website": "#" },
+  { "id": "partner-4", "name": "Khu Công nghiệp VSIP", "logo": "/images/partners/partner-4.png", "website": "#" },
+  { "id": "partner-5", "name": "Công ty CP Đường Quảng Ngãi", "logo": "/images/partners/partner-5.png", "website": "#" },
+  { "id": "partner-6", "name": "Sabeco", "logo": "/images/partners/partner-6.png", "website": "#" },
+  { "id": "partner-7", "name": "Tổng Công ty Giấy Việt Nam", "logo": "/images/partners/partner-7.png", "website": "#" },
+  { "id": "partner-8", "name": "Novaland Group", "logo": "/images/partners/partner-8.png", "website": "#" }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "xu-ly-nuoc-thai",
+    "slug": "xu-ly-nuoc-thai",
+    "icon": "Droplets",
+    "title": "Xử lý nước thải",
+    "shortDescription": "Thiết kế và thi công hệ thống xử lý nước thải công nghiệp, đô thị đạt chuẩn QCVN.",
+    "description": "Chúng tôi thiết kế và thi công các hệ thống xử lý nước thải hoàn chỉnh cho khu công nghiệp, nhà máy, bệnh viện và đô thị. Công nghệ tiên tiến, đạt chuẩn QCVN 40:2011/BTNMT.",
+    "features": ["Nước thải sinh hoạt", "Nước thải công nghiệp", "Nước thải y tế", "Tái sử dụng nước"],
+    "color": "green"
+  },
+  {
+    "id": "xu-ly-nuoc-cap",
+    "slug": "xu-ly-nuoc-cap",
+    "icon": "Waves",
+    "title": "Xử lý nước cấp",
+    "shortDescription": "Hệ thống lọc và xử lý nước sạch phục vụ sinh hoạt và sản xuất công nghiệp.",
+    "description": "Thiết kế hệ thống cấp nước sạch cho khu dân cư, khu công nghiệp và nhà máy sản xuất. Đảm bảo tiêu chuẩn nước uống QCVN 01-1:2018/BYT.",
+    "features": ["Lọc nước cấp đô thị", "Nước sạch công nghiệp", "Khử trùng UV/Ozone", "Hệ thống RO"],
+    "color": "blue"
+  },
+  {
+    "id": "xu-ly-khi-thai",
+    "slug": "xu-ly-khi-thai",
+    "icon": "Wind",
+    "title": "Xử lý khí thải",
+    "shortDescription": "Giải pháp kiểm soát và xử lý khí thải nhà máy, đảm bảo tiêu chuẩn môi trường.",
+    "description": "Thiết kế và lắp đặt hệ thống xử lý khí thải cho các nhà máy sản xuất, khu công nghiệp. Kiểm soát bụi, SO2, NOx, VOC đạt QCVN 19:2009/BTNMT.",
+    "features": ["Lọc bụi túi vải", "Tháp hấp thu khí acid", "Xúc tác oxy hóa", "Quan trắc tự động"],
+    "color": "amber"
+  },
+  {
+    "id": "quan-trac-moi-truong",
+    "slug": "quan-trac-moi-truong",
+    "icon": "Activity",
+    "title": "Quan trắc môi trường",
+    "shortDescription": "Lắp đặt hệ thống quan trắc tự động và lấy mẫu phân tích môi trường định kỳ.",
+    "description": "Dịch vụ quan trắc môi trường định kỳ và lắp đặt trạm quan trắc tự động (CEMS). Kết nối trực tiếp với Sở TN&MT theo quy định.",
+    "features": ["Quan trắc khí thải", "Quan trắc nước thải", "Lấy mẫu định kỳ", "Báo cáo tuân thủ"],
+    "color": "purple"
+  },
+  {
+    "id": "tu-van-moi-truong",
+    "slug": "tu-van-moi-truong",
+    "icon": "FileText",
+    "title": "Tư vấn môi trường",
+    "shortDescription": "Lập báo cáo ĐTM, đề án bảo vệ môi trường và hỗ trợ thủ tục pháp lý.",
+    "description": "Hỗ trợ doanh nghiệp trong lập báo cáo Đánh giá Tác động Môi trường (ĐTM), Đề án Bảo vệ Môi trường, kế hoạch quản lý môi trường và xin cấp phép xả thải.",
+    "features": ["Báo cáo ĐTM", "Đề án BVMT", "Giấy phép xả thải", "ISO 14001"],
+    "color": "teal"
+  },
+  {
+    "id": "be-nuoc-cong-nghiep",
+    "slug": "be-nuoc-cong-nghiep",
+    "icon": "Database",
+    "title": "Bể chứa công nghiệp",
+    "shortDescription": "Thiết kế và thi công bể chứa nước inox, composite, bê tông cho mọi quy mô.",
+    "description": "Cung cấp và lắp đặt bể chứa nước công nghiệp từ vật liệu inox, composite, bê tông với nhiều dung tích. Đảm bảo vệ sinh, bền, không rỉ sét.",
+    "features": ["Bể inox SUS304/316", "Bể composite", "Bể bê tông", "Lắp đặt trọn gói"],
+    "color": "slate"
+  }
+]
