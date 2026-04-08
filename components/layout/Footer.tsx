@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { Leaf, Phone, Mail, MapPin, ExternalLink, Globe } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import type { SiteConfig } from '@/lib/types'
@@ -26,12 +27,23 @@ export function Footer({ config }: FooterProps) {
           {/* Company info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-600">
-                <Leaf className="h-5 w-5 text-white" />
+              <div className={`flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${company.logo ? 'bg-transparent' : 'bg-green-600'
+                }`}>
+                {company.logo ? (
+                  <NextImage
+                    src={company.logo}
+                    alt={company.name}
+                    width={36}
+                    height={36}
+                    className="object-contain rounded-lg"
+                  />
+                ) : (
+                  <Leaf className="h-5 w-5 text-white" />
+                )}
               </div>
               <div>
-                <p className="font-bold text-white text-lg leading-none">ETS Vietnam</p>
-                <p className="text-xs text-gray-400">Môi trường & Cấp thoát nước</p>
+                <p className="font-bold text-white text-lg leading-none">ETS VN</p>
+                <p className="text-xs text-gray-400">Giải pháp & Môi trường</p>
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
@@ -127,7 +139,7 @@ export function Footer({ config }: FooterProps) {
       <div className="border-t border-gray-800">
         <Container className="py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} {company.fullName}. Bảo lưu mọi quyền.</p>
-          <p>MST: {company.taxCode}</p>
+          <p>Mã số doanh nghiệp: {company.taxCode}</p>
         </Container>
       </div>
     </footer>

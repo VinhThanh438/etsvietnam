@@ -173,14 +173,14 @@ export function ContactSection({ config }: ContactSectionProps) {
             {/* Map embed */}
             <div id="map" className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm h-64">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4441!2d106.6930!3d10.7769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzM3LjAiTiAxMDbCsDQxJzM0LjgiRQ!5e0!3m2!1svi!2svn!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1861.9143904780528!2d105.79027444842995!3d21.03953583605579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab377049923b%3A0x4a0e449e61022860!2zTMOgbmcgUXXhu5FjIHThur8gVGjEg25nIExvbmcsIE5naGlhIERvLCBIYSBOb2ksIFZpZXRuYW0!5e0!3m2!1sen!2sus!4v1775668053293!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="ETS Vietnam Location"
+                title="ETS VN Location"
               />
             </div>
           </AnimatedSection>

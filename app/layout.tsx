@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { getSiteConfig } from '@/lib/data/site'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 
 const inter = Inter({
   subsets: ['latin', 'vietnamese'],
@@ -19,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: config.seo.titleTemplate,
     },
     description: config.seo.defaultDescription,
-    keywords: ['xử lý nước thải', 'xử lý nước cấp', 'xử lý khí thải', 'môi trường', 'ETS Vietnam', 'quan trắc môi trường'],
+    keywords: ['xử lý nước thải', 'xử lý nước cấp', 'xử lý khí thải', 'môi trường', 'ETS VN', 'quan trắc môi trường'],
     openGraph: {
       type: 'website',
       locale: 'vi_VN',
@@ -39,6 +40,15 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     alternates: {
       canonical: config.seo.siteUrl,
+    },
+    icons: {
+      icon: [
+        { url: config.company.logo || '/images/logo.jpg', type: 'image/jpeg' },
+        { url: '/favicon.ico', sizes: 'any' }
+      ],
+      apple: [
+        { url: config.company.logo || '/images/logo.jpg', type: 'image/jpeg' }
+      ],
     },
   }
 }
@@ -64,6 +74,7 @@ export default async function RootLayout({
         <Header config={config} />
         <main className="flex-1">{children}</main>
         <Footer config={config} />
+        <ScrollToTop />
       </body>
     </html>
   )

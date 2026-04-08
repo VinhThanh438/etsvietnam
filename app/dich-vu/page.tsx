@@ -6,7 +6,7 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 
 export const metadata: Metadata = {
   title: 'Dịch vụ | Giải pháp môi trường toàn diện',
-  description: 'Các giải pháp xử lý nước thải, nước cấp, khí thải và tư vấn môi trường chuyên nghiệp từ ETS Vietnam.',
+  description: 'Các giải pháp xử lý nước thải, nước cấp, khí thải và tư vấn môi trường chuyên nghiệp từ ETS VN.',
 }
 
 export default async function ServicesPage() {
@@ -14,7 +14,7 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">

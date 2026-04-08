@@ -8,7 +8,7 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 
 export const metadata: Metadata = {
   title: 'Dự án | Công trình đã thực hiện',
-  description: 'Danh sách các dự án xử lý nước thải, nước cấp, khí thải và môi trường của ETS Vietnam trên toàn quốc.',
+  description: 'Danh sách các dự án xử lý nước thải, nước cấp, khí thải và môi trường của ETS VN trên toàn quốc.',
 }
 
 export default async function ProjectsPage() {
@@ -17,7 +17,7 @@ export default async function ProjectsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">

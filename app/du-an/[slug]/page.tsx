@@ -33,7 +33,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <Link
             href="/du-an"

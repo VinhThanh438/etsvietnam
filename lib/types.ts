@@ -1,5 +1,5 @@
 // ============================================================
-// Shared TypeScript types for the ETS Vietnam data layer
+// Shared TypeScript types for the ETS VN data layer
 // Swap these interfaces when migrating to a CMS API
 // ============================================================
 
@@ -65,6 +65,7 @@ export interface SiteConfig {
     address: string
     taxCode: string
     founded: string
+    logo: string
     website: string
     facebook: string
     zalo: string

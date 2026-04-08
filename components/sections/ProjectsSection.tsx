@@ -78,7 +78,7 @@ export function ProjectsSection({ projects, showViewAll = true }: ProjectsSectio
           <SectionTitle
             label="Công trình tiêu biểu"
             title="Dự án đã thực hiện"
-            description="Những công trình tiêu biểu chứng minh năng lực và kinh nghiệm của ETS Vietnam."
+            description="Những công trình tiêu biểu chứng minh năng lực và kinh nghiệm của ETS VN."
             align="left"
             className="max-w-xl"
           />

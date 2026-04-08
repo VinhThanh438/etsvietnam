@@ -7,12 +7,12 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { CheckCircle, Target, Eye, Award, Users, Leaf, Droplets } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Giới thiệu | ETS Vietnam',
-  description: 'Giới thiệu về Công ty CP Công nghệ Xử lý Nước và Môi trường ETS Vietnam - hơn 15 năm kinh nghiệm trong lĩnh vực môi trường.',
+  title: 'Giới thiệu | ETS VN',
+  description: 'Giới thiệu về CÔNG TY CỔ PHẦN MÔI TRƯỜNG ETS VIỆT NAM - hơn 15 năm kinh nghiệm trong lĩnh vực môi trường.',
 }
 
 const milestones = [
-  { year: '2010', event: 'Thành lập ETS Vietnam tại TP. Hồ Chí Minh' },
+  { year: '2010', event: 'Thành lập ETS VN tại TP. Hồ Chí Minh' },
   { year: '2013', event: 'Mở rộng chi nhánh tại Hà Nội và Đà Nẵng' },
   { year: '2016', event: 'Hoàn thành dự án thứ 100, vươn ra thị trường quốc tế' },
   { year: '2019', event: 'Chứng nhận ISO 9001:2015 và ISO 14001:2015' },
@@ -34,14 +34,14 @@ export default async function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
                 Về chúng tôi
               </span>
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4">ETS Vietnam</h1>
+              <h1 className="text-4xl sm:text-5xl font-bold mb-4">ETS VN</h1>
               <p className="text-green-200 text-lg">{company.slogan}</p>
             </div>
           </AnimatedSection>
@@ -56,8 +56,8 @@ export default async function AboutPage() {
               <SectionTitle label="Giới thiệu" title="Thông điệp từ lãnh đạo" align="left" className="mb-6" />
               <p className="text-gray-600 leading-relaxed mb-4">{company.description}</p>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Với phương châm <em className="text-green-700 font-medium">"Chất lượng là danh dự"</em>, 
-                chúng tôi không ngừng đầu tư vào công nghệ và con người để mang lại giải pháp tốt 
+                Với phương châm <em className="text-green-700 font-medium">"Chất lượng là danh dự"</em>,
+                chúng tôi không ngừng đầu tư vào công nghệ và con người để mang lại giải pháp tốt
                 nhất cho từng dự án.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -77,7 +77,7 @@ export default async function AboutPage() {
               <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
                 <div className="text-center text-gray-400">
                   <Users className="w-16 h-16 text-green-400 mx-auto mb-2" />
-                  <p className="text-sm">Đội ngũ ETS Vietnam</p>
+                  <p className="text-sm">Đội ngũ ETS VN</p>
                 </div>
               </div>
             </AnimatedSection>

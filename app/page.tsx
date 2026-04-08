@@ -7,6 +7,7 @@ import { getPartners } from '@/lib/data/site'
 
 import { HeroSection } from '@/components/sections/HeroSection'
 import { AboutSection } from '@/components/sections/AboutSection'
+import { ExpertiseSection } from '@/components/sections/ExpertiseSection'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { ProjectsSection } from '@/components/sections/ProjectsSection'
 import { NewsSection } from '@/components/sections/NewsSection'
@@ -34,6 +35,7 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <AboutSection config={config} />
+      <ExpertiseSection />
       <ServicesSection services={services} />
       <ProjectsSection projects={projects} showViewAll />
       <NewsSection articles={articles} showViewAll />

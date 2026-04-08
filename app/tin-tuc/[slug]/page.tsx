@@ -41,7 +41,7 @@ export default async function NewsDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <Link
             href="/tin-tuc"
@@ -119,7 +119,7 @@ export default async function NewsDetailPage({ params }: Props) {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 text-sm">{article.author}</p>
-                    <p className="text-xs text-gray-500">Chuyên gia ETS Vietnam</p>
+                    <p className="text-xs text-gray-500">Chuyên gia ETS VN</p>
                   </div>
                 </div>
                 <div className="pt-5 border-t border-gray-200">

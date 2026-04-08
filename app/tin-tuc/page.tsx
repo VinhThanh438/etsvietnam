@@ -14,7 +14,7 @@ export default async function NewsPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ export default async function NewsPage() {
               </span>
               <h1 className="text-4xl sm:text-5xl font-bold mb-4">Tin tức & Kiến thức</h1>
               <p className="text-green-200 text-lg">
-                Xu hướng công nghệ, quy định pháp luật và kinh nghiệm thực tiễn từ đội ngũ ETS Vietnam
+                Xu hướng công nghệ, quy định pháp luật và kinh nghiệm thực tiễn từ đội ngũ ETS VN
               </p>
             </div>
           </AnimatedSection>

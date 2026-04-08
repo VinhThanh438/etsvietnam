@@ -6,14 +6,14 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 
 export const metadata: Metadata = {
   title: 'Liên hệ | Yêu cầu tư vấn môi trường',
-  description: 'Liên hệ với đội ngũ kỹ sư ETS Vietnam để được tư vấn giải pháp xử lý nước thải, nước cấp và môi trường phù hợp.',
+  description: 'Liên hệ với đội ngũ kỹ sư ETS VN để được tư vấn giải pháp xử lý nước thải, nước cấp và môi trường phù hợp.',
 }
 
 export default async function ContactPage() {
   const config = await getSiteConfig()
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">

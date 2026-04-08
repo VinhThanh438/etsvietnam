@@ -19,10 +19,10 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 const colorMap: Record<string, { bg: string; icon: string; border: string; hover: string }> = {
   green: { bg: 'bg-green-50', icon: 'text-green-600', border: 'border-green-100', hover: 'hover:border-green-300 hover:bg-green-50' },
-  blue:  { bg: 'bg-blue-50',  icon: 'text-blue-600',  border: 'border-blue-100',  hover: 'hover:border-blue-300 hover:bg-blue-50'  },
+  blue: { bg: 'bg-blue-50', icon: 'text-blue-600', border: 'border-blue-100', hover: 'hover:border-blue-300 hover:bg-blue-50' },
   amber: { bg: 'bg-amber-50', icon: 'text-amber-600', border: 'border-amber-100', hover: 'hover:border-amber-300 hover:bg-amber-50' },
-  purple:{ bg: 'bg-purple-50',icon: 'text-purple-600',border: 'border-purple-100',hover: 'hover:border-purple-300 hover:bg-purple-50'},
-  teal:  { bg: 'bg-teal-50',  icon: 'text-teal-600',  border: 'border-teal-100',  hover: 'hover:border-teal-300 hover:bg-teal-50'  },
+  purple: { bg: 'bg-purple-50', icon: 'text-purple-600', border: 'border-purple-100', hover: 'hover:border-purple-300 hover:bg-purple-50' },
+  teal: { bg: 'bg-teal-50', icon: 'text-teal-600', border: 'border-teal-100', hover: 'hover:border-teal-300 hover:bg-teal-50' },
   slate: { bg: 'bg-slate-50', icon: 'text-slate-600', border: 'border-slate-100', hover: 'hover:border-slate-300 hover:bg-slate-50' },
 }
 
@@ -73,7 +73,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
           <SectionTitle
             label="Dịch vụ của chúng tôi"
             title="Giải pháp toàn diện cho mọi nhu cầu môi trường"
-            description="Từ thiết kế, thi công đến vận hành và bảo trì, ETS Vietnam đồng hành cùng doanh nghiệp trong toàn bộ vòng đời hệ thống."
+            description="Từ thiết kế, thi công đến vận hành và bảo trì, ETS VN đồng hành cùng doanh nghiệp trong toàn bộ vòng đời hệ thống."
           />
         </AnimatedSection>
 

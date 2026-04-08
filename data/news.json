@@ -12,7 +12,11 @@
     "publishedAt": "2024-03-15",
     "readingTime": "8 phút",
     "featured": true,
-    "tags": ["MBR", "Công nghệ xử lý", "Màng lọc"]
+    "tags": [
+      "MBR",
+      "Công nghệ xử lý",
+      "Màng lọc"
+    ]
   },
   {
     "id": "qcvn-40-2011-cap-nhat-moi-nhat",
@@ -27,7 +31,11 @@
     "publishedAt": "2024-02-28",
     "readingTime": "6 phút",
     "featured": true,
-    "tags": ["QCVN", "Pháp lý môi trường", "Xả thải"]
+    "tags": [
+      "QCVN",
+      "Pháp lý môi trường",
+      "Xả thải"
+    ]
   },
   {
     "id": "quan-trac-nuoc-thai-tu-dong-iot",
@@ -42,7 +50,11 @@
     "publishedAt": "2024-01-20",
     "readingTime": "5 phút",
     "featured": false,
-    "tags": ["IoT", "Quan trắc tự động", "Công nghệ 4.0"]
+    "tags": [
+      "IoT",
+      "Quan trắc tự động",
+      "Công nghệ 4.0"
+    ]
   },
   {
     "id": "bao-cao-dtm-thu-tuc-va-luu-y",
@@ -57,7 +69,11 @@
     "publishedAt": "2023-12-10",
     "readingTime": "10 phút",
     "featured": false,
-    "tags": ["ĐTM", "Tư vấn môi trường", "Pháp lý"]
+    "tags": [
+      "ĐTM",
+      "Tư vấn môi trường",
+      "Pháp lý"
+    ]
   },
   {
     "id": "xu-ly-nuoc-thai-det-may-thach-thuc",
@@ -72,14 +88,18 @@
     "publishedAt": "2023-11-05",
     "readingTime": "7 phút",
     "featured": false,
-    "tags": ["Dệt may", "Độ màu", "Công nghệ xử lý"]
+    "tags": [
+      "Dệt may",
+      "Độ màu",
+      "Công nghệ xử lý"
+    ]
   },
   {
     "id": "ets-nhan-giai-thuong-moi-truong-2023",
     "slug": "ets-nhan-giai-thuong-moi-truong-2023",
-    "title": "ETS Vietnam nhận Giải thưởng Môi trường Xanh 2023",
-    "excerpt": "ETS Vietnam vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
-    "content": "# ETS Vietnam - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
     "author": "Ban biên tập ETS",
     "category": "tin-tuc",
     "categoryLabel": "Tin tức",
@@ -87,6 +107,9 @@
     "publishedAt": "2023-10-22",
     "readingTime": "3 phút",
     "featured": false,
-    "tags": ["Giải thưởng", "Tin tức công ty"]
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
   }
 ]

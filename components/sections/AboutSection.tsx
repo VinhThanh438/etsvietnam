@@ -35,7 +35,7 @@ export function AboutSection({ config }: AboutSectionProps) {
                     <div className="w-24 h-24 rounded-full bg-green-200 flex items-center justify-center mx-auto mb-3">
                       <Users className="w-12 h-12 text-green-600" />
                     </div>
-                    <p className="text-sm font-medium">Đội ngũ ETS Vietnam</p>
+                    <p className="text-sm font-medium">Đội ngũ ETS VN</p>
                   </div>
                 </div>
                 {/* Decorative elements */}
@@ -67,8 +67,8 @@ export function AboutSection({ config }: AboutSectionProps) {
               {config.company.description}
             </p>
             <p className="text-gray-600 leading-relaxed mb-8">
-              Được thành lập năm {config.company.founded}, ETS Vietnam đã trở thành một trong những 
-              đơn vị hàng đầu trong lĩnh vực xử lý nước thải và môi trường tại Việt Nam với đội 
+              Được thành lập năm {config.company.founded}, ETS VN đã trở thành một trong những
+              đơn vị hàng đầu trong lĩnh vực xử lý nước thải và môi trường tại Việt Nam với đội
               ngũ hơn 30 kỹ sư và chuyên gia giàu kinh nghiệm.
             </p>
 

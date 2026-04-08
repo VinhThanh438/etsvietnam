@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = await getServiceBySlug(slug)
   if (!service) return { title: 'Không tìm thấy dịch vụ' }
   return {
-    title: `${service.title} | Dịch vụ ETS Vietnam`,
+    title: `${service.title} | Dịch vụ ETS VN`,
     description: service.shortDescription,
   }
 }
@@ -44,7 +44,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-20 text-white">
+      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
         <Container>
           <Link
             href="/dich-vu"
@@ -75,7 +75,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <p className="text-gray-600 leading-relaxed text-lg mb-8">
                   {service.description}
                 </p>
-                
+
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Phạm vi công việc</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {service.features.map((feature) => (
@@ -102,7 +102,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className="rounded-2xl bg-green-700 p-8 text-white">
                   <h3 className="text-xl font-bold mb-4">Bạn cần tư vấn?</h3>
                   <p className="text-green-100 mb-6 text-sm leading-relaxed">
-                    Đội ngũ chuyên gia của ETS Vietnam sẵn sàng giải đáp mọi thắc mắc và cung cấp báo giá chi tiết.
+                    Đội ngũ chuyên gia của ETS VN sẵn sàng giải đáp mọi thắc mắc và cung cấp báo giá chi tiết.
                   </p>
                   <Link
                     href="/lien-he"
@@ -118,8 +118,8 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <h3 className="font-bold text-gray-900 mb-4">Dịch vụ khác</h3>
                   <div className="space-y-4">
                     {(await getServices()).filter(s => s.slug !== slug).slice(0, 4).map(s => (
-                      <Link 
-                        key={s.slug} 
+                      <Link
+                        key={s.slug}
                         href={`/dich-vu/${s.slug}`}
                         className="group flex items-center gap-3 text-sm text-gray-600 hover:text-green-600 transition-colors"
                       >

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronDown, Leaf } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -63,21 +64,36 @@ export function Header({ config }: HeaderProps) {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-600 shadow-md shadow-green-200 group-hover:bg-green-700 transition-colors">
-                <Leaf className="h-5 w-5 text-white" />
+              <div className={cn(
+                "flex h-9 w-9 items-center justify-center rounded-xl transition-colors",
+                config.company.logo
+                  ? "bg-transparent"
+                  : "bg-green-600 shadow-md shadow-green-200 group-hover:bg-green-700"
+              )}>
+                {config.company.logo ? (
+                  <NextImage
+                    src={config.company.logo}
+                    alt={config.company.name}
+                    width={36}
+                    height={36}
+                    className="object-contain rounded-lg"
+                  />
+                ) : (
+                  <Leaf className="h-5 w-5 text-white" />
+                )}
               </div>
               <div className="leading-tight">
                 <p className={cn(
                   'font-bold text-lg leading-none transition-colors',
                   isScrolled ? 'text-gray-900' : 'text-white'
                 )}>
-                  ETS Vietnam
+                  ETS Việt Nam
                 </p>
                 <p className={cn(
                   'text-xs transition-colors',
                   isScrolled ? 'text-gray-500' : 'text-green-100'
                 )}>
-                  Môi trường & Cấp thoát nước
+                  Giải pháp & Môi trường
                 </p>
               </div>
             </Link>
