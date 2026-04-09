@@ -10,7 +10,6 @@ import { AboutSection } from '@/components/sections/AboutSection'
 import { ExpertiseSection } from '@/components/sections/ExpertiseSection'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { ProjectsSection } from '@/components/sections/ProjectsSection'
-import { NewsSection } from '@/components/sections/NewsSection'
 import { PartnersSection } from '@/components/sections/PartnersSection'
 import { ContactSection } from '@/components/sections/ContactSection'
 
@@ -36,9 +35,8 @@ export default async function HomePage() {
       <HeroSection />
       <AboutSection config={config} />
       <ExpertiseSection />
-      <ServicesSection services={services} />
+      <ServicesSection services={services} limit={3} />
       <ProjectsSection projects={projects} showViewAll />
-      <NewsSection articles={articles} showViewAll />
       <PartnersSection partners={partners} />
       <ContactSection config={config} />
     </>

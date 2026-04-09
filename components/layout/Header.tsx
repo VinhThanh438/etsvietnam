@@ -46,7 +46,7 @@ export function Header({ config }: HeaderProps) {
           <div className="bg-green-700 text-green-50 text-sm py-1.5">
             <Container className="flex items-center justify-between">
               <p className="text-xs">
-                Hơn 15 năm kinh nghiệm — 500+ dự án thành công toàn quốc
+                ETS VIET NAM ENVIRONMENT JOINT STOCK COMPANY
               </p>
               <a
                 href={`tel:${config.company.phone}`}

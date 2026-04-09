@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Droplets, Waves, Wind, Activity, FileText, Database } from 'lucide-react'
+import { ArrowRight, Droplets, Waves, Wind, Activity, FileText, Database, Flame, Wrench } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
@@ -15,6 +15,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Activity,
   FileText,
   Database,
+  Flame,
+  Wrench,
 }
 
 const colorMap: Record<string, { bg: string; icon: string; border: string; hover: string }> = {
@@ -28,6 +30,7 @@ const colorMap: Record<string, { bg: string; icon: string; border: string; hover
 
 interface ServicesSectionProps {
   services: Service[]
+  limit?: number
 }
 
 function ServiceCard({ service }: { service: Service }) {
@@ -38,7 +41,7 @@ function ServiceCard({ service }: { service: Service }) {
     <motion.div variants={fadeUpVariant}>
       <Link
         href={`/dich-vu/${service.slug}`}
-        className={`group block rounded-2xl border bg-white p-7 transition-all duration-300 shadow-sm hover:shadow-lg ${colors.border} ${colors.hover}`}
+        className={`group block rounded-2xl border bg-white p-7 transition-all duration-300 shadow-sm hover:shadow-lg ${colors.border} ${colors.hover} h-full`}
       >
         <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ${colors.bg} mb-5 group-hover:scale-110 transition-transform duration-300`}>
           <Icon className={`h-7 w-7 ${colors.icon}`} />
@@ -65,7 +68,9 @@ function ServiceCard({ service }: { service: Service }) {
   )
 }
 
-export function ServicesSection({ services }: ServicesSectionProps) {
+export function ServicesSection({ services, limit }: ServicesSectionProps) {
+  const displayServices = limit ? services.slice(0, limit) : services
+
   return (
     <section className="py-24 bg-gray-50">
       <Container>
@@ -78,20 +83,22 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         </AnimatedSection>
 
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
+          {displayServices.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
         </StaggerContainer>
 
-        <AnimatedSection className="mt-12 text-center" delay={0.2}>
-          <Link
-            href="/dich-vu"
-            className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors group"
-          >
-            Xem tất cả dịch vụ
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </AnimatedSection>
+        {(!limit || services.length > limit) && (
+          <AnimatedSection className="mt-12 text-center" delay={0.2}>
+            <Link
+              href="/dich-vu"
+              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors group"
+            >
+              Xem tất cả dịch vụ
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </AnimatedSection>
+        )}
       </Container>
     </section>
   )

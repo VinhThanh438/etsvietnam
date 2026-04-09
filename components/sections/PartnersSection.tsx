@@ -17,26 +17,23 @@ function PartnerLogo({ partner }: { partner: Partner }) {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <div className="flex-shrink-0 w-48 mx-4">
-      <div className="h-24 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center px-8 hover:border-green-500/50 hover:bg-white/10 transition-all duration-500 group relative overflow-hidden">
-        {/* Hover glow inside card */}
-        <div className="absolute inset-x-0 h-px top-0 bg-gradient-to-r from-transparent via-green-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-        
+    <div className="flex-shrink-0 w-56 mx-6">
+      <div className="h-32 rounded-2xl bg-white flex items-center justify-center px-8 hover:scale-105 transition-all duration-500 group relative overflow-hidden shadow-lg border-2 border-transparent hover:border-green-500/20">
         <div className="flex flex-col items-center gap-2 text-center relative z-10 w-full h-full justify-center">
           {partner.logo && !imageError ? (
-            <div className="relative w-full h-12 flex items-center justify-center">
-              <NextImage 
-                src={partner.logo} 
+            <div className="relative w-full h-20 flex items-center justify-center">
+              <NextImage
+                src={partner.logo}
                 alt={partner.name}
                 fill
-                className="object-contain filter grayscale brightness-200 contrast-0 opacity-40 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-500"
+                className="object-contain transition-all duration-500"
                 onError={() => setImageError(true)}
               />
             </div>
           ) : (
             <>
-              <Building2 className="h-7 w-7 text-white/20 group-hover:text-green-400 transition-colors duration-500" />
-              <span className="text-[10px] uppercase tracking-wider font-bold text-white/40 group-hover:text-white transition-colors duration-500 leading-tight">
+              <Building2 className="h-10 w-10 text-gray-300 group-hover:text-green-500 transition-colors duration-500" />
+              <span className="text-xs uppercase tracking-wider font-bold text-gray-400 group-hover:text-gray-900 transition-colors duration-500 leading-tight">
                 {partner.name}
               </span>
             </>
@@ -68,8 +65,8 @@ export function PartnersSection({ partners }: PartnersSectionProps) {
           <SectionTitle
             dark
             label="Đối tác & Khách hàng"
-            title="Sự tin hân hạnh đồng hành cùng các đơn vị đầu ngành"
-            description="ETS VN tự hào là đối tác chiến lược của hơn 200 doanh nghiệp, tập đoàn lớn trong và ngoài nước."
+            title="Chúng tôi hân hạnh đồng hành cùng các đơn vị đầu ngành"
+            description="ETS VN tự hào là đối tác chiến lược của nhiều doanh nghiệp, tập đoàn lớn trong lĩnh vực xây dựng và môi trường."
           />
         </AnimatedSection>
       </Container>

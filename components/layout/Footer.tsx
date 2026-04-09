@@ -12,8 +12,8 @@ const services = [
   { label: 'Xử lý nước thải', href: '/dich-vu/xu-ly-nuoc-thai' },
   { label: 'Xử lý nước cấp', href: '/dich-vu/xu-ly-nuoc-cap' },
   { label: 'Xử lý khí thải', href: '/dich-vu/xu-ly-khi-thai' },
-  { label: 'Quan trắc môi trường', href: '/dich-vu/quan-trac-moi-truong' },
-  { label: 'Tư vấn môi trường', href: '/dich-vu/tu-van-moi-truong' },
+  { label: 'Lò đốt chất thải', href: '/dich-vu/lo-dot-chat-thai' },
+  { label: 'Vận hành & Bảo trì', href: '/dich-vu/van-hanh-bao-tri' },
 ]
 
 export function Footer({ config }: FooterProps) {
