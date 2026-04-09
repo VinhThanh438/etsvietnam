@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { getSiteConfig } from '@/lib/data/site'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
+import { ZaloButton } from '@/components/ui/ZaloButton'
 
 const inter = Inter({
   subsets: ['latin', 'vietnamese'],
@@ -75,6 +76,7 @@ export default async function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer config={config} />
         <ScrollToTop />
+        <ZaloButton phone={config.company.zalo} />
       </body>
     </html>
   )
