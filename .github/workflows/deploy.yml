@@ -20,59 +20,49 @@ jobs:
         with:
           node-version: 22
 
-      # 3. Cache deps
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
+      # 3. Tự động tìm project chứa package.json
+      - name: Detect project path
+        id: detect
+        run: |
+          PROJECT_DIR=$(dirname $(find . -name package.json | head -n 1))
+          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+          echo "Detected project at: $PROJECT_DIR"
 
-      # 4. Install
+      # 4. Install deps
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd $PROJECT_DIR
+          npm ci
 
       # 5. Build
       - name: Build app
-        run: npm run build
+        run: |
+          cd $PROJECT_DIR
+          npm run build
 
-      # 🔥 6. Debug root (rất quan trọng)
-      - name: Debug root files
-        run: ls -la
-
-      # 🔥 7. Tạo build package (FIX CHẮC CHẮN package.json)
+      # 6. Tạo build package
       - name: Create build package
         run: |
           rm -rf deploy build.zip
           mkdir deploy
 
-          # Copy build
-          cp -r .next deploy/
-          cp -r public deploy/ || true
+          cd $PROJECT_DIR
 
-          # CHECK package.json
-          if [ ! -f package.json ]; then
-            echo "❌ package.json NOT FOUND!"
-            exit 1
-          fi
+          cp -r .next ../../deploy/
+          cp -r public ../../deploy/ 2>/dev/null || true
+          cp package.json ../../deploy/
+          cp package-lock.json ../../deploy/ 2>/dev/null || true
+          cp next.config.js ../../deploy/ 2>/dev/null || true
 
-          cp package.json deploy/
-          cp package-lock.json deploy/ || true
-          cp next.config.js deploy/ || true
-
-          # Debug deploy folder
-          echo "📦 Deploy folder content:"
-          ls -la deploy
-
-          # Zip
-          cd deploy
+          cd ../../deploy
           zip -r ../build.zip .
 
-      # 🔥 8. Verify zip (anti lỗi)
-      - name: Check build.zip
+      # 7. Check zip (đảm bảo có package.json)
+      - name: Verify build.zip
         run: unzip -l build.zip
 
-      # 9. Upload
-      - name: Upload build to server
+      # 8. Upload lên server
+      - name: Upload build
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -81,15 +71,14 @@ jobs:
           source: "build.zip"
           target: "~/etsvietnamapp"
 
-      # 10. Deploy server
-      - name: Deploy on server
+      # 9. Deploy trên server
+      - name: Deploy server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "Go to app folder"
             mkdir -p ~/etsvietnamapp
             cd ~/etsvietnamapp
 
@@ -99,7 +88,7 @@ jobs:
             echo "Unzip new build"
             unzip -o build.zip
 
-            echo "Check files after unzip"
+            echo "Check files"
             ls -la
 
             echo "Install production deps"
@@ -108,5 +97,4 @@ jobs:
             echo "Restart app (zero downtime)"
             pm2 reload nextjs-app || pm2 start npm --name "nextjs-app" -- start
 
-            echo "Save PM2"
             pm2 save
