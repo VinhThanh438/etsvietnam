@@ -10,74 +10,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # 2. Setup Node
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
 
-      # 3. Detect project path
-      - name: Detect project path
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          # Tạo key dựa trên OS và nội dung các file config/source
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Package Standalone
         run: |
-          PROJECT_DIR=$(dirname $(find . -name package.json | head -n 1))
-          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
-          echo "Detected: $PROJECT_DIR"
-
-      # 4. Install + Build
-      - name: Build
-        run: |
-          cd $PROJECT_DIR
-          npm ci
-          npm run build
-
-      # 5. Package standalone
-      - name: Create standalone package
-        run: |
-          rm -rf deploy build.zip
-          mkdir -p deploy
-
-          echo "PROJECT_DIR=$PROJECT_DIR"
-
-          # 🔥 Check build output tồn tại
-          if [ ! -d "$PROJECT_DIR/.next/standalone" ]; then
-            echo "❌ ERROR: .next/standalone not found"
-            echo "👉 Bạn chưa bật standalone trong next.config.js"
-            echo "👉 Hoặc build bị fail"
-            ls -la $PROJECT_DIR/.next || true
-            exit 1
-          fi
-
-          echo "✅ Found standalone build"
-
-          # Copy standalone
-          cp -r $PROJECT_DIR/.next/standalone/* deploy/
-
-          # Copy static
-          mkdir -p deploy/.next
-          cp -r $PROJECT_DIR/.next/static deploy/.next/
-
-          # Copy public nếu có
-          cp -r $PROJECT_DIR/public deploy/ 2>/dev/null || true
-
-          echo "📦 Deploy folder:"
-          ls -la deploy
-
-          # Zip
-          cd deploy
-          zip -r ../build.zip .
-
+          mkdir -p build_output
+          # Copy standalone files
+          cp -r .next/standalone/. build_output/
+          # Copy static files (standalone doesn't include these)
+          mkdir -p build_output/.next/static
+          cp -r .next/static/. build_output/.next/static/
+          # Copy public folder
+          cp -r public build_output/ 2>/dev/null || true
+          
+          # Compress using zip (native for the user's setup)
+          cd build_output
+          zip -nq -r ../build.zip .
           cd ..
-          echo "✅ build.zip created"
-          ls -la build.zip
 
-      # 6. Verify
-      - name: Verify build
-        run: unzip -l build.zip
-
-      # 7. Upload
-      - name: Upload
+      - name: Upload to Server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -86,28 +59,20 @@ jobs:
           source: "build.zip"
           target: "~/etsvietnamapp"
 
-      # 8. Deploy
-      - name: Deploy server
+      - name: Deploy and Restart
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            mkdir -p ~/etsvietnamapp
             cd ~/etsvietnamapp
-
-            echo "Clean old"
-            rm -rf *
-
-            echo "Unzip"
-            unzip -o build.zip
-
-            echo "Check files"
-            ls -la
-
-            echo "Start app"
+            # Unzip and clean up
+            unzip -o build.zip -d .
+            rm build.zip
+            
+            # Start/Restart with PM2
+            # Sử dụng --update-env để đảm bảo các biến môi trường mới nhất được nạp
             pm2 delete nextjs-app || true
-            pm2 start server.js --name "nextjs-app" 
-
+            pm2 start server.js --name "nextjs-app" --update-env
             pm2 save
