@@ -32,8 +32,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
+            echo "Move to HOME"
+            cd ~
+
+            echo "Check folder exists"
+            if [ ! -d "etsvietnamapp" ]; then
+              echo "Folder not found → cloning repo"
+              git clone https://github.com/<YOUR_USERNAME>/<YOUR_REPO>.git etsvietnamapp
+            fi
+
             echo "Go to project"
-            cd /var/www/nextjs-app
+            cd ~/etsvietnamapp
 
             echo "Pull latest code"
             git pull origin master
