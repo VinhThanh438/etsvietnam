@@ -46,10 +46,8 @@ jobs:
           # Copy PM2 config
           cp ecosystem.config.js build_output/
           
-          # Compress
-          cd build_output
-          zip -nq -r ../build.zip .
-          cd ..
+          # Nén bằng tar.gz (Luôn có sẵn trên Linux)
+          tar -czf build.tar.gz -C build_output .
 
       - name: Upload to Server
         uses: appleboy/scp-action@v0.1.7
@@ -57,7 +55,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          source: "build.zip"
+          source: "build.tar.gz"
           target: "~/etsvietnamapp"
 
       - name: Deploy and Restart
@@ -67,10 +65,14 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            mkdir -p ~/etsvietnamapp
             cd ~/etsvietnamapp
-            # Giải nén
-            unzip -o build.zip -d .
-            rm build.zip
+            
+            # Giải nén tar.gz
+            if [ -f "build.tar.gz" ]; then
+              tar -xzf build.tar.gz
+              rm build.tar.gz
+            fi
             
             # Kiểm tra file quan trọng
             if [ ! -f "server.js" ]; then
@@ -78,6 +80,6 @@ jobs:
               exit 1
             fi
             
-            # Restart bằng ecosystem config (Tối ưu hơn)
+            # Restart bằng ecosystem config
             pm2 startOrReload ecosystem.config.js --update-env
             pm2 save
