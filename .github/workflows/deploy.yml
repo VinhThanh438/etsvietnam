@@ -1,4 +1,4 @@
-name: Deploy ETS Vietnam App
+name: Deploy Next.js Standalone
 
 on:
   push:
@@ -6,63 +6,59 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       # 1. Checkout
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # 2. Setup Node
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      # 3. Tự động tìm project chứa package.json
+      # 3. Detect project path
       - name: Detect project path
-        id: detect
         run: |
           PROJECT_DIR=$(dirname $(find . -name package.json | head -n 1))
           echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
-          echo "Detected project at: $PROJECT_DIR"
+          echo "Detected: $PROJECT_DIR"
 
-      # 4. Install deps
-      - name: Install dependencies
+      # 4. Install + Build
+      - name: Build
         run: |
           cd $PROJECT_DIR
           npm ci
-
-      # 5. Build
-      - name: Build app
-        run: |
-          cd $PROJECT_DIR
           npm run build
 
-      # 6. Tạo build package
-      - name: Create build package
+      # 5. Package standalone
+      - name: Create standalone package
         run: |
           rm -rf deploy build.zip
           mkdir deploy
 
           cd $PROJECT_DIR
 
-          cp -r .next ../../deploy/
+          # Copy standalone server
+          cp -r .next/standalone/* ../../deploy/
+
+          # Copy static files
+          mkdir -p ../../deploy/.next
+          cp -r .next/static ../../deploy/.next/
+
+          # Copy public
           cp -r public ../../deploy/ 2>/dev/null || true
-          cp package.json ../../deploy/
-          cp package-lock.json ../../deploy/ 2>/dev/null || true
-          cp next.config.js ../../deploy/ 2>/dev/null || true
 
           cd ../../deploy
           zip -r ../build.zip .
 
-      # 7. Check zip (đảm bảo có package.json)
-      - name: Verify build.zip
+      # 6. Verify
+      - name: Verify build
         run: unzip -l build.zip
 
-      # 8. Upload lên server
-      - name: Upload build
+      # 7. Upload
+      - name: Upload
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -71,7 +67,7 @@ jobs:
           source: "build.zip"
           target: "~/etsvietnamapp"
 
-      # 9. Deploy trên server
+      # 8. Deploy
       - name: Deploy server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -82,19 +78,17 @@ jobs:
             mkdir -p ~/etsvietnamapp
             cd ~/etsvietnamapp
 
-            echo "Clean old build"
-            rm -rf .next node_modules package.json package-lock.json
+            echo "Clean old"
+            rm -rf *
 
-            echo "Unzip new build"
+            echo "Unzip"
             unzip -o build.zip
 
             echo "Check files"
             ls -la
 
-            echo "Install production deps"
-            npm install --omit=dev
-
-            echo "Restart app (zero downtime)"
-            pm2 reload nextjs-app || pm2 start npm --name "nextjs-app" -- start
+            echo "Start app"
+            pm2 delete nextjs-app || true
+            pm2 start server.js --name "nextjs-app"
 
             pm2 save
