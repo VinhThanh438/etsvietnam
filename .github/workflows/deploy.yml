@@ -1,4 +1,4 @@
-name: Deploy ETS Vietnam Next.js App
+name: Deploy ETS Vietnam App
 
 on:
   push:
