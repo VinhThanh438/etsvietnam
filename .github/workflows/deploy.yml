@@ -39,13 +39,14 @@ jobs:
           mkdir -p build_output
           # Copy standalone files
           cp -r .next/standalone/. build_output/
-          # Copy static files (standalone doesn't include these)
+          # Copy static and public
           mkdir -p build_output/.next/static
           cp -r .next/static/. build_output/.next/static/
-          # Copy public folder
           cp -r public build_output/ 2>/dev/null || true
+          # Copy PM2 config
+          cp ecosystem.config.js build_output/
           
-          # Compress using zip (native for the user's setup)
+          # Compress
           cd build_output
           zip -nq -r ../build.zip .
           cd ..
@@ -67,12 +68,16 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/etsvietnamapp
-            # Unzip and clean up
+            # Giải nén
             unzip -o build.zip -d .
             rm build.zip
             
-            # Start/Restart with PM2
-            # Sử dụng --update-env để đảm bảo các biến môi trường mới nhất được nạp
-            pm2 delete nextjs-app || true
-            pm2 start server.js --name "nextjs-app" --update-env
+            # Kiểm tra file quan trọng
+            if [ ! -f "server.js" ]; then
+              echo "❌ Error: server.js not found!"
+              exit 1
+            fi
+            
+            # Restart bằng ecosystem config (Tối ưu hơn)
+            pm2 startOrReload ecosystem.config.js --update-env
             pm2 save
