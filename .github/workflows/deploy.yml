@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Lấy code
+      # 1. Checkout
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -20,36 +20,58 @@ jobs:
         with:
           node-version: 22
 
-      # 3. Cache node_modules (tăng tốc)
+      # 3. Cache deps
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules
+          path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
 
-      # 4. Install deps
+      # 4. Install
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 5. Build Next.js
+      # 5. Build
       - name: Build app
         run: npm run build
 
-      # 6. Tạo file deploy (chỉ chứa build)
+      # 🔥 6. Debug root (rất quan trọng)
+      - name: Debug root files
+        run: ls -la
+
+      # 🔥 7. Tạo build package (FIX CHẮC CHẮN package.json)
       - name: Create build package
         run: |
+          rm -rf deploy build.zip
           mkdir deploy
+
+          # Copy build
           cp -r .next deploy/
-          cp -r public deploy/
+          cp -r public deploy/ || true
+
+          # CHECK package.json
+          if [ ! -f package.json ]; then
+            echo "❌ package.json NOT FOUND!"
+            exit 1
+          fi
+
           cp package.json deploy/
-          cp package-lock.json deploy/
+          cp package-lock.json deploy/ || true
           cp next.config.js deploy/ || true
 
+          # Debug deploy folder
+          echo "📦 Deploy folder content:"
+          ls -la deploy
+
+          # Zip
           cd deploy
           zip -r ../build.zip .
 
-      # 7. Upload lên server
+      # 🔥 8. Verify zip (anti lỗi)
+      - name: Check build.zip
+        run: unzip -l build.zip
+
+      # 9. Upload
       - name: Upload build to server
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -59,7 +81,7 @@ jobs:
           source: "build.zip"
           target: "~/etsvietnamapp"
 
-      # 8. SSH vào server để deploy
+      # 10. Deploy server
       - name: Deploy on server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -72,17 +94,19 @@ jobs:
             cd ~/etsvietnamapp
 
             echo "Clean old build"
-            rm -rf .next node_modules
+            rm -rf .next node_modules package.json package-lock.json
 
             echo "Unzip new build"
             unzip -o build.zip
 
+            echo "Check files after unzip"
+            ls -la
+
             echo "Install production deps"
             npm install --omit=dev
 
-            echo "Restart app"
-            pm2 delete nextjs-app || true
-            pm2 start npm --name "nextjs-app" -- start
+            echo "Restart app (zero downtime)"
+            pm2 reload nextjs-app || pm2 start npm --name "nextjs-app" -- start
 
             echo "Save PM2"
             pm2 save
