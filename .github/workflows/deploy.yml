@@ -1,0 +1,50 @@
+name: Deploy ETS Vietnam Next.js App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/nextjs-app
+
+            echo "Pull latest code"
+            git pull origin master
+
+            echo "Install deps"
+            npm install
+
+            echo "Build"
+            npm run build
+
+            echo "Restart app"
+            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+
+            echo "Save PM2"
+            pm2 save
