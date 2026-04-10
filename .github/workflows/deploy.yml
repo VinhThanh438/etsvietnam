@@ -36,22 +36,24 @@ jobs:
       - name: Create standalone package
         run: |
           rm -rf deploy build.zip
-          mkdir deploy
+          mkdir -p deploy
 
-          cd $PROJECT_DIR
+          echo "PROJECT_DIR=$PROJECT_DIR"
+          echo "Current dir:"
+          pwd
 
-          # Copy standalone server
-          cp -r .next/standalone/* ../../deploy/
+          # Copy standalone
+          cp -r $PROJECT_DIR/.next/standalone/* deploy/
 
-          # Copy static files
-          mkdir -p ../../deploy/.next
-          cp -r .next/static ../../deploy/.next/
+          # Copy static
+          mkdir -p deploy/.next
+          cp -r $PROJECT_DIR/.next/static deploy/.next/
 
-          # Copy public
-          cp -r public ../../deploy/ 2>/dev/null || true
+          # Copy public (nếu có)
+          cp -r $PROJECT_DIR/public deploy/ 2>/dev/null || true
 
-          cd ../../deploy
-          zip -r ../build.zip .
+          echo "Deploy folder content:"
+          ls -la deploy
 
       # 6. Verify
       - name: Verify build
