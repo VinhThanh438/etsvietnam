@@ -1,0 +1,85 @@
+name: Deploy Next.js Standalone
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          # Tạo key dựa trên OS và nội dung các file config/source
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Package Standalone
+        run: |
+          mkdir -p build_output
+          # Copy standalone files
+          cp -r .next/standalone/. build_output/
+          # Copy static and public
+          mkdir -p build_output/.next/static
+          cp -r .next/static/. build_output/.next/static/
+          cp -r public build_output/ 2>/dev/null || true
+          # Copy PM2 config
+          cp ecosystem.config.js build_output/
+          
+          # Nén bằng tar.gz (Luôn có sẵn trên Linux)
+          tar -czf build.tar.gz -C build_output .
+
+      - name: Upload to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "build.tar.gz"
+          target: "~/etsvietnamapp"
+
+      - name: Deploy and Restart
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mkdir -p ~/etsvietnamapp
+            cd ~/etsvietnamapp
+            
+            # Giải nén tar.gz
+            if [ -f "build.tar.gz" ]; then
+              tar -xzf build.tar.gz
+              rm build.tar.gz
+            fi
+            
+            # Kiểm tra file quan trọng
+            if [ ! -f "server.js" ]; then
+              echo "❌ Error: server.js not found!"
+              exit 1
+            fi
+            
+            # Restart bằng ecosystem config
+            pm2 startOrReload ecosystem.config.js --update-env
+            pm2 save
