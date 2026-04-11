@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer'
 import { getSiteConfig } from '@/lib/data/site'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import { ZaloButton } from '@/components/ui/ZaloButton'
+import { headers } from 'next/headers'
 
 const inter = Inter({
   subsets: ['latin', 'vietnamese'],
@@ -61,6 +62,11 @@ export default async function RootLayout({
 }) {
   const config = await getSiteConfig()
 
+  // Detect admin routes to hide public shell (Header/Footer)
+  const headersList = await headers()
+  const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || ''
+  const isAdmin = pathname.startsWith('/admin')
+
   return (
     <html lang="vi" className={`${inter.variable} scroll-smooth`}>
       <head>
@@ -71,13 +77,14 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
-        <Header config={config} />
-        <main className="flex-1">{children}</main>
-        <Footer config={config} />
-        <ScrollToTop />
-        <ZaloButton phone={config.company.zalo} />
+      <body className={isAdmin ? 'min-h-screen antialiased' : 'min-h-screen flex flex-col antialiased'}>
+        {!isAdmin && <Header config={config} />}
+        {isAdmin ? children : <main className="flex-1">{children}</main>}
+        {!isAdmin && <Footer config={config} />}
+        {!isAdmin && <ScrollToTop />}
+        {!isAdmin && <ZaloButton phone={config.company.zalo} />}
       </body>
     </html>
   )
 }
+

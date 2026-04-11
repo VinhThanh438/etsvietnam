@@ -18,11 +18,33 @@ export function ContactSection({ config }: ContactSectionProps) {
     name: '', email: '', phone: '', service: '', message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: integrate with API/form service (Formspree, Resend, etc.)
-    setSubmitted(true)
+    setSubmitting(true)
+    setError('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError(data.error || 'Có lỗi xảy ra. Vui lòng thử lại.')
+      }
+    } catch {
+      setError('Lỗi kết nối. Vui lòng thử lại sau.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -61,6 +83,11 @@ export function ContactSection({ config }: ContactSectionProps) {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {error && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-red-700 text-sm">
+                    {error}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -135,10 +162,11 @@ export function ContactSection({ config }: ContactSectionProps) {
                   type="submit"
                   variant="primary"
                   size="lg"
-                  className="w-full"
+                  className={`w-full ${submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   iconRight={<Send className="h-5 w-5" />}
+                  disabled={submitting}
                 >
-                  Gửi yêu cầu tư vấn
+                  {submitting ? 'Đang gửi...' : 'Gửi yêu cầu tư vấn'}
                 </Button>
               </form>
             )}

@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -37,6 +39,8 @@ export default async function NewsDetailPage({ params }: Props) {
   const { slug } = await params
   const article = await getNewsBySlug(slug)
   if (!article) notFound()
+
+  const processedContent = article.content.replace(/<youtube>([^<]+)<\/youtube>/gi, '[YOUTUBE:$1](#youtube)')
 
   return (
     <>
@@ -79,9 +83,21 @@ export default async function NewsDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <AnimatedSection className="lg:col-span-2">
               {/* Featured image */}
-              <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center mb-10">
-                <span className="text-gray-400 text-sm">Hình ảnh bài viết</span>
-              </div>
+              {article.image ? (
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-10 shadow-sm border border-gray-100">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ) : (
+                <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center mb-10">
+                  <span className="text-gray-400 text-sm">Hình ảnh bài viết</span>
+                </div>
+              )}
 
               {/* Excerpt */}
               <p className="text-xl text-gray-600 leading-relaxed border-l-4 border-green-500 pl-5 mb-8 italic">
@@ -90,9 +106,34 @@ export default async function NewsDetailPage({ params }: Props) {
 
               {/* Content */}
               <div className="prose prose-green max-w-none">
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {article.content.replace(/^#.*$/gm, '').trim()}
-                </p>
+                <ReactMarkdown
+                  components={{
+                    a: ({ node, ...props }) => {
+                      if (props.href === '#youtube' && props.children?.toString().startsWith('YOUTUBE:')) {
+                        const id = props.children.toString().replace('YOUTUBE:', '')
+                        return (
+                          <div className="my-8 relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-200">
+                            <iframe
+                              src={`https://www.youtube.com/embed/${id}`}
+                              className="absolute inset-0 w-full h-full"
+                              allowFullScreen
+                            />
+                          </div>
+                        )
+                      }
+                      return <a {...props} className="text-green-600 hover:text-green-700 underline" target="_blank" rel="noopener noreferrer" />
+                    },
+                    img: ({ node, ...props }) => (
+                      <img {...props} className="w-full rounded-2xl my-8 object-cover border border-gray-100 shadow-sm" />
+                    ),
+                    h2: ({ node, ...props }) => <h2 {...props} className="text-2xl font-bold text-gray-900 mt-10 mb-4" />,
+                    p: ({ node, ...props }) => <p {...props} className="mb-6 text-gray-700 leading-relaxed" />,
+                    ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-5 my-6 space-y-2 text-gray-700" />,
+                    li: ({ node, ...props }) => <li {...props} className="pl-1" />
+                  }}
+                >
+                  {processedContent}
+                </ReactMarkdown>
               </div>
 
               {/* Tags */}

@@ -1,10 +1,56 @@
 [
-  { "id": "song-ngoc", "name": "Song Ngoc Construction", "logo": "/images/partners/163227947959-1245x800.png", "website": "#" },
-  { "id": "trung-hau", "name": "Trung Hau Construction Group", "logo": "/images/partners/Trung-Hau-Construction-Group-720x405-1.jpg", "website": "#" },
-  { "id": "gree", "name": "Gree", "logo": "/images/partners/dieu-hoa-gree-co-tot-khong-18.jpg", "website": "#" },
-  { "id": "giza", "name": "Giza E&C", "logo": "/images/partners/giza-logo.png", "website": "#" },
-  { "id": "cienco5", "name": "Cienco 5", "logo": "/images/partners/ienco5.jpg", "website": "#" },
-  { "id": "cjsc", "name": "CJSC", "logo": "/images/partners/logo1.png", "website": "#" },
-  { "id": "charmvit", "name": "Charmvit Tower", "logo": "/images/partners/tai-xuong-1.png", "website": "#" },
-  { "id": "riifo", "name": "RIIFO", "logo": "/images/partners/tai-xuong.png", "website": "#" }
+  {
+    "id": "song-ngoc",
+    "name": "Song Ngoc Construction",
+    "logo": "/images/partners/163227947959-1245x800.png",
+    "website": "#"
+  },
+  {
+    "id": "trung-hau",
+    "name": "Trung Hau Construction Group",
+    "logo": "/images/partners/Trung-Hau-Construction-Group-720x405-1.jpg",
+    "website": "#"
+  },
+  {
+    "id": "gree",
+    "name": "Gree",
+    "logo": "/images/partners/dieu-hoa-gree-co-tot-khong-18.jpg",
+    "website": "#"
+  },
+  {
+    "id": "giza",
+    "name": "Giza E&C",
+    "logo": "/images/partners/giza-logo.png",
+    "website": "#"
+  },
+  {
+    "id": "cienco5",
+    "name": "Cienco 5",
+    "logo": "/images/partners/ienco5.jpg",
+    "website": "#"
+  },
+  {
+    "id": "cjsc",
+    "name": "CJSC",
+    "logo": "/images/partners/logo1.png",
+    "website": "#"
+  },
+  {
+    "id": "charmvit",
+    "name": "Charmvit Tower",
+    "logo": "/images/partners/tai-xuong-1.png",
+    "website": "#"
+  },
+  {
+    "id": "riifo",
+    "name": "RIIFO",
+    "logo": "/images/partners/tai-xuong.png",
+    "website": "#"
+  },
+  {
+    "id": "green-eco",
+    "name": "Green Eco",
+    "logo": "/uploads/partners/1775924397112-dark-green-cyan-paper-cut-minimalist-background-for-brochure-poster-banner-landing-page-paper-c___.jpg",
+    "website": "#"
+  }
 ]

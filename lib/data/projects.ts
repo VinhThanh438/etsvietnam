@@ -1,27 +1,30 @@
 /**
  * Data service: Projects
- * Currently reads from local JSON.
- * To migrate to CMS: replace the import with an API call (fetch, axios, etc.)
+ * Reads from local JSON dynamically so admin updates take effect immediately.
  */
 
-import { cache } from 'react'
 import type { Project } from '@/lib/types'
-import projectsData from '@/data/projects.json'
+import fs from 'fs'
+import path from 'path'
 
-const projects = projectsData as Project[]
+function readProjects(): Project[] {
+  const filePath = path.join(process.cwd(), 'data', 'projects.json')
+  const content = fs.readFileSync(filePath, 'utf-8')
+  return JSON.parse(content) as Project[]
+}
 
-export const getProjects = cache(async (): Promise<Project[]> => {
-  return projects
-})
+export async function getProjects(): Promise<Project[]> {
+  return readProjects()
+}
 
-export const getFeaturedProjects = cache(async (): Promise<Project[]> => {
-  return projects.filter((p) => p.featured)
-})
+export async function getFeaturedProjects(): Promise<Project[]> {
+  return readProjects().filter((p) => p.featured)
+}
 
-export const getProjectBySlug = cache(async (slug: string): Promise<Project | undefined> => {
-  return projects.find((p) => p.slug === slug)
-})
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+  return readProjects().find((p) => p.slug === slug)
+}
 
-export const getProjectsByCategory = cache(async (category: string): Promise<Project[]> => {
-  return projects.filter((p) => p.category === category)
-})
+export async function getProjectsByCategory(category: string): Promise<Project[]> {
+  return readProjects().filter((p) => p.category === category)
+}

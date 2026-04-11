@@ -24,14 +24,23 @@ function ProjectCard({ project }: { project: Project }) {
       >
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-green-100 to-blue-100">
-          <div className="absolute inset-0 flex items-center justify-center text-gray-300">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-green-200/50 flex items-center justify-center mx-auto mb-2">
-                <Zap className="w-8 h-8 text-green-500" />
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-300">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-green-200/50 flex items-center justify-center mx-auto mb-2">
+                  <Zap className="w-8 h-8 text-green-500" />
+                </div>
+                <p className="text-xs text-gray-400">{project.title}</p>
               </div>
-              <p className="text-xs text-gray-400">{project.title}</p>
             </div>
-          </div>
+          )}
           {/* Category badge */}
           <div className="absolute top-4 left-4">
             <span className="rounded-full bg-green-600/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-white">

@@ -1,13 +1,17 @@
-import { cache } from 'react'
 import type { Service } from '@/lib/types'
-import servicesData from '@/data/services.json'
+import fs from 'fs'
+import path from 'path'
 
-const services = servicesData as Service[]
+function readServices(): Service[] {
+  const filePath = path.join(process.cwd(), 'data', 'services.json')
+  const content = fs.readFileSync(filePath, 'utf-8')
+  return JSON.parse(content) as Service[]
+}
 
-export const getServices = cache(async (): Promise<Service[]> => {
-  return services
-})
+export async function getServices(): Promise<Service[]> {
+  return readServices()
+}
 
-export const getServiceBySlug = cache(async (slug: string): Promise<Service | undefined> => {
-  return services.find((s) => s.slug === slug)
-})
+export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
+  return readServices().find((s) => s.slug === slug)
+}

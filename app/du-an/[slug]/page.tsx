@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -62,10 +63,22 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main content */}
             <AnimatedSection className="lg:col-span-2">
-              {/* Image placeholder */}
-              <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center mb-8">
-                <span className="text-gray-400 text-sm">Hình ảnh: {project.title}</span>
-              </div>
+              {/* Featured image */}
+              {project.image ? (
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8 shadow-sm">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ) : (
+                <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center mb-8">
+                  <span className="text-gray-400 text-sm">Hình ảnh: {project.title}</span>
+                </div>
+              )}
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Tổng quan dự án</h2>
               <p className="text-gray-600 leading-relaxed">{project.description}</p>
 
