@@ -69,19 +69,19 @@ export default function AdminLoginPage() {
           <h1 style={{
             fontSize: '1.5rem',
             fontWeight: 700,
-            color: '#f1f5f9',
+            color: 'var(--admin-text)',
             marginBottom: '0.5rem',
           }}>
             ETS VN Admin
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
+          <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem' }}>
             Đăng nhập để quản lý nội dung
           </p>
         </div>
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} style={{
-          background: '#1e293b',
+          background: 'var(--admin-surface)',
           borderRadius: '16px',
           padding: '2rem',
           border: '1px solid #334155',
@@ -121,7 +121,7 @@ export default function AdminLoginPage() {
                 left: '12px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: '#64748b',
+                color: 'var(--admin-text-light)',
               }} />
               <input
                 type="text"
@@ -133,16 +133,16 @@ export default function AdminLoginPage() {
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem 0.75rem 2.75rem',
-                  background: '#0f172a',
+                  background: 'var(--admin-bg)',
                   border: '1px solid #334155',
                   borderRadius: '10px',
-                  color: '#f1f5f9',
+                  color: 'var(--admin-text)',
                   fontSize: '0.9rem',
                   outline: 'none',
                   transition: 'border-color 0.2s',
                 }}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
-                onBlur={(e) => e.target.style.borderColor = '#334155'}
+                onBlur={(e) => e.target.style.borderColor = 'var(--admin-border)'}
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function AdminLoginPage() {
                 left: '12px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: '#64748b',
+                color: 'var(--admin-text-light)',
               }} />
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -174,16 +174,16 @@ export default function AdminLoginPage() {
                 style={{
                   width: '100%',
                   padding: '0.75rem 3rem 0.75rem 2.75rem',
-                  background: '#0f172a',
+                  background: 'var(--admin-bg)',
                   border: '1px solid #334155',
                   borderRadius: '10px',
-                  color: '#f1f5f9',
+                  color: 'var(--admin-text)',
                   fontSize: '0.9rem',
                   outline: 'none',
                   transition: 'border-color 0.2s',
                 }}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
-                onBlur={(e) => e.target.style.borderColor = '#334155'}
+                onBlur={(e) => e.target.style.borderColor = 'var(--admin-border)'}
               />
               <button
                 type="button"
@@ -196,7 +196,7 @@ export default function AdminLoginPage() {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: '#64748b',
+                  color: 'var(--admin-text-light)',
                   padding: '4px',
                 }}
               >

@@ -115,25 +115,25 @@ export default function ProjectsPage() {
   )
 
   const inputStyle: React.CSSProperties = {
-    width: '100%', padding: '0.625rem 0.75rem', background: '#0f172a',
-    border: '1px solid #334155', borderRadius: '8px', color: '#f1f5f9',
+    width: '100%', padding: '0.625rem 0.75rem', background: 'var(--admin-bg)',
+    border: '1px solid #334155', borderRadius: '8px', color: 'var(--admin-text)',
     fontSize: '0.875rem', outline: 'none',
   }
 
   const labelStyle: React.CSSProperties = {
     display: 'block', fontSize: '0.8125rem', fontWeight: 500,
-    color: '#94a3b8', marginBottom: '0.375rem',
+    color: 'var(--admin-text-muted)', marginBottom: '0.375rem',
   }
 
-  if (loading) return <div style={{ color: '#94a3b8', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
+  if (loading) return <div style={{ color: 'var(--admin-text-muted)', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
 
   return (
     <div>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f1f5f9' }}>Dự án</h1>
-          <p style={{ color: '#64748b', fontSize: '0.8125rem' }}>{projects.length} dự án</p>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--admin-text)' }}>Dự án</h1>
+          <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem' }}>{projects.length} dự án</p>
         </div>
         <button onClick={openNew} style={{
           display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.625rem 1rem',
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
 
       {/* Search */}
       <div style={{ position: 'relative', marginBottom: '1rem' }}>
-        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--admin-text-light)' }} />
         <input
           type="text" placeholder="Tìm kiếm dự án..." value={search}
           onChange={e => setSearch(e.target.value)}
@@ -155,7 +155,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Table */}
-      <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
@@ -163,7 +163,7 @@ export default function ProjectsPage() {
                 {['', 'Tên dự án', 'Khách hàng', 'Địa điểm', 'Năm', 'Danh mục', ''].map((h, i) => (
                   <th key={i} style={{
                     padding: '0.75rem 1rem', fontSize: '0.75rem', fontWeight: 600,
-                    color: '#64748b', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.05em',
+                    color: 'var(--admin-text-light)', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.05em',
                     whiteSpace: 'nowrap',
                   }}>{h}</th>
                 ))}
@@ -186,12 +186,12 @@ export default function ProjectsPage() {
                           objectFit: 'cover', border: '1px solid #334155',
                         }} />
                       )}
-                      <span style={{ color: '#f1f5f9', fontSize: '0.875rem', fontWeight: 500 }}>{p.title}</span>
+                      <span style={{ color: 'var(--admin-text)', fontSize: '0.875rem', fontWeight: 500 }}>{p.title}</span>
                     </div>
                   </td>
-                  <td style={{ padding: '0.625rem 1rem', color: '#94a3b8', fontSize: '0.8125rem' }}>{p.client}</td>
-                  <td style={{ padding: '0.625rem 1rem', color: '#94a3b8', fontSize: '0.8125rem' }}>{p.location}</td>
-                  <td style={{ padding: '0.625rem 1rem', color: '#94a3b8', fontSize: '0.8125rem' }}>{p.year}</td>
+                  <td style={{ padding: '0.625rem 1rem', color: 'var(--admin-text-muted)', fontSize: '0.8125rem' }}>{p.client}</td>
+                  <td style={{ padding: '0.625rem 1rem', color: 'var(--admin-text-muted)', fontSize: '0.8125rem' }}>{p.location}</td>
+                  <td style={{ padding: '0.625rem 1rem', color: 'var(--admin-text-muted)', fontSize: '0.8125rem' }}>{p.year}</td>
                   <td style={{ padding: '0.625rem 1rem' }}>
                     <span style={{
                       fontSize: '0.75rem', padding: '2px 8px', borderRadius: '9999px',
@@ -201,8 +201,8 @@ export default function ProjectsPage() {
                   <td style={{ padding: '0.625rem 1rem' }}>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <button onClick={() => openEdit(p)} style={{
-                        background: '#334155', border: 'none', borderRadius: '6px',
-                        padding: '6px', cursor: 'pointer', color: '#94a3b8',
+                        background: 'var(--admin-border)', border: 'none', borderRadius: '6px',
+                        padding: '6px', cursor: 'pointer', color: 'var(--admin-text-muted)',
                       }}><Pencil size={14} /></button>
                       <button onClick={() => setDeleteConfirm(p.id)} style={{
                         background: '#450a0a60', border: 'none', borderRadius: '6px',
@@ -214,7 +214,7 @@ export default function ProjectsPage() {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={7} style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>
+                  <td colSpan={7} style={{ padding: '2rem', textAlign: 'center', color: 'var(--admin-text-light)' }}>
                     {search ? 'Không tìm thấy dự án nào.' : 'Chưa có dự án nào.'}
                   </td>
                 </tr>
@@ -227,23 +227,23 @@ export default function ProjectsPage() {
       {/* Delete Confirm */}
       {deleteConfirm && (
         <div style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
+          position: 'fixed', inset: 0, background: 'var(--admin-modal-bg)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100,
         }}>
           <div style={{
-            background: '#1e293b', border: '1px solid #334155', borderRadius: '12px',
+            background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px',
             padding: '1.5rem', maxWidth: '400px', width: '90%',
           }}>
-            <h3 style={{ color: '#f1f5f9', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+            <h3 style={{ color: 'var(--admin-text)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
               Xóa dự án?
             </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
+            <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
               Hành động này không thể hoàn tác.
             </p>
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
               <button onClick={() => setDeleteConfirm(null)} style={{
-                padding: '0.5rem 1rem', background: '#334155', border: 'none',
-                borderRadius: '8px', color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem',
+                padding: '0.5rem 1rem', background: 'var(--admin-border)', border: 'none',
+                borderRadius: '8px', color: 'var(--admin-text-muted)', cursor: 'pointer', fontSize: '0.875rem',
               }}>Hủy</button>
               <button onClick={() => handleDelete(deleteConfirm)} style={{
                 padding: '0.5rem 1rem', background: '#ef4444', border: 'none',
@@ -257,20 +257,20 @@ export default function ProjectsPage() {
       {/* Edit/Create Modal */}
       {editing && (
         <div style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
+          position: 'fixed', inset: 0, background: 'var(--admin-modal-bg)',
           display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
           zIndex: 100, overflowY: 'auto', padding: '2rem 1rem',
         }}>
           <div style={{
-            background: '#1e293b', border: '1px solid #334155', borderRadius: '12px',
+            background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px',
             padding: '1.5rem', maxWidth: '700px', width: '100%',
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ color: '#f1f5f9', fontSize: '1.125rem', fontWeight: 600 }}>
+              <h2 style={{ color: 'var(--admin-text)', fontSize: '1.125rem', fontWeight: 600 }}>
                 {isNew ? 'Thêm dự án mới' : 'Chỉnh sửa dự án'}
               </h2>
               <button onClick={() => setEditing(null)} style={{
-                background: 'none', border: 'none', color: '#64748b', cursor: 'pointer',
+                background: 'none', border: 'none', color: 'var(--admin-text-light)', cursor: 'pointer',
               }}><X size={20} /></button>
             </div>
 
@@ -329,14 +329,14 @@ export default function ProjectsPage() {
                 <input type="checkbox" id="featured" checked={editing.featured}
                   onChange={e => setEditing({...editing, featured: e.target.checked})}
                   style={{ accentColor: '#22c55e' }} />
-                <label htmlFor="featured" style={{ color: '#94a3b8', fontSize: '0.875rem' }}>Nổi bật</label>
+                <label htmlFor="featured" style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem' }}>Nổi bật</label>
               </div>
             </div>
 
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
               <button onClick={() => setEditing(null)} style={{
-                padding: '0.625rem 1.25rem', background: '#334155', border: 'none',
-                borderRadius: '8px', color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem',
+                padding: '0.625rem 1.25rem', background: 'var(--admin-border)', border: 'none',
+                borderRadius: '8px', color: 'var(--admin-text-muted)', cursor: 'pointer', fontSize: '0.875rem',
               }}>Hủy</button>
               <button onClick={handleSave} disabled={saving} style={{
                 padding: '0.625rem 1.25rem',

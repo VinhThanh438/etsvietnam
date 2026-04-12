@@ -6,6 +6,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { CheckCircle, Award, Users, Leaf, Phone } from 'lucide-react'
 import { IntroductionSection } from '@/components/sections/IntroductionSection'
+import { PageBanner } from '@/components/ui/PageBanner'
 
 export const metadata: Metadata = {
   title: 'Giới thiệu | ETS VN',
@@ -35,8 +36,7 @@ export default async function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-24 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -47,8 +47,7 @@ export default async function AboutPage() {
               <p className="text-green-100 text-lg opacity-90">{company.slogan}</p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
 
       {/* Introduction Letter & General Info */}
       <IntroductionSection />
@@ -146,3 +145,4 @@ export default async function AboutPage() {
     </>
   )
 }
+

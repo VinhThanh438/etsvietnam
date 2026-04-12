@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import {
   LayoutDashboard, FolderKanban, Wrench, Newspaper, Users,
-  Settings, Mail, LogOut, Menu, X, ChevronRight, Image
+  Settings, Mail, LogOut, Menu, X, ChevronRight, Image, Sun, Moon
 } from 'lucide-react'
 
 const navItems = [
@@ -24,6 +24,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('admin-theme')
+    if (savedTheme === 'light') {
+      setTheme('light')
+    }
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('admin-theme', newTheme)
+  }
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -54,8 +68,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#0f172a',
-        color: '#94a3b8',
+        background: 'var(--admin-bg)',
+        color: 'var(--admin-text-muted)',
       }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{
@@ -75,7 +89,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#0f172a' }}>
+    <div data-admin-theme={theme} style={{ display: 'flex', minHeight: '100vh', background: 'var(--admin-bg)' }}>
       {/* Sidebar Overlay (mobile) */}
       {sidebarOpen && (
         <div
@@ -96,8 +110,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         left: 0,
         bottom: 0,
         width: '260px',
-        background: '#1e293b',
-        borderRight: '1px solid #334155',
+        background: 'var(--admin-surface)',
+        borderRight: '1px solid var(--admin-border)',
         zIndex: 50,
         transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
         transition: 'transform 0.3s ease',
@@ -110,7 +124,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Logo */}
         <div style={{
           padding: '1.25rem 1.5rem',
-          borderBottom: '1px solid #334155',
+          borderBottom: '1px solid var(--admin-border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -136,10 +150,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               ETS
             </div>
             <div>
-              <div style={{ fontWeight: 700, color: '#f1f5f9', fontSize: '0.9375rem' }}>
+              <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.9375rem' }}>
                 Quản trị
               </div>
-              <div style={{ fontSize: '0.6875rem', color: '#64748b' }}>
+              <div style={{ fontSize: '0.6875rem', color: 'var(--admin-text-light)' }}>
                 Content Manager
               </div>
             </div>
@@ -150,7 +164,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             style={{
               background: 'none',
               border: 'none',
-              color: '#94a3b8',
+              color: 'var(--admin-text-muted)',
               cursor: 'pointer',
               padding: '4px',
               display: 'none',
@@ -165,7 +179,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div style={{
             fontSize: '0.6875rem',
             fontWeight: 600,
-            color: '#475569',
+            color: 'var(--admin-text-muted)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
             padding: '0 0.75rem',
@@ -191,7 +205,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   textDecoration: 'none',
                   fontSize: '0.875rem',
                   fontWeight: isActive ? 600 : 400,
-                  color: isActive ? '#22c55e' : '#94a3b8',
+                  color: isActive ? '#22c55e' : 'var(--admin-text-muted)',
                   background: isActive ? 'rgba(34,197,94,0.1)' : 'transparent',
                   marginBottom: '2px',
                   transition: 'all 0.15s ease',
@@ -208,7 +222,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Bottom: Logout */}
         <div style={{
           padding: '1rem 0.75rem',
-          borderTop: '1px solid #334155',
+          borderTop: '1px solid var(--admin-border)',
         }}>
           <Link
             href="/"
@@ -221,7 +235,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               borderRadius: '8px',
               textDecoration: 'none',
               fontSize: '0.8125rem',
-              color: '#64748b',
+              color: 'var(--admin-text-light)',
               marginBottom: '4px',
             }}
           >
@@ -257,8 +271,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Top Bar */}
         <header style={{
           height: '56px',
-          background: '#1e293b',
-          borderBottom: '1px solid #334155',
+          background: 'var(--admin-surface)',
+          borderBottom: '1px solid var(--admin-border)',
           display: 'flex',
           alignItems: 'center',
           padding: '0 1.5rem',
@@ -273,7 +287,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             style={{
               background: 'none',
               border: 'none',
-              color: '#94a3b8',
+              color: 'var(--admin-text-muted)',
               cursor: 'pointer',
               padding: '6px',
               borderRadius: '6px',
@@ -281,10 +295,29 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           >
             <Menu size={22} />
           </button>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+          <div style={{ fontSize: '0.875rem', color: 'var(--admin-text-muted)', flex: 1 }}>
             {navItems.find(n => pathname === n.href ||
               (n.href !== '/admin/dashboard' && pathname.startsWith(n.href)))?.label || 'Tổng quan'}
           </div>
+          
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'transparent',
+              border: '1px solid var(--admin-border)',
+              borderRadius: '8px',
+              padding: '6px',
+              color: 'var(--admin-text)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            title="Đổi giao diện"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </header>
 
         {/* Page Content */}

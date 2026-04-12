@@ -1,33 +1,65 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ChevronDown, Shield, Award, CheckCircle, Briefcase, Users, Timer, GraduationCap } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { useState, useEffect } from 'react'
 
-export function HeroSection() {
+export function HeroSection({ slides, stats = [] }: { slides?: { id: string, image: string }[], stats?: { value: string, label: string }[] }) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    if (!slides || slides.length <= 1) return
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % slides.length)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [slides])
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
       {/* Animated gradient background */}
       <div className="absolute inset-0">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-green-950/30 to-blue-950/40" />
+        {/* Background Slideshow */}
+        {slides && slides.length > 0 && (
+          <div className="absolute inset-0 z-0">
+            <AnimatePresence>
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute flex inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+              />
+            </AnimatePresence>
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-gray-950/60 sm:bg-gray-950/70" />
+          </div>
+        )}
+
+        {/* Fallback Base gradient if no slides */}
+        {(!slides || slides.length === 0) && (
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-green-950/30 to-blue-950/40" />
+        )}
 
         {/* Animated green orb */}
         <motion.div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-green-500/10 blur-3xl"
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-green-500/10 blur-3xl pointer-events-none"
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         {/* Animated blue orb */}
         <motion.div
-          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-3xl"
+          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
 
         {/* Grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
             backgroundImage:
               'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
@@ -135,12 +167,15 @@ export function HeroSection() {
                 {/* Animated gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {[
-                  { value: '500+', label: 'Dự án hoàn thành', icon: Briefcase },
-                  { value: '200+', label: 'Đối tác tin cậy', icon: Users },
-                  { value: '15+', label: 'Năm kinh nghiệm', icon: Timer },
-                  { value: '30+', label: 'Chuyên gia đầu ngành', icon: GraduationCap },
-                ].map(({ value, label, icon: Icon }, index) => (
+                {(stats.length > 0 ? stats : [
+                  { value: '500+', label: 'Dự án hoàn thành' },
+                  { value: '200+', label: 'Đối tác tin cậy' },
+                  { value: '15+', label: 'Năm kinh nghiệm' },
+                  { value: '30+', label: 'Chuyên gia đầu ngành' },
+                ]).slice(0, 4).map(({ value, label }, index) => {
+                  const icons = [Briefcase, Users, Timer, GraduationCap]
+                  const Icon = icons[index % icons.length]
+                  return (
                   <motion.div
                     key={label}
                     initial={{ opacity: 0, y: 10 }}
@@ -160,7 +195,7 @@ export function HeroSection() {
                       </div>
                     </div>
                   </motion.div>
-                ))}
+                )})}
               </div>
             </motion.div>
           </div>

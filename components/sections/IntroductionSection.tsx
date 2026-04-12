@@ -52,56 +52,53 @@ export function IntroductionSection() {
             </div>
           </div>
 
-          {/* General Info - Right Side (4 cols) - Cards with glassmorphism */}
+          {/* General Info - Right Side (4 cols) - Cards with clean aesthetic */}
           <div className="lg:col-span-12 xl:col-span-4 mt-8 xl:mt-0">
             <AnimatedSection direction="right" delay={0.5}>
-              <div className="relative p-8 rounded-3xl bg-slate-900 text-white shadow-2xl overflow-hidden group">
+              <div className="relative p-8 rounded-3xl bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden group">
                 {/* Background patterns */}
-                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-green-500/20 rounded-full blur-3xl group-hover:bg-green-500/30 transition-colors" />
-                <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
+                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-green-50 rounded-full blur-3xl group-hover:bg-green-100/50 transition-colors" />
+                <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl group-hover:bg-blue-100/50 transition-colors" />
                 
-                <h3 className="text-xl font-bold mb-8 flex items-center gap-3 relative z-10">
-                  <span className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-green-400">
+                <h3 className="text-xl font-bold mb-8 flex items-center gap-3 relative z-10 text-gray-900">
+                  <span className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-700">
                     <Building2 className="w-5 h-5" />
                   </span>
-                  Thông tin chung
+                  Thông tin doanh nghiệp
                 </h3>
 
                 <div className="space-y-6 relative z-10">
                   {[
-                    { icon: Building2, label: 'Tên Công Ty', value: 'CÔNG TY CỔ PHẦN ETS VIỆT NAM', color: 'text-green-400' },
-                    { icon: Globe, label: 'Tên Tiếng Anh', value: 'ETS VIỆT NAM ENVIRONMENT JOINT STOCK COMPANY.', color: 'text-blue-400' },
-                    { icon: FileText, label: 'Mã Số Doanh Nghiệp', value: '0108115359', color: 'text-yellow-400' },
-                    { icon: User, label: 'Người Đại Diện', value: 'ĐỖ HOÀNG THU (Tổng Giám Đốc)', color: 'text-purple-400' },
-                    { icon: MapPin, label: 'Địa Chỉ', value: 'Tầng 2, Tháp A, Tòa T608 Phổ Tôn Quang Phiệt, Phường Cỗ Nhuế 1, Quận Bắc Từ Liêm, HN', color: 'text-red-400' },
-                    { icon: Phone, label: 'Điện Thoại', value: '0879.343.999', color: 'text-orange-400' },
-                    { icon: Mail, label: 'Email', value: 'info@etsvietnam.vn', color: 'text-cyan-400' },
+                    { icon: Building2, label: 'Tên Công Ty', value: 'CÔNG TY CỔ PHẦN ETS VIỆT NAM' },
+                    { icon: Globe, label: 'Tên Tiếng Anh', value: 'ETS VIET NAM ENVIRONMENT JOINT STOCK COMPANY.' },
+                    { icon: FileText, label: 'Mã Số Doanh Nghiệp', value: '0108115359' },
+                    { icon: User, label: 'Người Đại Diện', value: 'ĐỖ HOÀNG THU (Tổng Giám Đốc)' },
+                    { icon: MapPin, label: 'Trụ sở chính', value: 'Tầng 2, Tháp A, Tòa T608 Phố Tôn Quang Phiệt, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, HN' },
+                    { icon: Phone, label: 'Điện Thoại', value: '0879.343.999' },
+                    { icon: Mail, label: 'Email', value: 'info@etsvietnam.vn' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4 group/item">
-                      <div className={`shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${item.color} group-hover/item:bg-white/10 transition-colors`}>
+                      <div className="shrink-0 w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-green-600 group-hover/item:bg-green-600 group-hover/item:text-white transition-all duration-300">
                         <item.icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-0.5">{item.label}</p>
-                        <p className="text-sm font-medium text-gray-200 group-hover/item:text-white transition-colors">{item.value}</p>
+                        <p className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-0.5">{item.label}</p>
+                        <p className="text-sm font-medium text-gray-900">{item.value}</p>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-white/10 relative z-10 flex items-center justify-between">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold text-gray-400">
-                        {i}
-                      </div>
-                    ))}
+                <div className="mt-8 pt-6 border-t border-gray-100 relative z-10 flex items-center justify-between">
+                  <div className="flex gap-1.5 items-center">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-xs font-semibold text-gray-500">Giấy phép ĐKKD</span>
                   </div>
                   <a 
                     href="https://www.etsvietnam.vn" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-xs font-bold text-green-400 hover:text-green-300 transition-colors flex items-center gap-1.5"
+                    className="text-xs font-bold text-green-600 hover:text-green-700 transition-colors flex items-center gap-1.5"
                   >
                     www.etsvietnam.vn
                     <Globe className="w-3.5 h-3.5" />

@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 interface ProjectsSectionProps {
   projects: Project[]
   showViewAll?: boolean
+  sidebar?: React.ReactNode
 }
 
 function ProjectCard({ project }: { project: Project }) {
@@ -79,9 +80,9 @@ function ProjectCard({ project }: { project: Project }) {
   )
 }
 
-export function ProjectsSection({ projects, showViewAll = true }: ProjectsSectionProps) {
+export function ProjectsSection({ projects, showViewAll = true, sidebar }: ProjectsSectionProps) {
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-12 md:pt-16 pb-24 bg-white">
       <Container>
         <AnimatedSection className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionTitle
@@ -102,11 +103,32 @@ export function ProjectsSection({ projects, showViewAll = true }: ProjectsSectio
           )}
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </StaggerContainer>
+        {sidebar ? (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div className="lg:col-span-3">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </StaggerContainer>
+            </div>
+            <div className="lg:col-span-1 relative hidden lg:block">
+              <div className="sticky top-24">
+                {sidebar}
+              </div>
+            </div>
+            {/* Mobile/Tablet sidebar placement (below) */}
+            <div className="lg:hidden mt-8">
+              {sidebar}
+            </div>
+          </div>
+        ) : (
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </StaggerContainer>
+        )}
       </Container>
     </section>
   )

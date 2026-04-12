@@ -72,7 +72,7 @@ export function ServicesSection({ services, limit }: ServicesSectionProps) {
   const displayServices = limit ? services.slice(0, limit) : services
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="pt-12 md:pt-16 pb-24 bg-gray-50">
       <Container>
         <AnimatedSection className="mb-16">
           <SectionTitle

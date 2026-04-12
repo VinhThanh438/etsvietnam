@@ -5,6 +5,9 @@ import { ProjectsSection } from '@/components/sections/ProjectsSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { SidebarProjects } from '@/components/ui/SidebarProjects'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Dự án | Công trình đã thực hiện',
@@ -17,8 +20,7 @@ export default async function ProjectsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -30,10 +32,16 @@ export default async function ProjectsPage() {
               </p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
 
-      <ProjectsSection projects={projects} showViewAll={false} />
+      <Breadcrumbs items={[{ label: 'Dự án' }]} />
+
+      <ProjectsSection 
+        projects={projects}  
+        showViewAll={false} 
+        sidebar={<SidebarProjects />} 
+      />
     </>
   )
 }
+

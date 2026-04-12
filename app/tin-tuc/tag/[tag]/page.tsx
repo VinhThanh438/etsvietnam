@@ -4,6 +4,7 @@ import { NewsSection } from '@/components/sections/NewsSection'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import Link from 'next/link'
+import { PageBanner } from '@/components/ui/PageBanner'
 
 export async function generateMetadata(
   { params }: { params: Promise<{ tag: string }> }
@@ -33,8 +34,7 @@ export default async function TagPage(
 
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -48,8 +48,7 @@ export default async function TagPage(
               </p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
 
       {/* Tags cloud */}
       <section className="py-8 bg-gray-50">

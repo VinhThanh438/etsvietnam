@@ -66,6 +66,7 @@ export interface SiteConfig {
     taxCode: string
     founded: string
     logo: string
+    teamImage?: string
     website: string
     facebook: string
     zalo: string
@@ -79,4 +80,5 @@ export interface SiteConfig {
   }
   stats: { value: string; label: string }[]
   nav: { label: string; href: string }[]
+  heroSlides?: { id: string; image: string }[]
 }

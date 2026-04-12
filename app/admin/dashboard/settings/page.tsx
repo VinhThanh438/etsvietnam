@@ -7,7 +7,7 @@ interface SiteConfig {
   company: {
     name: string; fullName: string; slogan: string; description: string
     phone: string; email: string; address: string; taxCode: string
-    founded: string; logo: string; website: string; facebook: string; zalo: string
+    founded: string; logo: string; teamImage?: string; website: string; facebook: string; zalo: string
   }
   seo: {
     defaultTitle: string; titleTemplate: string; defaultDescription: string
@@ -15,6 +15,7 @@ interface SiteConfig {
   }
   stats: { value: string; label: string }[]
   nav: { label: string; href: string }[]
+  heroSlides?: { id: string; image: string }[]
 }
 
 export default function SettingsPage() {
@@ -22,7 +23,7 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
-  const [activeTab, setActiveTab] = useState<'company' | 'seo' | 'stats'>('company')
+  const [activeTab, setActiveTab] = useState<'company' | 'seo' | 'stats' | 'slider'>('company')
 
   const fetchData = useCallback(async () => {
     const res = await fetch('/api/admin/settings')
@@ -51,27 +52,27 @@ export default function SettingsPage() {
   }
 
   const inputStyle: React.CSSProperties = {
-    width: '100%', padding: '0.625rem 0.75rem', background: '#0f172a',
-    border: '1px solid #334155', borderRadius: '8px', color: '#f1f5f9', fontSize: '0.875rem', outline: 'none',
+    width: '100%', padding: '0.625rem 0.75rem', background: 'var(--admin-bg)',
+    border: '1px solid #334155', borderRadius: '8px', color: 'var(--admin-text)', fontSize: '0.875rem', outline: 'none',
   }
   const labelStyle: React.CSSProperties = {
-    display: 'block', fontSize: '0.8125rem', fontWeight: 500, color: '#94a3b8', marginBottom: '0.375rem',
+    display: 'block', fontSize: '0.8125rem', fontWeight: 500, color: 'var(--admin-text-muted)', marginBottom: '0.375rem',
   }
   const tabStyle = (active: boolean): React.CSSProperties => ({
     padding: '0.625rem 1.25rem', background: active ? '#22c55e15' : 'transparent',
     border: 'none', borderBottom: active ? '2px solid #22c55e' : '2px solid transparent',
-    color: active ? '#22c55e' : '#64748b', cursor: 'pointer',
+    color: active ? '#22c55e' : 'var(--admin-text-light)', cursor: 'pointer',
     fontSize: '0.875rem', fontWeight: active ? 600 : 400,
   })
 
-  if (loading || !config) return <div style={{ color: '#94a3b8', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
+  if (loading || !config) return <div style={{ color: 'var(--admin-text-muted)', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
 
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f1f5f9' }}>Cài đặt</h1>
-          <p style={{ color: '#64748b', fontSize: '0.8125rem' }}>Thông tin công ty, SEO & thống kê</p>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--admin-text)' }}>Cài đặt</h1>
+          <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem' }}>Thông tin công ty, SEO & thống kê</p>
         </div>
         <button onClick={handleSave} disabled={saving} style={{
           display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.625rem 1.25rem',
@@ -85,13 +86,14 @@ export default function SettingsPage() {
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #334155', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', borderBottom: '1px solid #334155', marginBottom: '1.5rem', overflowX: 'auto' }}>
         <button style={tabStyle(activeTab === 'company')} onClick={() => setActiveTab('company')}>Công ty</button>
         <button style={tabStyle(activeTab === 'seo')} onClick={() => setActiveTab('seo')}>SEO</button>
         <button style={tabStyle(activeTab === 'stats')} onClick={() => setActiveTab('stats')}>Thống kê</button>
+        <button style={tabStyle(activeTab === 'slider')} onClick={() => setActiveTab('slider')}>Slider Trang chủ</button>
       </div>
 
-      <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem' }}>
+      <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem' }}>
         {/* Company Tab */}
         {activeTab === 'company' && (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
@@ -160,6 +162,11 @@ export default function SettingsPage() {
               <input style={inputStyle} value={config.company.logo}
                 onChange={e => setConfig({...config, company: {...config.company, logo: e.target.value}})} />
             </div>
+            <div>
+              <label style={labelStyle}>Ảnh Đội ngũ URL</label>
+              <input style={inputStyle} value={config.company.teamImage || ''} placeholder="/images/team.jpg"
+                onChange={e => setConfig({...config, company: {...config.company, teamImage: e.target.value}})} />
+            </div>
           </div>
         )}
 
@@ -198,7 +205,7 @@ export default function SettingsPage() {
         {/* Stats Tab */}
         {activeTab === 'stats' && (
           <div>
-            <p style={{ color: '#94a3b8', fontSize: '0.8125rem', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.8125rem', marginBottom: '1rem' }}>
               Các con số thống kê hiển thị trên trang chủ
             </p>
             {config.stats.map((stat, i) => (
@@ -228,10 +235,49 @@ export default function SettingsPage() {
               setConfig({...config, stats: [...config.stats, { value: '', label: '' }]})
             }} style={{
               display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem',
-              background: '#334155', border: 'none', borderRadius: '8px',
-              color: '#94a3b8', cursor: 'pointer', fontSize: '0.8125rem', marginTop: '0.5rem',
+              background: 'var(--admin-border)', border: 'none', borderRadius: '8px',
+              color: 'var(--admin-text-muted)', cursor: 'pointer', fontSize: '0.8125rem', marginTop: '0.5rem',
             }}>
               <Plus size={14} /> Thêm thống kê
+            </button>
+          </div>
+        )}
+
+        {/* Slider Tab */}
+        {activeTab === 'slider' && (
+          <div>
+            <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.8125rem', marginBottom: '1rem' }}>
+              Quản lý danh sách ảnh nền Slider trên trang chủ. Có thể sao chép đường dẫn ảnh từ quản lý "Hình ảnh" để dán vào.
+            </p>
+            {config.heroSlides?.map((slide, i) => (
+              <div key={slide.id || i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '0.75rem' }}>
+                <div style={{
+                  width: '60px', height: '40px', borderRadius: '4px', overflow: 'hidden', background: '#334155',
+                  backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center', flexShrink: 0
+                }} />
+                <input style={{ ...inputStyle, flex: 1 }} value={slide.image} placeholder="/images/banner.png hoặc URL ảnh..."
+                  onChange={e => {
+                    const newSlides = [...(config.heroSlides || [])]
+                    newSlides[i] = { ...newSlides[i], image: e.target.value }
+                    setConfig({...config, heroSlides: newSlides})
+                  }} />
+                <button onClick={() => {
+                  const newSlides = (config.heroSlides || []).filter((_, idx) => idx !== i)
+                  setConfig({...config, heroSlides: newSlides})
+                }} style={{
+                  background: '#450a0a60', border: 'none', borderRadius: '6px',
+                  padding: '6px', cursor: 'pointer', color: '#f87171',
+                }}><Trash2 size={14} /></button>
+              </div>
+            ))}
+            <button onClick={() => {
+              setConfig({...config, heroSlides: [...(config.heroSlides || []), { id: Date.now().toString(), image: '' }]})
+            }} style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem',
+              background: 'var(--admin-border)', border: 'none', borderRadius: '8px',
+              color: 'var(--admin-text-muted)', cursor: 'pointer', fontSize: '0.8125rem', marginTop: '0.5rem',
+            }}>
+              <Plus size={14} /> Thêm ảnh mới
             </button>
           </div>
         )}

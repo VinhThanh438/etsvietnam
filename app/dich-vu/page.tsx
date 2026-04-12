@@ -3,6 +3,8 @@ import { getServices } from '@/lib/data/services'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Dịch vụ | Giải pháp môi trường toàn diện',
@@ -14,8 +16,7 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -27,10 +28,12 @@ export default async function ServicesPage() {
               </p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
+
+      <Breadcrumbs items={[{ label: 'Dịch vụ' }]} />
 
       <ServicesSection services={services} />
     </>
   )
 }
+

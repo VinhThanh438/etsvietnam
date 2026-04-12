@@ -3,6 +3,9 @@ import { getNews } from '@/lib/data/news'
 import { NewsSection } from '@/components/sections/NewsSection'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { SidebarNews } from '@/components/ui/SidebarNews'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Tin tức | Cẩm nang môi trường',
@@ -14,8 +17,7 @@ export default async function NewsPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -27,10 +29,16 @@ export default async function NewsPage() {
               </p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
 
-      <NewsSection articles={articles} showViewAll={false} />
+      <Breadcrumbs items={[{ label: 'Tin tức' }]} />
+
+      <NewsSection  
+        articles={articles} 
+        showViewAll={false} 
+        sidebar={<SidebarNews />} 
+      />
     </>
   )
 }
+

@@ -29,7 +29,7 @@
     "categoryLabel": "Xử lý nước cấp",
     "capacity": "2.000 m³/ngày",
     "year": "2023",
-    "image": "/images/projects/project-2.jpg",
+    "image": "/uploads/projects/1775927172731-1808271.jpg",
     "shortDescription": "Xây dựng nhà máy nước sạch 2.000 m³/ngày phục vụ khu đô thị 10.000 hộ dân tại Long An.",
     "description": "Thiết kế và thi công trọn gói nhà máy xử lý nước mặt công suất 2.000 m³/ngày cung cấp nước sinh hoạt đạt QCVN 01-1:2018/BYT cho khu đô thị mới tại Long An.",
     "tags": [
@@ -48,7 +48,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "800 m³/ngày",
     "year": "2022",
-    "image": "/images/projects/project-3.jpg",
+    "image": "/uploads/projects/1775927348737-ienco5.jpg",
     "shortDescription": "Hệ thống xử lý nước thải chế biến thủy sản 800 m³/ngày, xử lý hiệu quả COD, mùi hôi.",
     "description": "Xử lý nước thải giàu chất hữu cơ từ chế biến thủy sản với công nghệ yếm khí phủ kín (CSTR) + SBR + khử mùi bằng biofilter. Nước đầu ra đạt QCVN 11-MT:2015/BTNMT.",
     "tags": [
@@ -68,7 +68,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "300 m³/ngày",
     "year": "2022",
-    "image": "/images/projects/project-4.jpg",
+    "image": "/uploads/projects/1775927358890-20191124_6edz9v3bvyfvuyyitslp9u2a.jpg",
     "shortDescription": "Trạm XLNT bệnh viện 300 m³/ngày đảm bảo diệt khuẩn, xử lý dược phẩm đạt QCVN 28:2010.",
     "description": "Thiết kế hệ thống xử lý nước thải y tế sử dụng công nghệ AAO + UV khử trùng. Đạt QCVN 28:2010/BTNMT, loại A.",
     "tags": [
@@ -76,7 +76,7 @@
       "UV",
       "AAO"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "kcn-long-duc-dong-nai",
@@ -88,7 +88,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "5.000 m³/ngày",
     "year": "2021",
-    "image": "/images/projects/project-5.jpg",
+    "image": "/uploads/projects/1775927371813-free-photo-_-tropical-green-leaves-background.jpg",
     "shortDescription": "Trạm XLNT tập trung quy mô lớn 5.000 m³/ngày cho KCN Long Đức, nhiều ngành sản xuất.",
     "description": "Thiết kế, thi công và vận hành trạm xử lý nước thải tập trung cho khu công nghiệp với đa dạng loại hình doanh nghiệp. Công nghệ tiên tiến, tự động hóa cao.",
     "tags": [
@@ -108,7 +108,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "1.200 m³/ngày",
     "year": "2021",
-    "image": "/images/projects/project-6.jpg",
+    "image": "/uploads/projects/1775927385234-jennie.jpg",
     "shortDescription": "Hệ thống xử lý nước thải dây chuyền sản xuất bia 1.200 m³/ngày, thu hồi khí biogas.",
     "description": "Ứng dụng công nghệ UASB thu hồi khí biogas tái sử dụng năng lượng, kết hợp xử lý sinh học hiếu khí đảm bảo đầu ra đạt chuẩn.",
     "tags": [

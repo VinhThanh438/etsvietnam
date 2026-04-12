@@ -145,3 +145,25 @@ h6 {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+[data-admin-theme="dark"] {
+  --admin-bg: #0f172a;
+  --admin-surface: #1e293b;
+  --admin-border: #334155;
+  --admin-text: #f1f5f9;
+  --admin-text-muted: #94a3b8;
+  --admin-text-light: #8f9ba8;
+  --admin-surface-hover: #f8fafc;
+  --admin-modal-bg: rgba(0, 0, 0, 0.6);
+}
+
+[data-admin-theme="light"] {
+  --admin-bg: #f0f4f8;
+  --admin-surface: #ffffff;
+  --admin-border: #e2e8f0;
+  --admin-text: #0f172a;
+  --admin-text-muted: #475569;
+  --admin-text-light: #64748b;
+  --admin-surface-hover: #f1f5f9;
+  --admin-modal-bg: rgba(255, 255, 255, 0.7);
+}

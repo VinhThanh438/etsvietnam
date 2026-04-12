@@ -6,6 +6,9 @@ import { getProjectBySlug, getProjects } from '@/lib/data/projects'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { MapPin, Calendar, Zap, ChevronLeft, Tag } from 'lucide-react'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { SidebarProjects } from '@/components/ui/SidebarProjects'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -34,15 +37,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
-          <Link
-            href="/du-an"
-            className="inline-flex items-center gap-1.5 text-green-200 hover:text-white text-sm mb-6 transition-colors"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Tất cả dự án
-          </Link>
+      <PageBanner>
           <AnimatedSection>
             <span className="rounded-full bg-white/15 px-3 py-1 text-sm font-semibold text-green-100 mb-4 inline-block">
               {project.categoryLabel}
@@ -54,11 +49,15 @@ export default async function ProjectDetailPage({ params }: Props) {
               <span className="flex items-center gap-1.5"><Zap className="h-4 w-4" />{project.capacity}</span>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
+
+      <Breadcrumbs items={[
+        { label: 'Dự án', href: '/du-an' },
+        { label: project.title }
+      ]} />
 
       {/* Content */}
-      <section className="py-20 bg-white">
+      <section className="pt-10 md:pt-12 pb-20 bg-white">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main content */}
@@ -97,7 +96,8 @@ export default async function ProjectDetailPage({ params }: Props) {
 
             {/* Sidebar */}
             <AnimatedSection direction="right" delay={0.1}>
-              <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6 sticky top-24">
+              <div className="sticky top-24 space-y-8">
+                <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
                 <h3 className="font-bold text-gray-900 mb-5 text-lg">Thông tin dự án</h3>
                 <dl className="space-y-4">
                   {[
@@ -123,6 +123,9 @@ export default async function ProjectDetailPage({ params }: Props) {
                     Liên hệ tư vấn
                   </Link>
                 </div>
+              </div>
+              
+              <SidebarProjects />
               </div>
             </AnimatedSection>
           </div>

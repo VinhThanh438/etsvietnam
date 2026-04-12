@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer'
 import { getSiteConfig } from '@/lib/data/site'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import { ZaloButton } from '@/components/ui/ZaloButton'
+import { AnalyticsTracker } from '@/components/AnalyticsTracker'
 import { headers } from 'next/headers'
 
 const inter = Inter({
@@ -78,6 +79,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={isAdmin ? 'min-h-screen antialiased' : 'min-h-screen flex flex-col antialiased'}>
+        <AnalyticsTracker />
         {!isAdmin && <Header config={config} />}
         {isAdmin ? children : <main className="flex-1">{children}</main>}
         {!isAdmin && <Footer config={config} />}

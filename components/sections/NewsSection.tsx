@@ -13,6 +13,7 @@ import type { NewsArticle } from '@/lib/types'
 interface NewsSectionProps {
   articles: NewsArticle[]
   showViewAll?: boolean
+  sidebar?: React.ReactNode
 }
 
 function NewsCard({ article }: { article: NewsArticle }) {
@@ -66,9 +67,9 @@ function NewsCard({ article }: { article: NewsArticle }) {
   )
 }
 
-export function NewsSection({ articles, showViewAll = true }: NewsSectionProps) {
+export function NewsSection({ articles, showViewAll = true, sidebar }: NewsSectionProps) {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="pt-12 md:pt-16 pb-24 bg-gray-50">
       <Container>
         <AnimatedSection className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionTitle
@@ -89,11 +90,32 @@ export function NewsSection({ articles, showViewAll = true }: NewsSectionProps) 
           )}
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <NewsCard key={article.id} article={article} />
-          ))}
-        </StaggerContainer>
+        {sidebar ? (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div className="lg:col-span-3">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articles.map((article) => (
+                  <NewsCard key={article.id} article={article} />
+                ))}
+              </StaggerContainer>
+            </div>
+            <div className="lg:col-span-1 relative hidden lg:block">
+              <div className="sticky top-24">
+                {sidebar}
+              </div>
+            </div>
+            {/* Mobile/Tablet sidebar placement (below) */}
+            <div className="lg:hidden mt-8">
+              {sidebar}
+            </div>
+          </div>
+        ) : (
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((article) => (
+              <NewsCard key={article.id} article={article} />
+            ))}
+          </StaggerContainer>
+        )}
       </Container>
     </section>
   )

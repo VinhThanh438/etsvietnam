@@ -12,7 +12,8 @@
     "logo": "/images/logo.jpg",
     "website": "https://etsvietnam.vn",
     "facebook": "https://facebook.com/etsvietnam",
-    "zalo": "0901234567"
+    "zalo": "0901234567",
+    "teamImage": "/uploads/projects/1776007905447-dong-phuc-ngan-hang-mb-bank.webp"
   },
   "seo": {
     "defaultTitle": "ETS Việt Nam | Giải pháp Xử lý Nước & Môi trường",
@@ -63,6 +64,16 @@
     {
       "label": "Liên hệ",
       "href": "/lien-he"
+    }
+  ],
+  "heroSlides": [
+    {
+      "id": "1",
+      "image": "/images/banner.png"
+    },
+    {
+      "id": "1776007261892",
+      "image": "/uploads/projects/1776007252730-sat-la-gi.jpg"
     }
   ]
 }

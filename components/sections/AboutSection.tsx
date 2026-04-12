@@ -3,8 +3,9 @@
 import { CheckCircle, Target, Eye, Users } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 // Note: This is a Server Component — motion wrappers in children are Client Components
 import type { SiteConfig } from '@/lib/types'
@@ -28,29 +29,46 @@ export function AboutSection({ config }: AboutSectionProps) {
           {/* Left: Image / Visual */}
           <AnimatedSection direction="left">
             <div className="relative">
-              {/* Main image placeholder */}
+              {/* Main image placeholder / actual image */}
               <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-green-100 to-blue-100 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-gray-400">
-                    <div className="w-24 h-24 rounded-full bg-green-200 flex items-center justify-center mx-auto mb-3">
-                      <Users className="w-12 h-12 text-green-600" />
+                {config.company.teamImage ? (
+                  <Image 
+                    src={config.company.teamImage} 
+                    alt="Đội ngũ ETS VN" 
+                    fill 
+                    className="object-cover" 
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-gray-400">
+                      <div className="w-24 h-24 rounded-full bg-green-200 flex items-center justify-center mx-auto mb-3">
+                        <Users className="w-12 h-12 text-green-600" />
+                      </div>
+                      <p className="text-sm font-medium">Đội ngũ ETS VN</p>
                     </div>
-                    <p className="text-sm font-medium">Đội ngũ ETS VN</p>
                   </div>
-                </div>
+                )}
                 {/* Decorative elements */}
-                <div className="absolute top-6 left-6 w-20 h-20 rounded-2xl bg-green-600/20 backdrop-blur-sm" />
-                <div className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl bg-blue-600/20 backdrop-blur-sm" />
+                <div className="absolute top-6 left-6 w-20 h-20 rounded-2xl bg-green-600/20 backdrop-blur-sm pointer-events-none" />
+                <div className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl bg-blue-600/20 backdrop-blur-sm pointer-events-none" />
               </div>
 
               {/* Floating stat cards */}
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
-                <p className="text-4xl font-bold text-green-600">500+</p>
-                <p className="text-sm text-gray-500 mt-1">Dự án hoàn thành</p>
+                <p className="text-4xl font-bold text-green-600">
+                  {config.stats.find(s => s.label.toLowerCase().includes('dự án'))?.value || '500+'}
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  {config.stats.find(s => s.label.toLowerCase().includes('dự án'))?.label || 'Dự án hoàn thành'}
+                </p>
               </div>
               <div className="absolute -top-6 -left-6 bg-green-600 rounded-2xl shadow-xl p-5">
-                <p className="text-4xl font-bold text-white">15+</p>
-                <p className="text-sm text-green-100 mt-1">Năm kinh nghiệm</p>
+                <p className="text-4xl font-bold text-white">
+                  {config.stats.find(s => s.label.toLowerCase().includes('kinh nghiệm') || s.label.toLowerCase().includes('năm'))?.value || '15+'}
+                </p>
+                <p className="text-sm text-green-100 mt-1">
+                  {config.stats.find(s => s.label.toLowerCase().includes('kinh nghiệm') || s.label.toLowerCase().includes('năm'))?.label || 'Năm kinh nghiệm'}
+                </p>
               </div>
             </div>
           </AnimatedSection>

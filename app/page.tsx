@@ -32,7 +32,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <HeroSection />
+      <HeroSection slides={config.heroSlides} stats={config.stats} />
       <AboutSection config={config} />
       <ExpertiseSection />
       <ServicesSection services={services} limit={3} />

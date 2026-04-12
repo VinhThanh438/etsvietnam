@@ -66,32 +66,32 @@ export default function ContactsPage() {
   const unreadCount = contacts.filter(c => !c.read).length
 
   const inputStyle: React.CSSProperties = {
-    width: '100%', padding: '0.625rem 0.75rem', background: '#0f172a',
-    border: '1px solid #334155', borderRadius: '8px', color: '#f1f5f9', fontSize: '0.875rem', outline: 'none',
+    width: '100%', padding: '0.625rem 0.75rem', background: 'var(--admin-bg)',
+    border: '1px solid #334155', borderRadius: '8px', color: 'var(--admin-text)', fontSize: '0.875rem', outline: 'none',
   }
 
-  if (loading) return <div style={{ color: '#94a3b8', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
+  if (loading) return <div style={{ color: 'var(--admin-text-muted)', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
 
   return (
     <div>
       <div style={{ marginBottom: '1.5rem' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f1f5f9' }}>Liên hệ</h1>
-        <p style={{ color: '#64748b', fontSize: '0.8125rem' }}>
+        <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--admin-text)' }}>Liên hệ</h1>
+        <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem' }}>
           {contacts.length} tin nhắn{unreadCount > 0 && ` · ${unreadCount} chưa đọc`}
         </p>
       </div>
 
       <div style={{ position: 'relative', marginBottom: '1rem' }}>
-        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--admin-text-light)' }} />
         <input type="text" placeholder="Tìm kiếm..." value={search} onChange={e => setSearch(e.target.value)}
           style={{ ...inputStyle, paddingLeft: '2.5rem' }} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: selected ? '1fr 1fr' : '1fr', gap: '1rem' }}>
         {/* List */}
-        <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden', maxHeight: '600px', overflowY: 'auto' }}>
+        <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden', maxHeight: '600px', overflowY: 'auto' }}>
           {filtered.length === 0 ? (
-            <div style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>
+            <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--admin-text-light)' }}>
               {search ? 'Không tìm thấy.' : 'Chưa có tin nhắn nào.'}
             </div>
           ) : filtered.map((c, i) => (
@@ -99,13 +99,13 @@ export default function ContactsPage() {
               style={{
                 padding: '1rem 1.25rem', cursor: 'pointer',
                 borderBottom: i < filtered.length - 1 ? '1px solid #334155' : 'none',
-                background: selected?.id === c.id ? '#0f172a' : !c.read ? '#1e293b' : 'transparent',
+                background: selected?.id === c.id ? 'var(--admin-bg)' : !c.read ? 'var(--admin-surface)' : 'transparent',
                 borderLeft: selected?.id === c.id ? '3px solid #22c55e' : '3px solid transparent',
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
                 <span style={{
-                  color: '#f1f5f9', fontSize: '0.875rem',
+                  color: 'var(--admin-text)', fontSize: '0.875rem',
                   fontWeight: c.read ? 400 : 600,
                 }}>{c.name}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -119,7 +119,7 @@ export default function ContactsPage() {
                   </span>
                 </div>
               </div>
-              <p style={{ color: '#64748b', fontSize: '0.8125rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {c.message}
               </p>
             </div>
@@ -128,11 +128,11 @@ export default function ContactsPage() {
 
         {/* Detail */}
         {selected && (
-          <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem' }}>
+          <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle size={16} color={selected.read ? '#22c55e' : '#64748b'} />
-                <span style={{ color: '#94a3b8', fontSize: '0.8125rem' }}>
+                <CheckCircle size={16} color={selected.read ? '#22c55e' : 'var(--admin-text-light)'} />
+                <span style={{ color: 'var(--admin-text-muted)', fontSize: '0.8125rem' }}>
                   {selected.read ? 'Đã đọc' : 'Chưa đọc'}
                 </span>
               </div>
@@ -142,21 +142,21 @@ export default function ContactsPage() {
               }}><Trash2 size={14} /></button>
             </div>
 
-            <h3 style={{ color: '#f1f5f9', fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
+            <h3 style={{ color: 'var(--admin-text)', fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
               {selected.name}
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Phone size={14} color="#64748b" />
-                <a href={`tel:${selected.phone}`} style={{ color: '#94a3b8', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <a href={`tel:${selected.phone}`} style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
                   {selected.phone}
                 </a>
               </div>
               {selected.email && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Mail size={14} color="#64748b" />
-                  <a href={`mailto:${selected.email}`} style={{ color: '#94a3b8', fontSize: '0.875rem', textDecoration: 'none' }}>
+                  <a href={`mailto:${selected.email}`} style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
                     {selected.email}
                   </a>
                 </div>
@@ -164,21 +164,21 @@ export default function ContactsPage() {
               {selected.service && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Eye size={14} color="#64748b" />
-                  <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
+                  <span style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem' }}>
                     Quan tâm: {selected.service}
                   </span>
                 </div>
               )}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Clock size={14} color="#64748b" />
-                <span style={{ color: '#64748b', fontSize: '0.8125rem' }}>
+                <span style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem' }}>
                   {formatDateTime(selected.submittedAt)}
                 </span>
               </div>
             </div>
 
             <div style={{
-              background: '#0f172a', borderRadius: '8px', padding: '1rem',
+              background: 'var(--admin-bg)', borderRadius: '8px', padding: '1rem',
               border: '1px solid #334155',
             }}>
               <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>
@@ -190,12 +190,12 @@ export default function ContactsPage() {
       </div>
 
       {deleteConfirm && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
-          <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem', maxWidth: '400px', width: '90%' }}>
-            <h3 style={{ color: '#f1f5f9', marginBottom: '0.5rem' }}>Xóa tin nhắn?</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1.5rem' }}>Hành động này không thể hoàn tác.</p>
+        <div style={{ position: 'fixed', inset: 0, background: 'var(--admin-modal-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
+          <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem', maxWidth: '400px', width: '90%' }}>
+            <h3 style={{ color: 'var(--admin-text)', marginBottom: '0.5rem' }}>Xóa tin nhắn?</h3>
+            <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>Hành động này không thể hoàn tác.</p>
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
-              <button onClick={() => setDeleteConfirm(null)} style={{ padding: '0.5rem 1rem', background: '#334155', border: 'none', borderRadius: '8px', color: '#94a3b8', cursor: 'pointer' }}>Hủy</button>
+              <button onClick={() => setDeleteConfirm(null)} style={{ padding: '0.5rem 1rem', background: 'var(--admin-border)', border: 'none', borderRadius: '8px', color: 'var(--admin-text-muted)', cursor: 'pointer' }}>Hủy</button>
               <button onClick={() => handleDelete(deleteConfirm)} style={{ padding: '0.5rem 1rem', background: '#ef4444', border: 'none', borderRadius: '8px', color: 'white', cursor: 'pointer' }}>Xóa</button>
             </div>
           </div>

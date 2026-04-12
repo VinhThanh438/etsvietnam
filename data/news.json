@@ -8,7 +8,7 @@
     "author": "Kỹ sư Nguyễn Văn An",
     "category": "cong-nghe",
     "categoryLabel": "Công nghệ",
-    "image": "/images/news/news-1.jpg",
+    "image": "/uploads/news/1776011359170-images-5-.png",
     "publishedAt": "2024-03-15",
     "readingTime": "8 phút",
     "featured": true,
@@ -27,7 +27,7 @@
     "author": "Chuyên gia tư vấn ETS",
     "category": "phap-ly",
     "categoryLabel": "Pháp lý",
-    "image": "/images/news/news-2.jpg",
+    "image": "/uploads/news/1776011377225-ubks0tg.jpg",
     "publishedAt": "2024-02-28",
     "readingTime": "6 phút",
     "featured": true,
@@ -46,7 +46,7 @@
     "author": "Kỹ sư Trần Thị Bích",
     "category": "cong-nghe",
     "categoryLabel": "Công nghệ",
-    "image": "/images/news/news-3.jpg",
+    "image": "/uploads/news/1776011390987-vi-sao-nen-su-dung-ngon-ngu-php.jpg",
     "publishedAt": "2024-01-20",
     "readingTime": "5 phút",
     "featured": false,
@@ -65,7 +65,7 @@
     "author": "Chuyên gia tư vấn ETS",
     "category": "phap-ly",
     "categoryLabel": "Pháp lý",
-    "image": "/images/news/news-4.jpg",
+    "image": "/uploads/news/1776011403472-1-853.jpeg",
     "publishedAt": "2023-12-10",
     "readingTime": "10 phút",
     "featured": false,
@@ -113,21 +113,111 @@
     ]
   },
   {
-    "id": "to-la-vinh-day",
-    "slug": "to-la-vinh-day",
-    "title": "Tớ là Vinh đây",
-    "excerpt": "",
-    "content": "Xin chào cả nhà\n![z4541922210392_9ead5fc6180eabee97272e4217fccb2b.jpg](/uploads/news/1775925007163-z4541922210392_9ead5fc6180eabee97272e4217fccb2b.jpg)\n\n## Có chút tí thôi mà\n\n- Cần tiền không bạn\n- Tôi cho vay nek\n[Cho em ít tiền đi](url)\n",
-    "author": "",
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
     "category": "tin-tuc",
     "categoryLabel": "Tin tức",
-    "image": "/uploads/news/1775925047940-1590651167-2049913010-t-v-n-thi-t-k-cung-c-p-gi-i-phap-cong-ngh-k-thu-t-thi-t-b-x-ly-ch-t-th-i-r-n-khi-th-i-n-c-th-i.jpg",
-    "publishedAt": "2026-04-11",
-    "readingTime": "5 phút",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
     "featured": false,
     "tags": [
-      "Màng lọc",
-      "có cho tí tiền không"
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
+  },
+  {
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
+    "category": "tin-tuc",
+    "categoryLabel": "Tin tức",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
+    "featured": false,
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
+  },
+  {
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
+    "category": "tin-tuc",
+    "categoryLabel": "Tin tức",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
+    "featured": false,
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
+  },
+  {
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
+    "category": "tin-tuc",
+    "categoryLabel": "Tin tức",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
+    "featured": false,
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
+  },
+  {
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
+    "category": "tin-tuc",
+    "categoryLabel": "Tin tức",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
+    "featured": false,
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
+    ]
+  },
+  {
+    "id": "ets-nhan-giai-thuong-moi-truong-2023",
+    "slug": "ets-nhan-giai-thuong-moi-truong-2023",
+    "title": "ETS VN nhận Giải thưởng Môi trường Xanh 2023",
+    "excerpt": "ETS VN vinh dự được Bộ Tài nguyên và Môi trường trao tặng Giải thưởng Môi trường Xanh 2023 cho chuỗi dự án xử lý nước thải nông thôn.",
+    "content": "# ETS VN - Giải thưởng Môi trường Xanh 2023\n\nChúng tôi vô cùng tự hào khi được Bộ TN&MT vinh danh...",
+    "author": "Ban biên tập ETS",
+    "category": "tin-tuc",
+    "categoryLabel": "Tin tức",
+    "image": "/images/news/news-6.jpg",
+    "publishedAt": "2023-10-22",
+    "readingTime": "3 phút",
+    "featured": false,
+    "tags": [
+      "Giải thưởng",
+      "Tin tức công ty"
     ]
   }
 ]

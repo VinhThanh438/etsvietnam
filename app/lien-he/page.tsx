@@ -3,6 +3,7 @@ import { getSiteConfig } from '@/lib/data/site'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { PageBanner } from '@/components/ui/PageBanner'
 
 export const metadata: Metadata = {
   title: 'Liên hệ | Yêu cầu tư vấn môi trường',
@@ -13,8 +14,7 @@ export default async function ContactPage() {
   const config = await getSiteConfig()
   return (
     <>
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
+      <PageBanner>
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
@@ -26,9 +26,9 @@ export default async function ContactPage() {
               </p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
       <ContactSection config={config} />
     </>
   )
 }
+

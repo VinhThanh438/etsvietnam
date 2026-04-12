@@ -5,6 +5,8 @@ import { getServiceBySlug, getServices } from '@/lib/data/services'
 import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { ChevronLeft, CheckCircle, Droplets, Waves, Wind, Activity, FileText, Database } from 'lucide-react'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -44,15 +46,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-900 to-green-700 py-22 text-white">
-        <Container>
-          <Link
-            href="/dich-vu"
-            className="inline-flex items-center gap-1.5 text-green-200 hover:text-white text-sm mb-6 transition-colors"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Tất cả dịch vụ
-          </Link>
+      <PageBanner>
           <AnimatedSection className="flex flex-col md:flex-row gap-8 items-start">
             <div className="h-16 w-16 md:h-20 md:w-20 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center">
               <Icon className="h-8 w-8 md:h-10 md:w-10 text-green-300" />
@@ -62,11 +56,15 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="text-green-100 text-lg max-w-2xl">{service.shortDescription}</p>
             </div>
           </AnimatedSection>
-        </Container>
-      </section>
+        </PageBanner>
+
+      <Breadcrumbs items={[
+        { label: 'Dịch vụ', href: '/dich-vu' },
+        { label: service.title }
+      ]} />
 
       {/* Content */}
-      <section className="py-20 bg-white">
+      <section className="pt-10 md:pt-12 pb-20 bg-white">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <AnimatedSection className="lg:col-span-2">

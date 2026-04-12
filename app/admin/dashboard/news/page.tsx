@@ -165,28 +165,28 @@ export default function NewsPage() {
   )
 
   const inputStyle: React.CSSProperties = {
-    width: '100%', padding: '0.625rem 0.75rem', background: '#0f172a',
-    border: '1px solid #334155', borderRadius: '8px', color: '#f1f5f9',
+    width: '100%', padding: '0.625rem 0.75rem', background: 'var(--admin-bg)',
+    border: '1px solid #334155', borderRadius: '8px', color: 'var(--admin-text)',
     fontSize: '0.875rem', outline: 'none',
   }
   const labelStyle: React.CSSProperties = {
     display: 'block', fontSize: '0.8125rem', fontWeight: 500,
-    color: '#94a3b8', marginBottom: '0.375rem',
+    color: 'var(--admin-text-muted)', marginBottom: '0.375rem',
   }
   const toolbarBtnStyle: React.CSSProperties = {
-    background: '#334155', border: 'none', borderRadius: '6px',
-    padding: '6px 8px', cursor: 'pointer', color: '#94a3b8',
+    background: 'var(--admin-border)', border: 'none', borderRadius: '6px',
+    padding: '6px 8px', cursor: 'pointer', color: 'var(--admin-text-muted)',
     display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem',
   }
 
-  if (loading) return <div style={{ color: '#94a3b8', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
+  if (loading) return <div style={{ color: 'var(--admin-text-muted)', padding: '2rem', textAlign: 'center' }}>Đang tải...</div>
 
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f1f5f9' }}>Bài viết</h1>
-          <p style={{ color: '#64748b', fontSize: '0.8125rem' }}>{articles.length} bài viết</p>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--admin-text)' }}>Bài viết</h1>
+          <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem' }}>{articles.length} bài viết</p>
         </div>
         <button onClick={openNew} style={{
           display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.625rem 1rem',
@@ -198,13 +198,13 @@ export default function NewsPage() {
       </div>
 
       <div style={{ position: 'relative', marginBottom: '1rem' }}>
-        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+        <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--admin-text-light)' }} />
         <input type="text" placeholder="Tìm kiếm bài viết hoặc hashtag..." value={search} onChange={e => setSearch(e.target.value)}
           style={{ ...inputStyle, paddingLeft: '2.5rem' }} />
       </div>
 
       {/* Articles list */}
-      <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', overflow: 'hidden' }}>
         {filtered.map((a, i) => (
           <div key={a.id} style={{
             display: 'flex', gap: '1rem', padding: '1rem 1.25rem', alignItems: 'center',
@@ -219,12 +219,12 @@ export default function NewsPage() {
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
                 {a.featured && <Star size={12} color="#f59e0b" fill="#f59e0b" />}
-                <span style={{ color: '#f1f5f9', fontSize: '0.9rem', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.title}</span>
+                <span style={{ color: 'var(--admin-text)', fontSize: '0.9rem', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.title}</span>
               </div>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
                 <span style={{ fontSize: '0.75rem', padding: '1px 6px', borderRadius: '4px', background: '#22c55e20', color: '#4ade80' }}>{a.categoryLabel}</span>
-                <span style={{ fontSize: '0.75rem', color: '#64748b' }}>{formatDate(a.publishedAt)}</span>
-                <span style={{ fontSize: '0.75rem', color: '#64748b' }}>{a.author}</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--admin-text-light)' }}>{formatDate(a.publishedAt)}</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--admin-text-light)' }}>{a.author}</span>
               </div>
               {a.tags.length > 0 && (
                 <div style={{ display: 'flex', gap: '0.25rem', marginTop: '0.375rem', flexWrap: 'wrap' }}>
@@ -238,8 +238,8 @@ export default function NewsPage() {
             </div>
             <div style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
               <button onClick={() => openEdit(a)} style={{
-                background: '#334155', border: 'none', borderRadius: '6px',
-                padding: '6px', cursor: 'pointer', color: '#94a3b8',
+                background: 'var(--admin-border)', border: 'none', borderRadius: '6px',
+                padding: '6px', cursor: 'pointer', color: 'var(--admin-text-muted)',
               }}><Pencil size={14} /></button>
               <button onClick={() => setDeleteConfirm(a.id)} style={{
                 background: '#450a0a60', border: 'none', borderRadius: '6px',
@@ -249,7 +249,7 @@ export default function NewsPage() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>
+          <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--admin-text-light)' }}>
             {search ? 'Không tìm thấy bài viết nào.' : 'Chưa có bài viết nào.'}
           </div>
         )}
@@ -257,12 +257,12 @@ export default function NewsPage() {
 
       {/* Delete Confirm */}
       {deleteConfirm && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
-          <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem', maxWidth: '400px', width: '90%' }}>
-            <h3 style={{ color: '#f1f5f9', marginBottom: '0.5rem' }}>Xóa bài viết?</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1.5rem' }}>Hành động này không thể hoàn tác.</p>
+        <div style={{ position: 'fixed', inset: 0, background: 'var(--admin-modal-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
+          <div style={{ background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px', padding: '1.5rem', maxWidth: '400px', width: '90%' }}>
+            <h3 style={{ color: 'var(--admin-text)', marginBottom: '0.5rem' }}>Xóa bài viết?</h3>
+            <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>Hành động này không thể hoàn tác.</p>
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
-              <button onClick={() => setDeleteConfirm(null)} style={{ padding: '0.5rem 1rem', background: '#334155', border: 'none', borderRadius: '8px', color: '#94a3b8', cursor: 'pointer' }}>Hủy</button>
+              <button onClick={() => setDeleteConfirm(null)} style={{ padding: '0.5rem 1rem', background: 'var(--admin-border)', border: 'none', borderRadius: '8px', color: 'var(--admin-text-muted)', cursor: 'pointer' }}>Hủy</button>
               <button onClick={() => handleDelete(deleteConfirm)} style={{ padding: '0.5rem 1rem', background: '#ef4444', border: 'none', borderRadius: '8px', color: 'white', cursor: 'pointer' }}>Xóa</button>
             </div>
           </div>
@@ -272,19 +272,19 @@ export default function NewsPage() {
       {/* Editor Modal */}
       {editing && (
         <div style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
+          position: 'fixed', inset: 0, background: 'var(--admin-modal-bg)',
           display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
           zIndex: 100, overflowY: 'auto', padding: '1rem',
         }}>
           <div style={{
-            background: '#1e293b', border: '1px solid #334155', borderRadius: '12px',
+            background: 'var(--admin-surface)', border: '1px solid #334155', borderRadius: '12px',
             padding: '1.5rem', maxWidth: '900px', width: '100%',
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ color: '#f1f5f9', fontSize: '1.125rem', fontWeight: 600 }}>
+              <h2 style={{ color: 'var(--admin-text)', fontSize: '1.125rem', fontWeight: 600 }}>
                 {isNew ? 'Viết bài mới' : 'Chỉnh sửa bài viết'}
               </h2>
-              <button onClick={() => setEditing(null)} style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer' }}><X size={20} /></button>
+              <button onClick={() => setEditing(null)} style={{ background: 'none', border: 'none', color: 'var(--admin-text-light)', cursor: 'pointer' }}><X size={20} /></button>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
@@ -347,7 +347,7 @@ export default function NewsPage() {
                 <label style={labelStyle}>Nội dung bài viết (Markdown)</label>
                 {/* Toolbar */}
                 <div style={{
-                  display: 'flex', flexWrap: 'wrap', gap: '0.375rem', background: '#0f172a',
+                  display: 'flex', flexWrap: 'wrap', gap: '0.375rem', background: 'var(--admin-bg)',
                   border: '1px solid #334155', borderBottom: 'none',
                   borderRadius: '8px 8px 0 0', padding: '0.5rem',
                 }}>
@@ -410,14 +410,14 @@ export default function NewsPage() {
                 <input type="checkbox" id="news-featured" checked={editing.featured}
                   onChange={e => setEditing({...editing, featured: e.target.checked})}
                   style={{ accentColor: '#22c55e' }} />
-                <label htmlFor="news-featured" style={{ color: '#94a3b8', fontSize: '0.875rem' }}>Bài viết nổi bật</label>
+                <label htmlFor="news-featured" style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem' }}>Bài viết nổi bật</label>
               </div>
             </div>
 
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
               <button onClick={() => setEditing(null)} style={{
-                padding: '0.625rem 1.25rem', background: '#334155', border: 'none',
-                borderRadius: '8px', color: '#94a3b8', cursor: 'pointer',
+                padding: '0.625rem 1.25rem', background: 'var(--admin-border)', border: 'none',
+                borderRadius: '8px', color: 'var(--admin-text-muted)', cursor: 'pointer',
               }}>Hủy</button>
               <button onClick={handleSave} disabled={saving} style={{
                 padding: '0.625rem 1.25rem',

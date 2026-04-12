@@ -28,6 +28,7 @@ export async function PUT(request: NextRequest) {
     seo: { ...config.seo, ...body.seo },
     stats: body.stats || config.stats,
     nav: body.nav || config.nav,
+    heroSlides: body.heroSlides !== undefined ? body.heroSlides : (config.heroSlides || []),
   }
 
   await writeJsonFile('site.json', updated)
