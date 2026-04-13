@@ -27,7 +27,14 @@ export default function ContactsPage() {
     setLoading(false)
   }, [])
 
-  useEffect(() => { fetchData() }, [fetchData])
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      if (isMounted) await fetchData();
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [fetchData])
 
   const markAsRead = async (contact: Contact) => {
     setSelected(contact)
