@@ -61,6 +61,7 @@ export interface SiteConfig {
     slogan: string
     description: string
     phone: string
+    zaloPhone: string
     email: string
     address: string
     taxCode: string

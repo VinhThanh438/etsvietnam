@@ -16,9 +16,9 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
     return () => clearInterval(interval)
   }, [slides])
 
-    const yearsExp = stats.find(s => s.label.toLowerCase().includes('kinh nghiệm'))?.value || '8+'
+  const yearsExp = stats.find(s => s.label.toLowerCase().includes('kinh nghiệm'))?.value || '8+'
 
-    return (
+  return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
       {/* Animated gradient background */}
       <div className="absolute inset-0">
@@ -59,18 +59,9 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
 
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Main Content */}
           <div className="lg:col-span-7 xl:col-span-8">
@@ -91,17 +82,17 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
 
             {/* Headline */}
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.8rem] font-bold text-white leading-[1.2] mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               Giải pháp{' '}
-              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
+              <span className="inline-block whitespace-nowrap bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
                 môi trường
               </span>
               {' '}bền vững cho{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <span className="inline-block whitespace-nowrap bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 tương lai
               </span>
             </motion.h1>
@@ -178,26 +169,27 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
                   const icons = [Briefcase, Users, Timer, GraduationCap]
                   const Icon = icons[index % icons.length]
                   return (
-                  <motion.div
-                    key={label}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + (index * 0.1) }}
-                    className="relative z-10 border-b border-white/10 pb-4 last:border-0 last:pb-0 group/item"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover/item:bg-green-500/20 transition-colors">
-                        <Icon size={20} />
+                    <motion.div
+                      key={label}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + (index * 0.1) }}
+                      className="relative z-10 border-b border-white/10 pb-4 last:border-0 last:pb-0 group/item"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover/item:bg-green-500/20 transition-colors">
+                          <Icon size={20} />
+                        </div>
+                        <div>
+                          <p className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                            {value}
+                          </p>
+                          <p className="text-[10px] uppercase tracking-wider font-semibold text-gray-400 mt-0.5">{label}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                          {value}
-                        </p>
-                        <p className="text-[10px] uppercase tracking-wider font-semibold text-gray-400 mt-0.5">{label}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )})}
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.div>
           </div>

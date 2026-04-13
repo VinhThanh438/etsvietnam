@@ -13,9 +13,9 @@ export function ZaloButton({ phone }: ZaloButtonProps) {
   const zaloUrl = `https://zalo.me/${cleanPhone}`
 
   return (
-    <div className="fixed bottom-28 left-8 z-[99]">
+    <div className="fixed bottom-28 right-8 z-[99]">
       <motion.div
-        initial={{ opacity: 0, scale: 0.5, x: -20 }}
+        initial={{ opacity: 0, scale: 0.5, x: 20 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ delay: 1 }}
         className="relative"
@@ -38,10 +38,10 @@ export function ZaloButton({ phone }: ZaloButtonProps) {
           </svg>
 
           {/* Label that appears on hover */}
-          <div className="absolute left-full ml-3 whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-all pointer-events-none transform -translate-x-2 group-hover:translate-x-0">
+          <div className="absolute right-full mr-3 whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-all pointer-events-none transform translate-x-2 group-hover:translate-x-0">
             Chat qua Zalo
             {/* Arrow */}
-            <div className="absolute top-1/2 right-full -translate-y-1/2 border-4 border-transparent border-r-gray-900" />
+            <div className="absolute top-1/2 left-full -translate-y-1/2 border-4 border-transparent border-l-gray-900" />
           </div>
         </NextLink>
       </motion.div>

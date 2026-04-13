@@ -4,11 +4,31 @@ import { CheckCircle, Target, Eye, Users } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { useInView, animate } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 // Note: This is a Server Component — motion wrappers in children are Client Components
 import type { SiteConfig } from '@/lib/types'
+
+function CountUp({ value, duration = 2 }: { value: string, duration?: number }) {
+  const [displayValue, setDisplayValue] = useState(0)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (inView) {
+      const numericValue = parseInt(value)
+      const controls = animate(0, numericValue, {
+        duration,
+        ease: "easeOut",
+        onUpdate: (latest) => setDisplayValue(Math.round(latest))
+      })
+      return controls.stop
+    }
+  }, [inView, value, duration])
+
+  return <span ref={ref}>{displayValue}</span>
+}
 
 interface AboutSectionProps {
   config: SiteConfig
@@ -25,106 +45,130 @@ export function AboutSection({ config }: AboutSectionProps) {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Image / Visual */}
-          <AnimatedSection direction="left">
-            <div className="relative">
-              {/* Main image placeholder / actual image */}
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-green-100 to-blue-100 relative">
-                {config.company.teamImage ? (
-                  <Image 
-                    src={config.company.teamImage} 
-                    alt="Đội ngũ ETS VN" 
-                    fill 
-                    className="object-cover" 
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-gray-400">
-                      <div className="w-24 h-24 rounded-full bg-green-200 flex items-center justify-center mx-auto mb-3">
-                        <Users className="w-12 h-12 text-green-600" />
-                      </div>
-                      <p className="text-sm font-medium">Đội ngũ ETS VN</p>
-                    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Left: 2x2 Stat Cards Column + Highlights (lg:col-span-5) */}
+          <div className="lg:col-span-12 xl:col-span-5 flex flex-col h-full">
+            <AnimatedSection direction="left" className="flex-1 flex flex-col">
+              <div className="grid grid-cols-2 gap-4 mb-10">
+                {/* Stat 1: Years */}
+                <div className="p-7 rounded-[2rem] bg-green-600 text-white shadow-lg shadow-green-900/10 group hover:-translate-y-1 transition-transform duration-500 flex flex-col justify-between min-h-[195px]">
+                  <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
+                    <Target className="w-5.5 h-5.5 text-white" />
                   </div>
-                )}
-                {/* Decorative elements */}
-                <div className="absolute top-6 left-6 w-20 h-20 rounded-2xl bg-green-600/20 backdrop-blur-sm pointer-events-none" />
-                <div className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl bg-blue-600/20 backdrop-blur-sm pointer-events-none" />
+                  <div>
+                    <p className="text-4xl font-black mb-1 flex items-baseline gap-1">
+                      <CountUp value={config.stats[0].value.replace(/\D/g, '')} />
+                      <span className="text-2xl text-green-200">+</span>
+                    </p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-green-100 leading-tight">{config.stats[0].label}</p>
+                  </div>
+                </div>
+
+                {/* Stat 2: Projects */}
+                <div className="p-7 rounded-[2rem] bg-white border border-gray-100 shadow-md shadow-gray-900/[0.02] group hover:-translate-y-1 transition-transform duration-500 flex flex-col justify-between min-h-[195px]">
+                  <div className="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center">
+                    <CheckCircle className="w-5.5 h-5.5 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-4xl font-black mb-1 text-gray-900 flex items-baseline gap-1">
+                      <CountUp value={config.stats[1].value.replace(/\D/g, '')} />
+                      <span className="text-2xl text-green-500">+</span>
+                    </p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 leading-tight">{config.stats[1].label}</p>
+                  </div>
+                </div>
+
+                {/* Stat 3: Customers */}
+                <div className="p-7 rounded-[2rem] bg-white border border-gray-100 shadow-md shadow-gray-900/[0.02] group hover:-translate-y-1 transition-transform duration-500 flex flex-col justify-between min-h-[195px]">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Users className="w-5.5 h-5.5 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-4xl font-black mb-1 text-gray-900 flex items-baseline gap-1">
+                      <CountUp value={config.stats[2].value.replace(/\D/g, '')} />
+                      <span className="text-2xl text-blue-500">+</span>
+                    </p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 leading-tight">{config.stats[2].label}</p>
+                  </div>
+                </div>
+
+                {/* Stat 4: Experts */}
+                <div className="p-7 rounded-[2rem] bg-gray-900 text-white shadow-lg shadow-gray-900/10 group hover:-translate-y-1 transition-transform duration-500 flex flex-col justify-between min-h-[195px]">
+                  <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
+                    <Eye className="w-5.5 h-5.5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-4xl font-black mb-1 flex items-baseline gap-1">
+                      <CountUp value={config.stats[3].value.replace(/\D/g, '')} />
+                      <span className="text-2xl text-blue-400">+</span>
+                    </p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 leading-tight">{config.stats[3].label}</p>
+                  </div>
+                </div>
               </div>
 
-              {/* Floating stat cards */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
-                <p className="text-4xl font-bold text-green-600">
-                  {config.stats.find(s => s.label.toLowerCase().includes('dự án'))?.value || '500+'}
-                </p>
-                <p className="text-sm text-gray-500 mt-1">
-                  {config.stats.find(s => s.label.toLowerCase().includes('dự án'))?.label || 'Dự án hoàn thành'}
-                </p>
-              </div>
-              <div className="absolute -top-6 -left-6 bg-green-600 rounded-2xl shadow-xl p-5">
-                <p className="text-4xl font-bold text-white">
-                  {config.stats.find(s => s.label.toLowerCase().includes('kinh nghiệm') || s.label.toLowerCase().includes('năm'))?.value || '15+'}
-                </p>
-                <p className="text-sm text-green-100 mt-1">
-                  {config.stats.find(s => s.label.toLowerCase().includes('kinh nghiệm') || s.label.toLowerCase().includes('năm'))?.label || 'Năm kinh nghiệm'}
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Right: Content */}
-          <AnimatedSection direction="right" delay={0.1}>
-            <SectionTitle
-              label="Về chúng tôi"
-              title="Đối tác tin cậy trong lĩnh vực môi trường"
-              align="left"
-              className="mb-6"
-            />
-            <p className="text-gray-600 leading-relaxed mb-4">
-              {config.company.description}
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              Được thành lập năm {config.company.founded}, ETS VN đã trở thành một trong những
-              đơn vị hàng đầu trong lĩnh vực xử lý nước thải và môi trường tại Việt Nam với đội
-              ngũ hơn 30 kỹ sư và chuyên gia giàu kinh nghiệm.
-            </p>
-
-            <ul className="space-y-3 mb-10">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="h-5 w-5 text-green-500 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Mission / Vision cards */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-green-50 p-5 border border-green-100">
-                <Target className="h-7 w-7 text-green-600 mb-3" />
-                <h3 className="font-bold text-gray-900 mb-1">Sứ mệnh</h3>
-                <p className="text-sm text-gray-600">Cung cấp các giải pháp xử lý nước và môi trường hiệu quả, bền vững.</p>
-              </div>
-              <div className="rounded-2xl bg-blue-50 p-5 border border-blue-100">
-                <Eye className="h-7 w-7 text-blue-600 mb-3" />
-                <h3 className="font-bold text-gray-900 mb-1">Tầm nhìn</h3>
-                <p className="text-sm text-gray-600">Trở thành công ty môi trường hàng đầu Đông Nam Á vào 2030.</p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Stats row */}
-        <div className="mt-24 grid grid-cols-2 sm:grid-cols-4 gap-8">
-          {config.stats.map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1}>
-              <div className="text-center">
-                <p className="text-4xl sm:text-5xl font-bold text-green-600 mb-2">{stat.value}</p>
-                <p className="text-gray-500">{stat.label}</p>
+              {/* highlights */}
+              <div className="bg-gray-50 rounded-[2.5rem] p-10 border border-gray-100 flex-1">
+                <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  <div className="w-1.5 h-6 bg-green-500 rounded-full" />
+                  Thế mạnh vượt trội
+                </h3>
+                <ul className="space-y-4">
+                  {highlights.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-gray-700">
+                      <div className="w-5 h-5 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
+                        <CheckCircle className="h-3 w-3 text-green-600" />
+                      </div>
+                      <span className="font-medium text-[13px]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </AnimatedSection>
-          ))}
+          </div>
+
+          {/* Right: Content (lg:col-span-7) */}
+          <div className="lg:col-span-12 xl:col-span-7 flex flex-col h-full">
+            <AnimatedSection direction="right" delay={0.1} className="flex-1 flex flex-col">
+              <SectionTitle
+                label="Về chúng tôi"
+                title="Đối tác tin cậy trong lĩnh vực môi trường"
+                align="left"
+                className="mb-8"
+              />
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-10">
+                <p>
+                  {config.company.description}
+                </p>
+                <p>
+                  Được thành lập phát triển từ năm {config.company.founded}, ETS VN đã khẳng định được vị thế là một trong những đơn vị dẫn đầu về giải pháp môi trường bền vững tại Việt Nam.
+                </p>
+              </div>
+
+              {/* Mission / Vision cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+                <div className="rounded-[2.5rem] bg-white p-12 border border-gray-100 shadow-xl shadow-gray-900/[0.03] hover:border-green-100 transition-all duration-300 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center mb-8 shrink-0">
+                    <Target className="h-7 w-7 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Sứ mệnh</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">Cung cấp giải pháp xử lý môi trường tối ưu, bảo vệ tài nguyên quốc gia cho thế hệ mai sau.</p>
+                  </div>
+                </div>
+                
+                <div className="rounded-[2.5rem] bg-white p-12 border border-gray-100 shadow-xl shadow-gray-900/[0.03] hover:border-blue-100 transition-all duration-300 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 shrink-0">
+                    <Eye className="h-7 w-7 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Tầm nhìn</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">Trở thành biểu tượng niềm tin hàng đầu về kỹ thuật xử lý môi trường tại Đông Nam Á vào 2030.</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </Container>
     </section>
