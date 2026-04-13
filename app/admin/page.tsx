@@ -39,14 +39,17 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
-      padding: '1rem',
-    }}>
+    <div 
+      data-admin-theme="dark"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        padding: '1rem',
+      }}
+    >
       <div style={{
         width: '100%',
         maxWidth: '420px',
@@ -74,7 +77,7 @@ export default function AdminLoginPage() {
           }}>
             ETS VN Admin
           </h1>
-          <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem' }}>
+          <p style={{ color: 'var(--admin-text-muted)', fontSize: '0.925rem' }}>
             Đăng nhập để quản lý nội dung
           </p>
         </div>
@@ -84,7 +87,7 @@ export default function AdminLoginPage() {
           background: 'var(--admin-surface)',
           borderRadius: '16px',
           padding: '2rem',
-          border: '1px solid #334155',
+          border: '1px solid var(--admin-border)',
           boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
         }}>
           {error && (
@@ -108,9 +111,9 @@ export default function AdminLoginPage() {
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{
               display: 'block',
-              fontSize: '0.8125rem',
+              fontSize: '0.875rem',
               fontWeight: 500,
-              color: '#cbd5e1',
+              color: 'var(--admin-text)',
               marginBottom: '0.5rem',
             }}>
               Tên đăng nhập
@@ -121,7 +124,7 @@ export default function AdminLoginPage() {
                 left: '12px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: 'var(--admin-text-light)',
+                color: 'var(--admin-text-muted)',
               }} />
               <input
                 type="text"
@@ -134,15 +137,21 @@ export default function AdminLoginPage() {
                   width: '100%',
                   padding: '0.75rem 1rem 0.75rem 2.75rem',
                   background: 'var(--admin-bg)',
-                  border: '1px solid #334155',
+                  border: '1px solid var(--admin-border)',
                   borderRadius: '10px',
                   color: 'var(--admin-text)',
-                  fontSize: '0.9rem',
+                  fontSize: '0.95rem',
                   outline: 'none',
-                  transition: 'border-color 0.2s',
+                  transition: 'all 0.2s',
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#22c55e'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--admin-border)'}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#22c55e'
+                  e.target.style.boxShadow = '0 0 0 2px rgba(34, 197, 94, 0.2)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'var(--admin-border)'
+                  e.target.style.boxShadow = 'none'
+                }}
               />
             </div>
           </div>
@@ -150,9 +159,9 @@ export default function AdminLoginPage() {
           <div style={{ marginBottom: '1.75rem' }}>
             <label style={{
               display: 'block',
-              fontSize: '0.8125rem',
+              fontSize: '0.875rem',
               fontWeight: 500,
-              color: '#cbd5e1',
+              color: 'var(--admin-text)',
               marginBottom: '0.5rem',
             }}>
               Mật khẩu
@@ -163,7 +172,7 @@ export default function AdminLoginPage() {
                 left: '12px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: 'var(--admin-text-light)',
+                color: 'var(--admin-text-muted)',
               }} />
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -175,15 +184,21 @@ export default function AdminLoginPage() {
                   width: '100%',
                   padding: '0.75rem 3rem 0.75rem 2.75rem',
                   background: 'var(--admin-bg)',
-                  border: '1px solid #334155',
+                  border: '1px solid var(--admin-border)',
                   borderRadius: '10px',
                   color: 'var(--admin-text)',
-                  fontSize: '0.9rem',
+                  fontSize: '0.95rem',
                   outline: 'none',
-                  transition: 'border-color 0.2s',
+                  transition: 'all 0.2s',
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#22c55e'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--admin-border)'}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#22c55e'
+                  e.target.style.boxShadow = '0 0 0 2px rgba(34, 197, 94, 0.2)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'var(--admin-border)'
+                  e.target.style.boxShadow = 'none'
+                }}
               />
               <button
                 type="button"
@@ -196,8 +211,10 @@ export default function AdminLoginPage() {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: 'var(--admin-text-light)',
+                  color: 'var(--admin-text-muted)',
                   padding: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -210,22 +227,23 @@ export default function AdminLoginPage() {
             disabled={loading}
             style={{
               width: '100%',
-              padding: '0.75rem',
+              padding: '0.875rem',
               background: loading
                 ? '#374151'
                 : 'linear-gradient(135deg, #22c55e, #16a34a)',
               color: 'white',
               border: 'none',
               borderRadius: '10px',
-              fontSize: '0.9375rem',
+              fontSize: '1rem',
               fontWeight: 600,
               cursor: loading ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.5rem',
-              transition: 'opacity 0.2s',
+              transition: 'all 0.2s',
               opacity: loading ? 0.7 : 1,
+              boxShadow: '0 4px 12px rgba(22, 163, 74, 0.2)',
             }}
           >
             {loading ? (
@@ -241,9 +259,9 @@ export default function AdminLoginPage() {
 
         <p style={{
           textAlign: 'center',
-          color: '#475569',
-          fontSize: '0.75rem',
-          marginTop: '1.5rem',
+          color: 'var(--admin-text-muted)',
+          fontSize: '0.8125rem',
+          marginTop: '2rem',
         }}>
           © {new Date().getFullYear()} ETS Việt Nam. Quản trị nội bộ.
         </p>

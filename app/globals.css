@@ -150,11 +150,11 @@ h6 {
   --admin-bg: #0f172a;
   --admin-surface: #1e293b;
   --admin-border: #334155;
-  --admin-text: #f1f5f9;
-  --admin-text-muted: #94a3b8;
-  --admin-text-light: #8f9ba8;
-  --admin-surface-hover: #f8fafc;
-  --admin-modal-bg: rgba(0, 0, 0, 0.6);
+  --admin-text: #f8fafc;
+  --admin-text-muted: #cbd5e1;
+  --admin-text-light: #94a3b8;
+  --admin-surface-hover: #1e293b;
+  --admin-modal-bg: rgba(0, 0, 0, 0.7);
 }
 
 [data-admin-theme="light"] {

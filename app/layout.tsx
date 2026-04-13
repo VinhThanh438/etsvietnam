@@ -78,13 +78,26 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={isAdmin ? 'min-h-screen antialiased' : 'min-h-screen flex flex-col antialiased'}>
+      <body className={`${isAdmin ? 'min-h-screen' : 'min-h-screen flex flex-col'} antialiased`}>
         <AnalyticsTracker />
-        {!isAdmin && <Header config={config} />}
-        {isAdmin ? children : <main className="flex-1">{children}</main>}
-        {!isAdmin && <Footer config={config} />}
-        {!isAdmin && <ScrollToTop />}
-        {!isAdmin && <ZaloButton phone={config.company.zalo} />}
+        
+        {/* Persistent structure for Header */}
+        {!isAdmin ? <Header config={config} /> : <div className="hidden" aria-hidden="true" />}
+        
+        <main key={isAdmin ? 'admin-root' : 'public-root'} className={isAdmin ? "relative" : "relative flex-1"}>
+          {children}
+        </main>
+        
+        {/* Persistent structure for Footer and Widgets */}
+        {!isAdmin ? (
+          <>
+            <Footer config={config} />
+            <ScrollToTop />
+            <ZaloButton phone={config.company.zalo} />
+          </>
+        ) : (
+          <div className="hidden" aria-hidden="true" />
+        )}
       </body>
     </html>
   )
