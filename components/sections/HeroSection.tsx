@@ -16,7 +16,9 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
     return () => clearInterval(interval)
   }, [slides])
 
-  return (
+    const yearsExp = stats.find(s => s.label.toLowerCase().includes('kinh nghiệm'))?.value || '8+'
+
+    return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
       {/* Animated gradient background */}
       <div className="absolute inset-0">
@@ -83,7 +85,7 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                 </span>
-                Hơn 15 năm kinh nghiệm trong lĩnh vực môi trường
+                Hơn {yearsExp} kinh nghiệm trong lĩnh vực môi trường
               </span>
             </motion.div>
 

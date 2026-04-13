@@ -1,11 +1,10 @@
-import type { Metadata } from 'next'
-import { getNews } from '@/lib/data/news'
 import { NewsSection } from '@/components/sections/NewsSection'
-import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PageBanner } from '@/components/ui/PageBanner'
 import { SidebarNews } from '@/components/ui/SidebarNews'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { getNews } from '@/lib/data/news'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Tin tức | Cẩm nang môi trường',

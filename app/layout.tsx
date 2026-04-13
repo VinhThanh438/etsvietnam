@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Be_Vietnam_Pro } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -12,6 +12,13 @@ import { headers } from 'next/headers'
 const inter = Inter({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const beVietnam = Be_Vietnam_Pro({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-be-vietnam',
   display: 'swap',
 })
 
@@ -69,15 +76,8 @@ export default async function RootLayout({
   const isAdmin = pathname.startsWith('/admin')
 
   return (
-    <html lang="vi" className={`${inter.variable} scroll-smooth`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="vi" className={`${inter.variable} ${beVietnam.variable} scroll-smooth`}>
+      <head />
       <body className={`${isAdmin ? 'min-h-screen' : 'min-h-screen flex flex-col'} antialiased`}>
         <AnalyticsTracker />
         

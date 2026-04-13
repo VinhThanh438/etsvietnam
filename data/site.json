@@ -69,11 +69,15 @@
   "heroSlides": [
     {
       "id": "1",
-      "image": "/images/banner.png"
+      "image": "/uploads/projects/1776053040814-renewable-energy-engineers-designing-3d-wind-turbine-park.jfif"
     },
     {
       "id": "1776007261892",
-      "image": "/uploads/projects/1776007252730-sat-la-gi.jpg"
+      "image": "/uploads/projects/1776052605099-94e47dfa475c78f77a08eca85e42f3c5.jpg"
+    },
+    {
+      "id": "1776053048924",
+      "image": "/uploads/projects/1776052722107-water-treatment-plant-editorial-photography_-image-of-river-32336972.jfif"
     }
   ]
 }

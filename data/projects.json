@@ -9,7 +9,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "500 m³/ngày",
     "year": "2023",
-    "image": "/uploads/projects/1775923220819-163227947959-1245x800.png",
+    "image": "/uploads/projects/1776055958741-nha-may-xu-ly-nuoc-cap-amata.jpg",
     "shortDescription": "Thiết kế và thi công hệ thống XLNT công suất 500 m³/ngày cho nhà máy dệt may, đạt QCVN 40:2011/BTNMT cột A.",
     "description": "Dự án xây dựng trạm xử lý nước thải hoàn chỉnh cho nhà máy dệt may với công suất 500 m³/ngày. Áp dụng công nghệ yếm khí (UASB) + hiếu khí (MBR) + kết tủa hóa học để loại bỏ màu, COD, BOD và N-P đạt chuẩn xả vào nguồn tiếp nhận loại A.",
     "tags": [
@@ -17,7 +17,7 @@
       "UASB",
       "Nước thải công nghiệp"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "khu-do-thi-long-an",
@@ -29,14 +29,14 @@
     "categoryLabel": "Xử lý nước cấp",
     "capacity": "2.000 m³/ngày",
     "year": "2023",
-    "image": "/uploads/projects/1775927172731-1808271.jpg",
+    "image": "/uploads/projects/1776055989388-xu-ly-nuoc-mat-hcm.jpg",
     "shortDescription": "Xây dựng nhà máy nước sạch 2.000 m³/ngày phục vụ khu đô thị 10.000 hộ dân tại Long An.",
     "description": "Thiết kế và thi công trọn gói nhà máy xử lý nước mặt công suất 2.000 m³/ngày cung cấp nước sinh hoạt đạt QCVN 01-1:2018/BYT cho khu đô thị mới tại Long An.",
     "tags": [
       "Nước cấp đô thị",
       "Khu dân cư"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "nha-may-che-bien-thuy-san-ca-mau",
@@ -48,7 +48,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "800 m³/ngày",
     "year": "2022",
-    "image": "/uploads/projects/1775927348737-ienco5.jpg",
+    "image": "/uploads/projects/1776054259431-renewable-energy-engineers-designing-3d-wind-turbine-park.jfif",
     "shortDescription": "Hệ thống xử lý nước thải chế biến thủy sản 800 m³/ngày, xử lý hiệu quả COD, mùi hôi.",
     "description": "Xử lý nước thải giàu chất hữu cơ từ chế biến thủy sản với công nghệ yếm khí phủ kín (CSTR) + SBR + khử mùi bằng biofilter. Nước đầu ra đạt QCVN 11-MT:2015/BTNMT.",
     "tags": [
@@ -56,7 +56,7 @@
       "SBR",
       "Thủy sản"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "benh-vien-da-khoa-tay-nguyen",
@@ -68,7 +68,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "300 m³/ngày",
     "year": "2022",
-    "image": "/uploads/projects/1775927358890-20191124_6edz9v3bvyfvuyyitslp9u2a.jpg",
+    "image": "/uploads/projects/1776054385562-xu-ly-nuoc-thai-benh-vien-da-khoa-binh-duong4-compressed.jpg",
     "shortDescription": "Trạm XLNT bệnh viện 300 m³/ngày đảm bảo diệt khuẩn, xử lý dược phẩm đạt QCVN 28:2010.",
     "description": "Thiết kế hệ thống xử lý nước thải y tế sử dụng công nghệ AAO + UV khử trùng. Đạt QCVN 28:2010/BTNMT, loại A.",
     "tags": [
@@ -76,7 +76,7 @@
       "UV",
       "AAO"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": "kcn-long-duc-dong-nai",
@@ -88,7 +88,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "5.000 m³/ngày",
     "year": "2021",
-    "image": "/uploads/projects/1775927371813-free-photo-_-tropical-green-leaves-background.jpg",
+    "image": "/uploads/projects/1776054464029-nha-may-xu-ly-nuoc-thai-kcnamatalongthanhv.jpg",
     "shortDescription": "Trạm XLNT tập trung quy mô lớn 5.000 m³/ngày cho KCN Long Đức, nhiều ngành sản xuất.",
     "description": "Thiết kế, thi công và vận hành trạm xử lý nước thải tập trung cho khu công nghiệp với đa dạng loại hình doanh nghiệp. Công nghệ tiên tiến, tự động hóa cao.",
     "tags": [
@@ -96,7 +96,7 @@
       "Quy mô lớn",
       "Tự động hóa"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": "nha-may-bia-tien-giang",
@@ -108,7 +108,7 @@
     "categoryLabel": "Xử lý nước thải",
     "capacity": "1.200 m³/ngày",
     "year": "2021",
-    "image": "/uploads/projects/1775927385234-jennie.jpg",
+    "image": "/uploads/projects/1776054589310-tram-xu-ly-nuoc-thai-tan-tao-2-1.jpg",
     "shortDescription": "Hệ thống xử lý nước thải dây chuyền sản xuất bia 1.200 m³/ngày, thu hồi khí biogas.",
     "description": "Ứng dụng công nghệ UASB thu hồi khí biogas tái sử dụng năng lượng, kết hợp xử lý sinh học hiếu khí đảm bảo đầu ra đạt chuẩn.",
     "tags": [
@@ -116,6 +116,6 @@
       "Biogas",
       "Công nghiệp thực phẩm"
     ],
-    "featured": false
+    "featured": true
   }
 ]

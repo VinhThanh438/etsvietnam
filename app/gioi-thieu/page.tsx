@@ -1,12 +1,13 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { getSiteConfig } from '@/lib/data/site'
-import { Container } from '@/components/ui/Container'
-import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { CheckCircle, Award, Users, Leaf, Phone } from 'lucide-react'
 import { IntroductionSection } from '@/components/sections/IntroductionSection'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Container } from '@/components/ui/Container'
 import { PageBanner } from '@/components/ui/PageBanner'
+import { SectionTitle } from '@/components/ui/SectionTitle'
+import { getSiteConfig } from '@/lib/data/site'
+import { Award, CheckCircle, Leaf, Phone, Users } from 'lucide-react'
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Giới thiệu | ETS VN',
@@ -113,15 +114,20 @@ export default async function AboutPage() {
       {/* CTA */}
       <section className="py-20 relative overflow-hidden">
         {/* Background images/patterns */}
-        <div className="absolute inset-0 bg-green-700" />
-        <div className="absolute inset-0 opacity-10 flex items-center justify-center">
-            <Leaf className="w-[500px] h-[500px] rotate-12" />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/contact-bg.jpg"
+            alt="Contact background"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
         
         <Container className="relative z-10">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Bạn cần giải pháp môi trường tối ưu?</h2>
-            <p className="text-green-100 mb-10 text-lg opacity-90">
+            <p className="text-white mb-10 text-lg opacity-90">
               Hãy để chuyên gia của ETS Việt Nam đồng hành cùng dự án của bạn với công nghệ tiên tiến nhất.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

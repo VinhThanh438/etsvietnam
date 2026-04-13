@@ -1,14 +1,14 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, Clock, Tag, BookOpen } from 'lucide-react'
+import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
-import { motion } from 'framer-motion'
-import { formatDate } from '@/lib/utils'
 import type { NewsArticle } from '@/lib/types'
+import { formatDate } from '@/lib/utils'
+import { motion } from 'framer-motion'
+import { ArrowRight, BookOpen, Clock } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface NewsSectionProps {
   articles: NewsArticle[]

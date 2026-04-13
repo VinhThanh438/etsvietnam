@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import NextImage from 'next/image'
-import { Building2 } from 'lucide-react'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import type { Partner } from '@/lib/types'
+import { Building2 } from 'lucide-react'
+import NextImage from 'next/image'
+import { useState } from 'react'
 
 interface PartnersSectionProps {
   partners: Partner[]
@@ -50,15 +49,20 @@ export function PartnersSection({ partners }: PartnersSectionProps) {
 
   return (
     <section className="relative py-24 bg-gray-950 overflow-hidden border-y border-white/5">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <NextImage
+          src="/images/partner-bg2.jfif"
+          alt="Partners background"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        <div className="absolute inset-0 bg-gray-950/30" />
+      </div>
+
       {/* Premium Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-900/10 via-transparent to-transparent opacity-50" />
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}
-      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-900/10 via-transparent to-transparent opacity-40" />
 
       <Container className="relative z-10">
         <AnimatedSection className="mb-16">

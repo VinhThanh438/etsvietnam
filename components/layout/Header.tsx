@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import NextImage from 'next/image'
-import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, ChevronDown, Leaf } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { Container } from '@/components/ui/Container'
 import type { SiteConfig } from '@/lib/types'
+import { cn } from '@/lib/utils'
+import { Leaf, Menu, Phone, X } from 'lucide-react'
+import NextImage from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface HeaderProps {
   config: SiteConfig
@@ -24,9 +24,11 @@ export function Header({ config }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setIsMobileOpen(false)
-  }, [pathname])
+  const [prevPathname, setPrevPathname] = useState(pathname)
+if (pathname !== prevPathname) {
+  setPrevPathname(pathname)
+  setIsMobileOpen(false)
+}
 
   return (
     <>
