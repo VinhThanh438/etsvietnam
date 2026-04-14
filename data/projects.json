@@ -117,5 +117,21 @@
       "Công nghiệp thực phẩm"
     ],
     "featured": true
+  },
+  {
+    "id": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
+    "slug": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
+    "title": "Thi công trạm xử lý nước thải sinh hoạt tại khu nhà ở phố mới Văn Giang - Vaquarius - Hưng Yên",
+    "client": "",
+    "location": "Khu nhà ở phố mới Văn Giang - Vaquarius - Hưng Yên",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "500 m³/24h",
+    "year": "2025",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [],
+    "featured": false
   }
 ]

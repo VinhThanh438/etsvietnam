@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { AlertCircle, Eye, EyeOff, Loader2, Lock, User } from 'lucide-react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Lock, User, Eye, EyeOff, AlertCircle, Loader2 } from 'lucide-react'
+import { useState } from 'react'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -60,14 +61,20 @@ export default function AdminLoginPage() {
             width: '64px',
             height: '64px',
             borderRadius: '16px',
-            background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+            overflow: 'hidden',
+            margin: '0 auto 1rem',
+            boxShadow: '0 8px 32px rgba(34, 197, 94, 0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '0 auto 1rem',
-            boxShadow: '0 8px 32px rgba(34, 197, 94, 0.3)',
           }}>
-            <Lock size={28} color="white" />
+            <Image 
+              src="/logo.jpg" 
+              alt="ETS Logo" 
+              width={64} 
+              height={64}
+              style={{ objectFit: 'cover' }}
+            />
           </div>
           <h1 style={{
             fontSize: '1.5rem',

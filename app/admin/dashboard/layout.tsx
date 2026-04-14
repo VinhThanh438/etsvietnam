@@ -1,12 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
-import Link from 'next/link'
 import {
-  LayoutDashboard, FolderKanban, Wrench, Newspaper, Users,
-  Settings, Mail, LogOut, Menu, X, ChevronRight, Image, Sun, Moon
+  ChevronRight,
+  FolderKanban,
+  Image as ImageIcon,
+  LayoutDashboard,
+  LogOut,
+  Mail,
+  Menu,
+  Moon,
+  Newspaper,
+  Settings,
+  Sun,
+  Users,
+  Wrench,
+  X
 } from 'lucide-react'
+import NextImage from 'next/image'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const navItems = [
   { label: 'Tổng quan', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -14,7 +27,7 @@ const navItems = [
   { label: 'Dịch vụ', href: '/admin/dashboard/services', icon: Wrench },
   { label: 'Bài viết', href: '/admin/dashboard/news', icon: Newspaper },
   { label: 'Đối tác', href: '/admin/dashboard/partners', icon: Users },
-  { label: 'Hình ảnh', href: '/admin/dashboard/media', icon: Image },
+  { label: 'Hình ảnh', href: '/admin/dashboard/media', icon: ImageIcon },
   { label: 'Liên hệ', href: '/admin/dashboard/contacts', icon: Mail },
   { label: 'Cài đặt', href: '/admin/dashboard/settings', icon: Settings },
 ]
@@ -27,20 +40,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('admin-theme')
-    if (savedTheme === 'light') {
-      setTheme('light')
-    }
-  }, [])
+    const initDashboard = async () => {
+      // 1. Khởi tạo Theme từ localStorage (Chạy trong async để tránh cảnh báo đồng bộ)
+      const savedTheme = localStorage.getItem('admin-theme')
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        setTheme(savedTheme)
+      }
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    localStorage.setItem('admin-theme', newTheme)
-  }
-
-  useEffect(() => {
-    const checkAuth = async () => {
+      // 2. Kiểm tra Authentication
       try {
         const res = await fetch('/api/admin/session')
         if (!res.ok) {
@@ -53,8 +60,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       }
       setLoading(false)
     }
-    checkAuth()
+    
+    initDashboard()
   }, [router])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('admin-theme', newTheme)
+  }
 
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' })
@@ -138,16 +152,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div style={{
               width: '36px',
               height: '36px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+              borderRadius: '8px',
+              overflow: 'hidden',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontWeight: 800,
-              color: 'white',
-              fontSize: '0.875rem',
             }}>
-              ETS
+              <NextImage 
+                src="/logo.jpg" 
+                alt="ETS Logo" 
+                width={36} 
+                height={36}
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.9375rem' }}>
