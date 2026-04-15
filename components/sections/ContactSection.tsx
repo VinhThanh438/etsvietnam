@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
@@ -20,6 +20,23 @@ export function ContactSection({ config }: ContactSectionProps) {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [resetAt, setResetAt] = useState<string | null>(null)
+
+  // Kiểm tra localStorage khi mount — nếu đã gửi trong 24h thì vẫn hiện thông báo
+  useEffect(() => {
+    const stored = localStorage.getItem('contact_submitted_until')
+    if (stored) {
+      const expiry = Number(stored)
+      if (Date.now() < expiry) {
+        setSubmitted(true)
+        setResetAt(new Date(expiry).toLocaleString('vi-VN', {
+          hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit',
+        }))
+      } else {
+        localStorage.removeItem('contact_submitted_until')
+      }
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,6 +53,12 @@ export function ContactSection({ config }: ContactSectionProps) {
       const data = await res.json()
 
       if (res.ok) {
+        // Lưu thời gian hết hạn (24h) vào localStorage
+        const expiry = Date.now() + 24 * 60 * 60 * 1000
+        localStorage.setItem('contact_submitted_until', String(expiry))
+        setResetAt(new Date(expiry).toLocaleString('vi-VN', {
+          hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit',
+        }))
         setSubmitted(true)
       } else {
         setError(data.error || 'Có lỗi xảy ra. Vui lòng thử lại.')
@@ -80,6 +103,11 @@ export function ContactSection({ config }: ContactSectionProps) {
                 <p className="text-gray-600">
                   Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.
                 </p>
+                {resetAt && (
+                  <p className="text-sm text-gray-400 mt-3">
+                    Bạn có thể gửi lại sau {resetAt}
+                  </p>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">

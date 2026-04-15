@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 import { rateLimit, getClientIp } from '@/lib/rate-limit'
 import { readJsonFile, writeJsonFile } from '@/lib/data-manager'
+import { sendContactNotification } from '@/lib/mailer'
 
 interface ContactSubmission {
   id: string
@@ -15,16 +16,22 @@ interface ContactSubmission {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limit: 3 submissions per 30 min per IP
+    // Rate limit: 1 lần gửi / 24 giờ / IP
     const ip = getClientIp(request)
     const limiter = rateLimit(`contact:${ip}`, {
-      maxRequests: 3,
-      windowMs: 30 * 60 * 1000,
+      maxRequests: 1,
+      windowMs: 24 * 60 * 60 * 1000, // 24 giờ
     })
 
     if (!limiter.success) {
+      const waitMs = limiter.resetAt - Date.now()
+      const waitHours = Math.ceil(waitMs / (1000 * 60 * 60))
+      const waitMins = Math.ceil(waitMs / (1000 * 60))
+      const waitText = waitHours >= 1
+        ? `${waitHours} giờ nữa`
+        : `${waitMins} phút nữa`
       return Response.json(
-        { error: 'Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau.' },
+        { error: `Bạn đã gửi yêu cầu rồi. Vui lòng thử lại sau ${waitText}.` },
         { status: 429 }
       )
     }
@@ -68,6 +75,16 @@ export async function POST(request: NextRequest) {
 
     contacts.push(newContact)
     await writeJsonFile('contacts.json', contacts)
+
+    // Gửi email thông báo (không await để không block response)
+    sendContactNotification({
+      name: newContact.name,
+      email: newContact.email,
+      phone: newContact.phone,
+      service: newContact.service,
+      message: newContact.message,
+      submittedAt: newContact.submittedAt,
+    }).catch((err) => console.error('[Contact API] Email error:', err))
 
     return Response.json({
       success: true,

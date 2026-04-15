@@ -159,7 +159,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               justifyContent: 'center',
             }}>
               <NextImage 
-                src="/logo.jpg" 
+                src="/images/logo.jpg" 
                 alt="ETS Logo" 
                 width={36} 
                 height={36}

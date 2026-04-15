@@ -69,7 +69,7 @@ export default function AdminLoginPage() {
             justifyContent: 'center',
           }}>
             <Image 
-              src="/logo.jpg" 
+              src="/images/logo.jpg" 
               alt="ETS Logo" 
               width={64} 
               height={64}
