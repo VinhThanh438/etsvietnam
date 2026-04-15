@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { Plus, Pencil, Trash2, X, Save, Loader2, Search } from 'lucide-react'
 import type { Partner } from '@/lib/types'
+import { Loader2, Pencil, Plus, Save, Search, Trash2, X } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 const emptyPartner: Partial<Partner> = { name: '', logo: '', website: '#' }
 
@@ -25,6 +26,7 @@ export default function PartnersPage() {
   useEffect(() => { fetchData() }, [fetchData])
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+    // eslint-disable-next-line react-hooks/immutability
     if (params.get('action') === 'new') openNew()
   }, [])
 

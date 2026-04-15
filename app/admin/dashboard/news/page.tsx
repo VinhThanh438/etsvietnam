@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useEffect, useState, useCallback, useRef } from 'react'
-import { Plus, Pencil, Trash2, X, Save, Loader2, Search, Star, Image, Video, Bold, Italic, Heading, List, Link2, Hash } from 'lucide-react'
 import type { NewsArticle } from '@/lib/types'
-import { slugify, formatDate } from '@/lib/utils'
+import { formatDate, slugify } from '@/lib/utils'
+import { Bold, Hash, Heading, Image, Italic, Link2, List, Loader2, Pencil, Plus, Save, Search, Star, Trash2, Video, X } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const categoryOptions = [
   { value: 'cong-nghe', label: 'Công nghệ' },
@@ -41,6 +43,7 @@ export default function NewsPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+    // eslint-disable-next-line react-hooks/immutability
     if (params.get('action') === 'new') openNew()
   }, [])
 

@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { Upload, Trash2, FolderOpen, Loader2, Image as ImageIcon, Copy, CheckCircle } from 'lucide-react'
+import { CheckCircle, Copy, FolderOpen, Image as ImageIcon, Loader2, Trash2, Upload } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 const folders = [
   { value: 'projects', label: 'Dự án' },
@@ -28,6 +29,7 @@ export default function MediaPage() {
     setLoading(false)
   }, [currentFolder])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchFiles() }, [fetchFiles])
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
