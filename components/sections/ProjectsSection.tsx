@@ -18,10 +18,10 @@ interface ProjectsSectionProps {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.div variants={fadeUpVariant}>
+    <motion.div variants={fadeUpVariant} className="h-full">
       <Link
         href={`/du-an/${project.slug}`}
-        className="group block rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        className="group block h-full rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
       >
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-green-100 to-blue-100">
@@ -53,26 +53,32 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-grow">
           <h3 className="font-bold text-gray-900 text-base leading-snug mb-2 group-hover:text-green-700 transition-colors line-clamp-2">
             {project.title}
           </h3>
-          <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+          <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2 flex-grow">
             {project.shortDescription}
           </p>
 
-          <div className="flex items-center justify-between text-xs text-gray-400 pt-4 border-t border-gray-50">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5 text-green-500" />
-              {project.location}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Calendar className="h-3.5 w-3.5 text-green-500" />
-              {project.year}
-            </span>
-            <span className="flex items-center gap-1.5 font-medium text-green-600">
-              {project.capacity}
-            </span>
+          <div className="flex items-center justify-between text-xs text-gray-400 pt-4 border-t border-gray-50 flex-wrap gap-2">
+            {project.location?.trim() && (
+              <span className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-green-500" />
+                {project.location}
+              </span>
+            )}
+            {project.year?.trim() && (
+              <span className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5 text-green-500" />
+                {project.year}
+              </span>
+            )}
+            {project.capacity?.trim() && (
+              <span className="flex items-center gap-1.5 font-medium text-green-600">
+                {project.capacity}
+              </span>
+            )}
           </div>
         </div>
       </Link>
@@ -106,7 +112,7 @@ export function ProjectsSection({ projects, showViewAll = true, sidebar }: Proje
         {sidebar ? (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-3">
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
                 {projects.map((project) => (
                   <ProjectCard key={project.id} project={project} />
                 ))}
@@ -123,7 +129,7 @@ export function ProjectsSection({ projects, showViewAll = true, sidebar }: Proje
             </div>
           </div>
         ) : (
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

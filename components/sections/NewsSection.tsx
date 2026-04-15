@@ -47,7 +47,7 @@ function NewsCard({ article }: { article: NewsArticle }) {
         </div>
 
         {/* Content */}
-        <div className="p-6 flex flex-col h-[calc(100%-180px)]">
+        <div className="p-6 flex flex-col h-[calc(100%-140px)]">
           <h3 className="font-bold text-gray-900 text-base leading-snug mb-2 group-hover:text-green-700 transition-colors line-clamp-2">
             {article.title}
           </h3>

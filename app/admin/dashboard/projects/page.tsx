@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { Plus, Pencil, Trash2, X, Save, Loader2, Search, Star } from 'lucide-react'
 import type { Project } from '@/lib/types'
 import { slugify } from '@/lib/utils'
+import { Loader2, Pencil, Plus, Save, Search, Star, Trash2, X } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 const categories = [
   { value: 'xu-ly-nuoc-thai', label: 'Xử lý nước thải' },
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
     if (params.get('action') === 'new') openNew()
   }, [])
 
-  const openNew = () => {
+   const openNew = () => {
     setEditing({ ...emptyProject })
     setIsNew(true)
     setTagsInput('')

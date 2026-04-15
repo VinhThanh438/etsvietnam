@@ -1,137 +1,207 @@
 [
   {
-    "id": "nha-may-det-may-binh-duong",
-    "slug": "nha-may-det-may-binh-duong",
-    "title": "Hệ thống XLNT Nhà máy Dệt may Bình Dương",
-    "client": "Công ty TNHH Dệt may Sunrise",
-    "location": "Bình Dương",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "500 m³/ngày",
-    "year": "2023",
-    "image": "/uploads/projects/1776055958741-nha-may-xu-ly-nuoc-cap-amata.jpg",
-    "shortDescription": "Thiết kế và thi công hệ thống XLNT công suất 500 m³/ngày cho nhà máy dệt may, đạt QCVN 40:2011/BTNMT cột A.",
-    "description": "Dự án xây dựng trạm xử lý nước thải hoàn chỉnh cho nhà máy dệt may với công suất 500 m³/ngày. Áp dụng công nghệ yếm khí (UASB) + hiếu khí (MBR) + kết tủa hóa học để loại bỏ màu, COD, BOD và N-P đạt chuẩn xả vào nguồn tiếp nhận loại A.",
-    "tags": [
-      "MBR",
-      "UASB",
-      "Nước thải công nghiệp"
-    ],
-    "featured": false
-  },
-  {
-    "id": "khu-do-thi-long-an",
-    "slug": "khu-do-thi-long-an",
-    "title": "Nhà máy nước sạch KĐT Long An",
-    "client": "Ban Quản lý Khu đô thị Mới",
-    "location": "Long An",
-    "category": "xu-ly-nuoc-cap",
-    "categoryLabel": "Xử lý nước cấp",
-    "capacity": "2.000 m³/ngày",
-    "year": "2023",
-    "image": "/uploads/projects/1776055989388-xu-ly-nuoc-mat-hcm.jpg",
-    "shortDescription": "Xây dựng nhà máy nước sạch 2.000 m³/ngày phục vụ khu đô thị 10.000 hộ dân tại Long An.",
-    "description": "Thiết kế và thi công trọn gói nhà máy xử lý nước mặt công suất 2.000 m³/ngày cung cấp nước sinh hoạt đạt QCVN 01-1:2018/BYT cho khu đô thị mới tại Long An.",
-    "tags": [
-      "Nước cấp đô thị",
-      "Khu dân cư"
-    ],
-    "featured": false
-  },
-  {
-    "id": "nha-may-che-bien-thuy-san-ca-mau",
-    "slug": "nha-may-che-bien-thuy-san-ca-mau",
-    "title": "XLNT Nhà máy chế biến thủy sản Cà Mau",
-    "client": "Công ty CP Thủy sản Phương Đông",
-    "location": "Cà Mau",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "800 m³/ngày",
-    "year": "2022",
-    "image": "/uploads/projects/1776054259431-renewable-energy-engineers-designing-3d-wind-turbine-park.jfif",
-    "shortDescription": "Hệ thống xử lý nước thải chế biến thủy sản 800 m³/ngày, xử lý hiệu quả COD, mùi hôi.",
-    "description": "Xử lý nước thải giàu chất hữu cơ từ chế biến thủy sản với công nghệ yếm khí phủ kín (CSTR) + SBR + khử mùi bằng biofilter. Nước đầu ra đạt QCVN 11-MT:2015/BTNMT.",
-    "tags": [
-      "CSTR",
-      "SBR",
-      "Thủy sản"
-    ],
-    "featured": false
-  },
-  {
-    "id": "benh-vien-da-khoa-tay-nguyen",
-    "slug": "benh-vien-da-khoa-tay-nguyen",
-    "title": "Hệ thống XLNT Bệnh viện Đa khoa Tây Nguyên",
-    "client": "Sở Y tế tỉnh Đắk Lắk",
-    "location": "Đắk Lắk",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "300 m³/ngày",
-    "year": "2022",
-    "image": "/uploads/projects/1776054385562-xu-ly-nuoc-thai-benh-vien-da-khoa-binh-duong4-compressed.jpg",
-    "shortDescription": "Trạm XLNT bệnh viện 300 m³/ngày đảm bảo diệt khuẩn, xử lý dược phẩm đạt QCVN 28:2010.",
-    "description": "Thiết kế hệ thống xử lý nước thải y tế sử dụng công nghệ AAO + UV khử trùng. Đạt QCVN 28:2010/BTNMT, loại A.",
-    "tags": [
-      "Y tế",
-      "UV",
-      "AAO"
-    ],
-    "featured": true
-  },
-  {
-    "id": "kcn-long-duc-dong-nai",
-    "slug": "kcn-long-duc-dong-nai",
-    "title": "Trạm XLNT Tập trung KCN Long Đức",
-    "client": "Ban quản lý KCN Long Đức",
-    "location": "Đồng Nai",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "5.000 m³/ngày",
-    "year": "2021",
-    "image": "/uploads/projects/1776054464029-nha-may-xu-ly-nuoc-thai-kcnamatalongthanhv.jpg",
-    "shortDescription": "Trạm XLNT tập trung quy mô lớn 5.000 m³/ngày cho KCN Long Đức, nhiều ngành sản xuất.",
-    "description": "Thiết kế, thi công và vận hành trạm xử lý nước thải tập trung cho khu công nghiệp với đa dạng loại hình doanh nghiệp. Công nghệ tiên tiến, tự động hóa cao.",
-    "tags": [
-      "KCN",
-      "Quy mô lớn",
-      "Tự động hóa"
-    ],
-    "featured": true
-  },
-  {
-    "id": "nha-may-bia-tien-giang",
-    "slug": "nha-may-bia-tien-giang",
-    "title": "XLNT Nhà máy bia Tiền Giang",
-    "client": "Công ty CP Bia Sài Gòn - Tiền Giang",
-    "location": "Tiền Giang",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "1.200 m³/ngày",
-    "year": "2021",
-    "image": "/uploads/projects/1776054589310-tram-xu-ly-nuoc-thai-tan-tao-2-1.jpg",
-    "shortDescription": "Hệ thống xử lý nước thải dây chuyền sản xuất bia 1.200 m³/ngày, thu hồi khí biogas.",
-    "description": "Ứng dụng công nghệ UASB thu hồi khí biogas tái sử dụng năng lượng, kết hợp xử lý sinh học hiếu khí đảm bảo đầu ra đạt chuẩn.",
-    "tags": [
-      "UASB",
-      "Biogas",
-      "Công nghiệp thực phẩm"
-    ],
-    "featured": true
-  },
-  {
     "id": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
     "slug": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
     "title": "Thi công trạm xử lý nước thải sinh hoạt tại khu nhà ở phố mới Văn Giang - Vaquarius - Hưng Yên",
     "client": "",
-    "location": "Khu nhà ở phố mới Văn Giang - Vaquarius - Hưng Yên",
+    "location": "Hưng Yên",
     "category": "xu-ly-nuoc-thai",
     "categoryLabel": "Xử lý nước thải",
-    "capacity": "500 m³/24h",
+    "capacity": "500m³/24h",
     "year": "2025",
     "image": "",
     "shortDescription": "",
     "description": "",
+    "tags": [
+      "Xử lý nước thải"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cung-cap-va-lap-dat-tram-xlnt-cho-du-an-the-charm-khu-do-thi-an-hung-ha-dong-ha-noi",
+    "slug": "cung-cap-va-lap-dat-tram-xlnt-cho-du-an-the-charm-khu-do-thi-an-hung-ha-dong-ha-noi",
+    "title": "Cung cấp và lắp đặt trạm XLNT cho Dự án THE CHARM - KHU ĐÔ THỊ AN HƯNG - HÀ ĐÔNG - HÀ NỘI",
+    "client": "",
+    "location": "Hà Đông",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "600m³/ngày đêm",
+    "year": "2025",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải",
+      "Lắp đặt"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cai-tao-va-van-hanh-tram-xlnt-tai-du-an-xay-dung-dai-hoc-hoa-lu-ninh-binh",
+    "slug": "cai-tao-va-van-hanh-tram-xlnt-tai-du-an-xay-dung-dai-hoc-hoa-lu-ninh-binh",
+    "title": "Cải tạo và vận hành trạm XLNT tại dự án xây dựng Đại Học Hoa Lư, Ninh Bình",
+    "client": "",
+    "location": "Hoa Lư, Ninh Bình",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "350m³/ngày đêm",
+    "year": "2025",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cung-cap-va-lap-dat-hoan-thien-he-thong-tram-xu-ly-nuoc-thai-tai-du-an-trung-tam-dieu-hanh-tac-chien-xuat-nhap-canh-a08-phuong-yen-hoa-tp-ha-noi",
+    "slug": "cung-cap-va-lap-dat-hoan-thien-he-thong-tram-xu-ly-nuoc-thai-tai-du-an-trung-tam-dieu-hanh-tac-chien-xuat-nhap-canh-a08-phuong-yen-hoa-tp-ha-noi",
+    "title": "Cung cấp và lắp đặt hoàn thiện hệ thống Trạm xử lý nước thải tại Dự án Trung tâm điều hành, tác chiến xuất nhập cảnh (A08), phường Yên Hoà TP. Hà nội",
+    "client": "",
+    "location": "Hà Nội",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": "2025",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải"
+    ],
+    "featured": true
+  },
+  {
+    "id": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
+    "slug": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
+    "title": "Xây dựng và lắp đặt trạm XLNT tại dự án Đầu tư Xây dựng khu nhà ở tại xã Đinh Xá, TP Phủ Lý, Ninh Bình",
+    "client": "",
+    "location": "Phủ Lý, Ninh Bình",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "90m³/ngày đêm",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải",
+      "Xây dựng",
+      "Lắp đặt"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
+    "slug": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
+    "title": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
+    "client": "",
+    "location": "Hà Nội",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "750m³/ngày",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE công suất 720m3/ngày, dự phòng 180m3/ngày tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
+    "tags": [
+      "Xử lý nước thải",
+      "Cải tạo",
+      "Nâng cấp",
+      "CNCC MULBERRRY"
+    ],
+    "featured": false
+  },
+  {
+    "id": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
+    "slug": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
+    "title": "Thi công, lắp đặt trạm XLNT thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
+    "client": "",
+    "location": "Khu CN Bình Xuyên",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "Thi công, lắp đặt trạm xử lý nước thải thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
+    "tags": [
+      "Xử lý nước thải",
+      "Lắp đặt",
+      "Thi công"
+    ],
+    "featured": true
+  },
+  {
+    "id": "du-an-xu-ly-nuoc-thai-da-phuoc",
+    "slug": "du-an-xu-ly-nuoc-thai-da-phuoc",
+    "title": "Dự án xử lý nước thải Đa Phước",
+    "client": "",
+    "location": "Đa Phước",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": " ",
+    "image": "/uploads/projects/1776220723037-1590549029-2116639361-d-an-x-ly-n-c-th-i-a-ph-c-768x511.jpg",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải"
+    ],
+    "featured": false
+  },
+  {
+    "id": "du-an-trung-tam-y-te-huyen-don-duong-lam-dong",
+    "slug": "du-an-trung-tam-y-te-huyen-don-duong-lam-dong",
+    "title": "Dự án Trung Tâm Y Tế huyện Đơn Dương, Lâm Đồng",
+    "client": "",
+    "location": "Lâm Đồng",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": " ",
+    "image": "/uploads/projects/1776220804366-1590549111-1808067169-d-an-ttyt-huy-n-n-d-ng-ndash-lam-ng.jpg",
+    "shortDescription": "",
+    "description": "",
     "tags": [],
     "featured": false
+  },
+  {
+    "id": "du-an-xlnt-huyen-duc-trong-lam-dong",
+    "slug": "du-an-xlnt-huyen-duc-trong-lam-dong",
+    "title": "Dự án XLNT huyện Đức Trọng, Lâm Đồng",
+    "client": "",
+    "location": "Lâm Đồng",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": " ",
+    "image": "/uploads/projects/1776221083256-brave_screenshot_etsvietnam.vn.png",
+    "shortDescription": "",
+    "description": "Dự án xử lý nước thải huyện Đức Trọng – Lâm Đồng.",
+    "tags": [
+      "Xử lý nước thải"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tu-van-thiet-ke-quan-ly-du-an-lo-dot-chat-thai-nguy-hai-cho-cong-ty-co-phan-co-dien-moi-truong-lilama",
+    "slug": "tu-van-thiet-ke-quan-ly-du-an-lo-dot-chat-thai-nguy-hai-cho-cong-ty-co-phan-co-dien-moi-truong-lilama",
+    "title": "Tư vấn thiết kế, quản lý dự án lò đốt chất thải nguy hại cho Công ty Cổ phần Cơ - Điện - Môi trường Lilama",
+    "client": "Công ty Cổ phần Cơ - Điện - Môi trường Lilama",
+    "location": "",
+    "category": "xu-ly-khi-thai",
+    "categoryLabel": "Xử lý khí thải",
+    "capacity": "500kg/h",
+    "year": " ",
+    "image": "/uploads/projects/1776221349179-brave_screenshot_etsvietnam.vn-1-.png",
+    "shortDescription": "",
+    "description": "Tư vấn thiết kế, quản lý dự án lò đốt chất thải nguy hại, công suất 500 kg/h cho Công ty Cổ phần Cơ – Điện – Môi trường Lilama",
+    "tags": [
+      "Xử lý khí thải",
+      "Tư vấn môi trường"
+    ],
+    "featured": true
   }
 ]

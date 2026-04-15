@@ -1,10 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Container } from '@/components/ui/Container'
-import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { Building2, Phone, Mail, MapPin, User, Globe, FileText } from 'lucide-react'
+import { Container } from '@/components/ui/Container'
+import { Building2, FileText, Globe, Mail, MapPin, Phone, User } from 'lucide-react'
 
 export function IntroductionSection() {
   return (
@@ -69,13 +67,13 @@ export function IntroductionSection() {
 
                 <div className="space-y-6 relative z-10">
                   {[
-                    { icon: Building2, label: 'Tên Công Ty', value: 'CÔNG TY CỔ PHẦN ETS VIỆT NAM' },
+                    { icon: Building2, label: 'Tên Công Ty', value: 'CÔNG TY CỔ PHẦN MÔI TRƯỜNG ETS VIỆT NAM' },
                     { icon: Globe, label: 'Tên Tiếng Anh', value: 'ETS VIET NAM ENVIRONMENT JOINT STOCK COMPANY.' },
                     { icon: FileText, label: 'Mã Số Doanh Nghiệp', value: '0108115359' },
-                    { icon: User, label: 'Người Đại Diện', value: 'ĐỖ HOÀNG THU (Tổng Giám Đốc)' },
-                    { icon: MapPin, label: 'Trụ sở chính', value: 'Tầng 2, Tháp A, Tòa T608 Phố Tôn Quang Phiệt, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, HN' },
-                    { icon: Phone, label: 'Điện Thoại', value: '0879.343.999' },
-                    { icon: Mail, label: 'Email', value: 'info@etsvietnam.vn' },
+                    { icon: User, label: 'Người Đại Diện', value: 'Vũ Thị Thanh Nga (Tổng giám đốc)' },
+                    { icon: MapPin, label: 'Trụ sở chính', value: 'Tầng 3, G14 Khu biệt thự ghép Làng quốc tế Thăng Long, Phường Nghĩa Đô, Thành phố Hà Nội, Việt Nam' },
+                    { icon: Phone, label: 'Điện Thoại', value: '0879343999' },
+                    { icon: Mail, label: 'Email', value: 'etsvietnam2018@gmail.com' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4 group/item">
                       <div className="shrink-0 w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-green-600 group-hover/item:bg-green-600 group-hover/item:text-white transition-all duration-300">
