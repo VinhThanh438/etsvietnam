@@ -24,3 +24,9 @@ export function slugify(text: string): string {
     .replace(/-+/g, '-')
     .trim()
 }
+
+export function getYearsOfExperience(foundedYear: number | string = 2018): number {
+  const currentYear = new Date().getFullYear()
+  const startYear = typeof foundedYear === 'string' ? parseInt(foundedYear) : foundedYear
+  return currentYear - startYear
+}

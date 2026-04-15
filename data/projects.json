@@ -1,5 +1,66 @@
 [
   {
+    "id": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
+    "slug": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
+    "title": "Xây dựng và lắp đặt trạm XLNT tại dự án Đầu tư Xây dựng khu nhà ở tại xã Đinh Xá, TP Phủ Lý, Ninh Bình",
+    "client": "",
+    "location": "Phủ Lý, Ninh Bình",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "90m³/ngày đêm",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "",
+    "tags": [
+      "Xử lý nước thải",
+      "Xây dựng",
+      "Lắp đặt"
+    ],
+    "featured": true
+  },
+  {
+    "id": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
+    "slug": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
+    "title": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
+    "client": "",
+    "location": "Hà Nội",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "750m³/ngày",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE công suất 720m3/ngày, dự phòng 180m3/ngày tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
+    "tags": [
+      "Xử lý nước thải",
+      "Cải tạo",
+      "Nâng cấp",
+      "CNCC MULBERRRY"
+    ],
+    "featured": true
+  },
+  {
+    "id": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
+    "slug": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
+    "title": "Thi công, lắp đặt trạm XLNT thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
+    "client": "",
+    "location": "Khu CN Bình Xuyên",
+    "category": "xu-ly-nuoc-thai",
+    "categoryLabel": "Xử lý nước thải",
+    "capacity": "",
+    "year": "2026",
+    "image": "",
+    "shortDescription": "",
+    "description": "Thi công, lắp đặt trạm xử lý nước thải thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
+    "tags": [
+      "Xử lý nước thải",
+      "Lắp đặt",
+      "Thi công"
+    ],
+    "featured": true
+  },
+  {
     "id": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
     "slug": "thi-cong-tram-xu-ly-nuoc-thai-sinh-hoat-tai-khu-nha-o-pho-moi-van-giang-vaquarius-hung-yen",
     "title": "Thi công trạm xử lý nước thải sinh hoạt tại khu nhà ở phố mới Văn Giang - Vaquarius - Hưng Yên",
@@ -70,68 +131,7 @@
     "tags": [
       "Xử lý nước thải"
     ],
-    "featured": true
-  },
-  {
-    "id": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
-    "slug": "xay-dung-va-lap-dat-tram-xlnt-tai-du-an-dau-tu-xay-dung-khu-nha-o-tai-xa-dinh-xa-tp-phu-ly-ninh-binh",
-    "title": "Xây dựng và lắp đặt trạm XLNT tại dự án Đầu tư Xây dựng khu nhà ở tại xã Đinh Xá, TP Phủ Lý, Ninh Bình",
-    "client": "",
-    "location": "Phủ Lý, Ninh Bình",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "90m³/ngày đêm",
-    "year": "2026",
-    "image": "",
-    "shortDescription": "",
-    "description": "",
-    "tags": [
-      "Xử lý nước thải",
-      "Xây dựng",
-      "Lắp đặt"
-    ],
     "featured": false
-  },
-  {
-    "id": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
-    "slug": "cai-tao-nang-cap-tram-xu-ly-nuoc-thai-cncc-mulberry-lane-tai-cum-nha-chung-cu-mulberry-lane-phuong-dai-mo-tp-ha-noi",
-    "title": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
-    "client": "",
-    "location": "Hà Nội",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "750m³/ngày",
-    "year": "2026",
-    "image": "",
-    "shortDescription": "",
-    "description": "Cải tạo, nâng cấp trạm xử lý nước thải CNCC MULBERRY LANE công suất 720m3/ngày, dự phòng 180m3/ngày tại cụm nhà chung cư MULBERRY LANE, phường Đại Mỗ, TP. Hà Nội",
-    "tags": [
-      "Xử lý nước thải",
-      "Cải tạo",
-      "Nâng cấp",
-      "CNCC MULBERRRY"
-    ],
-    "featured": false
-  },
-  {
-    "id": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
-    "slug": "thi-cong-lap-dat-tram-xlnt-thuoc-cum-khu-cong-nghiep-binh-xuyen-cho-cac-nha-may-accton-nha-may-art",
-    "title": "Thi công, lắp đặt trạm XLNT thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
-    "client": "",
-    "location": "Khu CN Bình Xuyên",
-    "category": "xu-ly-nuoc-thai",
-    "categoryLabel": "Xử lý nước thải",
-    "capacity": "",
-    "year": "2026",
-    "image": "",
-    "shortDescription": "",
-    "description": "Thi công, lắp đặt trạm xử lý nước thải thuộc cụm khu công nghiệp Bình Xuyên cho các nhà máy ACCTON, nhà máy ART",
-    "tags": [
-      "Xử lý nước thải",
-      "Lắp đặt",
-      "Thi công"
-    ],
-    "featured": true
   },
   {
     "id": "du-an-xu-ly-nuoc-thai-da-phuoc",
@@ -202,6 +202,6 @@
       "Xử lý khí thải",
       "Tư vấn môi trường"
     ],
-    "featured": true
+    "featured": false
   }
 ]

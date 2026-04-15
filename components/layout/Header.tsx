@@ -116,7 +116,7 @@ export function Header({ config }: HeaderProps) {
 
             {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-8">
-              {config.nav.map((item) => (
+              {config.nav.filter(item => item.href !== '/lien-he').map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -176,7 +176,7 @@ export function Header({ config }: HeaderProps) {
           )}
         >
           <Container className="py-4 space-y-1">
-            {config.nav.map((item) => (
+            {config.nav.filter(item => item.href !== '/lien-he').map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

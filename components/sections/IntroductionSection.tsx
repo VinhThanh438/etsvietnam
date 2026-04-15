@@ -45,8 +45,9 @@ export function IntroductionSection() {
 
               <AnimatedSection delay={0.2}>
                 <p>
-                  Công ty Cổ phần ETS VIỆT NAM được thành lập từ năm 2018 trên
-                  nền tảng là sự kế thừa năng lực, kinh nghiệm, nhân sự của{" "}
+                  Công ty Cổ phần môi trường ETS VIỆT NAM được thành lập từ năm
+                  2018 trên nền tảng là sự kế thừa năng lực, kinh nghiệm, nhân
+                  sự của{" "}
                   <span className="text-gray-900 font-medium">
                     Công ty Cổ phần Thiết kế Công nghiệp Hóa chất (CECO)
                   </span>
@@ -64,7 +65,7 @@ export function IntroductionSection() {
 
               <AnimatedSection delay={0.3}>
                 <p>
-                  Sau 4 năm xây dựng và phát triển, chúng tôi đã có một đội ngũ
+                  Sau {new Date().getFullYear() - 2018} năm xây dựng và phát triển, chúng tôi đã có một đội ngũ
                   nhân sự có chuyên môn, tâm huyết, cùng chí hướng và trở thành
                   một tập thể vững mạnh trong lĩnh vực các giải pháp về Môi
                   Trường.
@@ -131,7 +132,7 @@ export function IntroductionSection() {
                     {
                       icon: Mail,
                       label: "Email",
-                      value: "etsvietnam2018@gmail.com",
+                      value: "ets.congty@gmail.com",
                     },
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4 group/item">

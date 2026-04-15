@@ -30,10 +30,21 @@ export default async function HomePage() {
     getPartners(),
   ])
 
+  // Dynamically calculate years of experience for stats
+  const dynamicStats = config.stats.map(stat => {
+    if (stat.label.toLowerCase().includes('kinh nghiệm')) {
+      return {
+        ...stat,
+        value: `${new Date().getFullYear() - parseInt(config.company.founded)}+`
+      }
+    }
+    return stat
+  })
+
   return (
     <>
-      <HeroSection slides={config.heroSlides} stats={config.stats} />
-      <AboutSection config={config} />
+      <HeroSection slides={config.heroSlides} stats={dynamicStats} />
+      <AboutSection config={{ ...config, stats: dynamicStats }} />
       <ExpertiseSection />
       <ServicesSection services={services} limit={3} />
       <ProjectsSection projects={projects} showViewAll />
