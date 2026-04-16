@@ -19,24 +19,35 @@ const milestones = [
   {
     year: "2018",
     event:
-      "Thành lập ETS VIỆT NAM, kế thừa năng lực từ CECO, Lilama, Tiên Phong Xanh",
+      "Thành lập ETS VIỆT NAM, kế thừa nền tảng năng lực, kinh nghiệm và nhân sự từ CECO, Lilama, Tiên Phong Xanh.",
   },
-  { year: "2019", event: "Phát triển mạnh mẽ đội ngũ kỹ sư chuyên môn cao" },
+  { 
+    year: "2019", 
+    event: "Tập trung xây dựng đội ngũ kỹ sư chuyên môn và hoàn thiện bộ máy quy trình tư vấn kỹ thuật môi trường." 
+  },
   {
     year: "2020",
-    event: "Hoàn thành nhiều dự án môi trường trọng điểm cho các KCN",
+    event: "Khẳng định năng lực qua các dự án xử lý chất thải trọng điểm tại các khu công nghiệp trên toàn quốc.",
   },
   {
     year: "2021",
-    event: "Đạt mốc 4 năm xây dựng và trở thành tập thể vững mạnh",
+    event: "Đẩy mạnh nghiên cứu và ứng dụng các giải pháp công nghệ xử lý tiên tiến nhằm mang lại lợi ích kinh tế tối ưu.",
   },
   {
     year: "2022",
-    event: "Nghiên cứu & phát triển các công nghệ xử lý tiên tiến",
+    event: "Đạt mốc 4 năm xây dựng và phát triển, trở thành tập thể vững mạnh và đối tác tin cậy trong lĩnh vực Môi trường.",
   },
   {
     year: "2023",
-    event: "Mở rộng thị trường toàn quốc và khẳng định vị thế bền vững",
+    event: "Mở rộng hoạt động R&D, chuyển giao thành công nhiều công nghệ xử lý và đốt chất thải thu hồi năng lượng.",
+  },
+  {
+    year: "2024",
+    event: "Khẳng định vị thế đơn vị dẫn đầu về giải pháp môi trường bền vững, hướng tới mô hình kinh tế tuần hoàn.",
+  },
+  {
+    year: "2025",
+    event: "Tầm nhìn trở thành biểu tượng niềm tin về kỹ thuật môi trường tại Đông Nam Á, vì một Việt Nam phát triển xanh.",
   },
 ];
 

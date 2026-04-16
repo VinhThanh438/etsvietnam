@@ -3,6 +3,7 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PageBanner } from '@/components/ui/PageBanner'
 import { SidebarNews } from '@/components/ui/SidebarNews'
+import { Pagination } from '@/components/ui/Pagination'
 import { getNews } from '@/lib/data/news'
 import type { Metadata } from 'next'
 
@@ -11,8 +12,21 @@ export const metadata: Metadata = {
   description: 'Cập nhật tin tức, kiến thức về công nghệ xử lý nước thải, môi trường và quy định pháp luật mới nhất.',
 }
 
-export default async function NewsPage() {
+interface NewsPageProps {
+  searchParams: Promise<{ page?: string }>
+}
+
+export default async function NewsPage({ searchParams }: NewsPageProps) {
   const articles = await getNews()
+  const { page } = await searchParams
+  const currentPage = Number(page) || 1
+  const itemsPerPage = 9
+  
+  const totalPages = Math.ceil(articles.length / itemsPerPage)
+  const paginatedArticles = articles.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  )
 
   return (
     <>
@@ -33,9 +47,10 @@ export default async function NewsPage() {
       <Breadcrumbs items={[{ label: 'Tin tức' }]} />
 
       <NewsSection  
-        articles={articles} 
+        articles={paginatedArticles} 
         showViewAll={false} 
         sidebar={<SidebarNews />} 
+        pagination={<Pagination totalPages={totalPages} currentPage={currentPage} />}
       />
     </>
   )

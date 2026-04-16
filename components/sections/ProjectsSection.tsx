@@ -1,14 +1,13 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, MapPin, Calendar, Zap } from 'lucide-react'
+import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
-import { motion } from 'framer-motion'
 import type { Project } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
+import { ArrowRight, Calendar, MapPin, Zap } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface ProjectsSectionProps {
   projects: Project[]
@@ -88,7 +87,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectsSection({ projects, showViewAll = true, sidebar }: ProjectsSectionProps) {
   return (
-    <section className="pt-12 md:pt-16 pb-24 bg-white">
+    <section className="pt-10 md:pt-16 pb-24 bg-white">
       <Container>
         <AnimatedSection className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionTitle

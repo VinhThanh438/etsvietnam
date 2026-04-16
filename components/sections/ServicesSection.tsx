@@ -1,12 +1,12 @@
 'use client'
 
-import Link from 'next/link'
-import { ArrowRight, Droplets, Waves, Wind, Activity, FileText, Database, Flame, Wrench } from 'lucide-react'
+import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection, StaggerContainer, fadeUpVariant } from '@/components/ui/AnimatedSection'
-import { motion } from 'framer-motion'
 import type { Service } from '@/lib/types'
+import { motion } from 'framer-motion'
+import { Activity, ArrowRight, Database, Droplets, FileText, Flame, Waves, Wind, Wrench } from 'lucide-react'
+import Link from 'next/link'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Droplets,
@@ -72,7 +72,7 @@ export function ServicesSection({ services, limit }: ServicesSectionProps) {
   const displayServices = limit ? services.slice(0, limit) : services
 
   return (
-    <section className="pt-12 md:pt-16 pb-24 bg-gray-50">
+    <section className="pt-10 md:pt-16 pb-24 bg-gray-50">
       <Container>
         <AnimatedSection className="mb-16">
           <SectionTitle

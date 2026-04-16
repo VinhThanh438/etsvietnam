@@ -14,6 +14,7 @@ interface NewsSectionProps {
   articles: NewsArticle[]
   showViewAll?: boolean
   sidebar?: React.ReactNode
+  pagination?: React.ReactNode
 }
 
 function NewsCard({ article }: { article: NewsArticle }) {
@@ -67,9 +68,9 @@ function NewsCard({ article }: { article: NewsArticle }) {
   )
 }
 
-export function NewsSection({ articles, showViewAll = true, sidebar }: NewsSectionProps) {
+export function NewsSection({ articles, showViewAll = true, sidebar, pagination }: NewsSectionProps) {
   return (
-    <section className="pt-12 md:pt-16 pb-24 bg-gray-50">
+    <section className="pt-10 md:pt-16 pb-24 bg-gray-50">
       <Container>
         <AnimatedSection className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionTitle
@@ -93,11 +94,15 @@ export function NewsSection({ articles, showViewAll = true, sidebar }: NewsSecti
         {sidebar ? (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-3">
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <StaggerContainer 
+                key={articles.map(a => a.id).join(',')}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
                 {articles.map((article) => (
                   <NewsCard key={article.id} article={article} />
                 ))}
               </StaggerContainer>
+              {pagination && <div className="mt-4">{pagination}</div>}
             </div>
             <div className="lg:col-span-1 relative hidden lg:block">
               <div className="sticky top-24">
@@ -110,11 +115,17 @@ export function NewsSection({ articles, showViewAll = true, sidebar }: NewsSecti
             </div>
           </div>
         ) : (
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article) => (
-              <NewsCard key={article.id} article={article} />
-            ))}
-          </StaggerContainer>
+          <>
+              <StaggerContainer 
+                key={articles.map(a => a.id).join(',')}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {articles.map((article) => (
+                  <NewsCard key={article.id} article={article} />
+                ))}
+              </StaggerContainer>
+            {pagination && <div className="mt-4">{pagination}</div>}
+          </>
         )}
       </Container>
     </section>
