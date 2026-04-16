@@ -37,7 +37,7 @@ export async function SidebarProjects() {
                     <Link 
                       key={child.slug}
                       href={`/du-an/${child.slug}`}
-                      className="text-sm text-gray-500 hover:text-green-600 pl-6 leading-snug relative before:content-[''] before:absolute before:left-2 before:top-2 before:w-1.5 before:h-1.5 before:bg-gray-300 before:rounded-full hover:before:bg-green-500 transition-colors"
+                      className="text-sm text-gray-500 hover:text-green-600 pl-6 leading-snug relative before:content-[''] before:absolute before:left-2 before:top-2 before:w-1.5 before:h-1.5 before:bg-gray-300 before:rounded-full hover:before:bg-green-500 transition-colors line-clamp-2 overflow-hidden"
                     >
                       {child.title}
                     </Link>

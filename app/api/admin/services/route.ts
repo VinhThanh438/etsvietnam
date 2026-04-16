@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
     slug: body.slug,
     icon: body.icon || 'Droplets',
     title: body.title,
+    image: body.image || '',
     shortDescription: body.shortDescription || '',
     description: body.description || '',
     features: body.features || [],

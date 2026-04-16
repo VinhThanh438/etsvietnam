@@ -2,71 +2,113 @@
   {
     "id": "xu-ly-nuoc-thai",
     "slug": "xu-ly-nuoc-thai",
-    "icon": "Droplets",
-    "title": "Xử lý nước thải",
-    "shortDescription": "Giải pháp thiết kế & thi công hệ thống xử lý nước thải công nghiệp, y tế, sinh hoạt đạt chuẩn QCVN.",
-    "description": "Chúng tôi thiết kế và thi công các hệ thống xử lý nước thải hoàn chỉnh cho khu công nghiệp, nhà máy, bệnh viện và đô thị. Công nghệ tiên tiến, đảm bảo nước đầu ra đạt chuẩn QCVN 40:2011/BTNMT và QCVN 14:2008/BTNMT.",
-    "features": ["Nước thải sinh hoạt & Đô thị", "Nước thải công nghiệp (Dệt nhuộm, Giấy...)", "Nước thải y tế & Bệnh viện", "Hệ thống tái sử dụng nước"],
-    "color": "green"
+    "icon": "Factory",
+    "title": "Tư vấn & Cung cấp Giải pháp Công nghệ Môi trường",
+    "shortDescription": "Tư vấn, cung cấp giải pháp Công nghệ, Kỹ thuật, Thiết bị xử lý chất thải\nrắn, khí thải, nước thải.",
+    "description": "ETS Việt Nam cung cấp dịch vụ tư vấn toàn diện và cung cấp các giải pháp công nghệ, kỹ thuật hiện đại cùng thiết bị chuyên dụng trong lĩnh vực xử lý chất thải rắn, khí thải và nước thải. Chúng tôi cam kết mang lại những hệ thống tối ưu, tiết kiệm chi phí và bảo vệ môi trường bền vững cho các doanh nghiệp.",
+    "features": [
+      "Tư vấn công nghệ xử lý tối ưu",
+      "Cung cấp thiết bị chuyên dụng đồng bộ",
+      "Kỹ thuật xử lý chất thải rắn & khí thải",
+      "Giải pháp nước thải tập trung hiện đại"
+    ],
+    "color": "green",
+    "image": "/uploads/services/1776308220861-1590651167-2049913010-t-v-n-thi-t-k-cung-c-p-gi-i-phap-cong-ngh-k-thu-t-thi-t-b-x-ly-ch-t-th-i-r-n-khi-th-i-n-c-th-i-2-.jpg"
   },
   {
     "id": "xu-ly-nuoc-cap",
-    "slug": "xu-ly-nuoc-cap",
-    "icon": "Waves",
-    "title": "Xử lý nước cấp",
-    "shortDescription": "Hệ thống lọc và xử lý nước sạch phục vụ sinh hoạt, sản xuất công nghiệp và y tế.",
-    "description": "Thiết kế hệ thống cấp nước sạch cho khu dân cư, khu công nghiệp và nhà máy sản xuất. Đảm bảo tiêu chuẩn nước uống QCVN 01-1:2018/BYT và tiêu chuẩn nước tinh khiết dùng trong sản xuất.",
-    "features": ["Lọc nước mặt & nước ngầm", "Nước sạch cho KCN & Nhà máy", "Hệ thống RO & EDI", "Khử trùng UV/Ozone"],
-    "color": "blue"
+    "slug": "tu-van-bao-cao-lap-du-an-dau-tu",
+    "icon": "FileText",
+    "title": "Tư vấn Lập Dự án & Nghiên cứu Khả thi",
+    "shortDescription": "Tư vấn lập dự án đầu tư, báo cáo nghiên cứu khả thi, báo cáo kinh tế kỹ thuật cho các dự án đầu tư trong lĩnh vực môi trường.",
+    "description": "Chúng hỗ trợ doanh nghiệp thực hiện các thủ tục pháp lý và chuẩn bị hồ sơ kỹ thuật chuyên sâu cho các dự án đầu tư môi trường. Dịch vụ bao gồm lập dự án đầu tư, báo cáo nghiên cứu khả thi (FS) và báo cáo kinh tế kỹ thuật, giúp dự án của bạn đáp ứng đầy đủ các tiêu chuẩn quy định và tối ưu hóa hiệu quả đầu tư.",
+    "features": [
+      "Lập dự án đầu tư môi trường chuyên nghiệp",
+      "Báo cáo nghiên cứu khả thi (FS) chi tiết",
+      "Báo cáo kinh tế kỹ thuật chuẩn quy định",
+      "Tư vấn thủ tục pháp lý dự án đầu tư"
+    ],
+    "color": "blue",
+    "image": "/uploads/services/1776308174673-1590651152-1911615614-t-v-n-l-p-d-an-u-t-bao-cao-nghien-c-u-kh-thi-bao-cao-kinh-t-k-thu-t-cho-cac-d-an-u-t-trong-l-nh-v-c-moi-tr-ng.jpg"
   },
   {
     "id": "xu-ly-khi-thai",
-    "slug": "xu-ly-khi-thai",
-    "icon": "Wind",
-    "title": "Xử lý khí thải",
-    "shortDescription": "Giải pháp kiểm soát bụi và khí độc hại từ nhà máy, đảm bảo môi trường làm việc an toàn.",
-    "description": "Thiết kế và lắp đặt hệ thống xử lý khí thải cho các nhà máy sản xuất, khu công nghiệp. Kiểm soát bụi, SO2, NOx, VOCs đạt tiêu chuẩn bảo vệ môi trường hiện hành.",
-    "features": ["Lọc bụi túi vải & lọc tĩnh điện", "Tháp hấp thụ & hấp phụ", "Xúc tác oxy hóa nhiệt", "Kiểm soát mùi & khí độc"],
-    "color": "amber"
+    "slug": "rd-chuyen-giao-cong-nghe-dot-chat-thai",
+    "icon": "Zap",
+    "title": "R&D & Chuyển giao Công nghệ Xử lý Chất thải",
+    "shortDescription": " R&D, chuyển giao công nghệ đốt chất thải có/không thu hồi nhiệt … và các công nghệ tái chế, xử lý chất thải tiên tiến khác.",
+    "description": "ETS Việt Nam không ngừng nghiên cứu và phát triển (R&D) các công nghệ xử lý chất thải tiên tiến. Chúng tôi chuyên chuyển giao công nghệ đốt chất thải tích hợp thu hồi năng lượng nhiệt, cùng các giải pháp tái chế rác thải hiện đại, góp phần thúc đẩy mô hình kinh tế tuần hoàn và giảm thiểu tác động môi trường.",
+    "features": [
+      "Nghiên cứu công nghệ xử lý tiên tiến (R&D)",
+      "Chuyển giao công nghệ đốt thu hồi nhiệt",
+      "Giải pháp tái chế chất thải hiện đại",
+      "Tối ưu hóa quy trình xử lý rác thải"
+    ],
+    "color": "amber",
+    "image": "/uploads/services/1776307873193-s5.jpg"
   },
   {
     "id": "lo-dot-chat-thai",
-    "slug": "lo-dot-chat-thai",
+    "slug": "-nha-thau-thi-cong-cac-cong-trinh-xu-ly-khi-thai-nuoc-thai-chat-thai-ran",
     "icon": "Flame",
-    "title": "Lò đốt chất thải",
+    "title": "Công nghệ Lò đốt & Thu hồi Năng lượng",
     "shortDescription": "Công nghệ lò đốt chất thải sinh hoạt, công nghiệp và y tế tích hợp thu hồi năng lượng.",
-    "description": "Cung cấp giải pháp lò đốt chất thải rắn đa năng với công suất từ nhỏ đến lớn. Công nghệ đốt tiên tiến giúp xử lý triệt để rác thải, giảm thiểu tro xỉ và có khả năng thu hồi nhiệt phát điện.",
-    "features": ["Lò đốt rác sinh hoạt & Công nghiệp", "Lò đốt rác y tế", "Hệ thống thu hồi nhiệt phát điện", "Xử lý khói thải lò đốt"],
-    "color": "purple"
+    "description": "Cung cấp các dòng lò đốt chất thải chuyên dụng cho rác thải sinh hoạt, rác thải công nghiệp và y tế. Hệ thống của chúng tôi được thiết kế tích hợp khả năng thu hồi năng lượng hiệu quả, biến chất thải thành nguồn nhiệt hoặc điện năng hữu ích, đảm bảo tiêu chuẩn khí thải khắt khe nhất.",
+    "features": [
+      "Lò đốt rác sinh hoạt & công nghiệp quy mô",
+      "Hệ thống đốt chất thải y tế chuyên dụng",
+      "Công nghệ thu hồi năng lượng (Waste-to-Energy)",
+      "Kiểm soát phát thải lò đốt đạt chuẩn"
+    ],
+    "color": "orange",
+    "image": "/uploads/services/1776308194194-1590651138-933712192-nha-th-u-thi-cong-cac-cong-trinh-x-ly-ch-t-th-i-r-n-khi-th-i-n-c-th-i.jpg"
   },
   {
     "id": "tu-van-moi-truong",
-    "slug": "tu-van-moi-truong",
-    "icon": "FileText",
-    "title": "Tư vấn & Pháp lý",
-    "shortDescription": "Hỗ trợ lập báo cáo ĐTM, xin cấp phép và các thủ tục pháp lý môi trường trọn gói.",
-    "description": "Dịch vụ tư vấn chuyên sâu về hồ sơ môi trường cho doanh nghiệp, bao gồm Đánh giá tác động môi trường (ĐTM), Giấy phép môi trường, Vận hành thử nghiệm và Báo cáo công tác bảo vệ môi trường.",
-    "features": ["Báo cáo ĐTM & Giấy phép môi trường", "Báo cáo quan trắc định kỳ", "Tư vấn ISO 14001", "Hồ sơ hoàn thành công trình"],
-    "color": "teal"
+    "slug": "cung-cap-dich-vu-ky-thuat",
+    "icon": "Wrench",
+    "title": "Dịch vụ Kỹ thuật & Quản lý Dự án",
+    "shortDescription": "Cung cấp Dịch vụ kỹ thuật: thiết kế, lắp đặt, quản lý dự án, vận hành dự án, bảo hành, bảo trì, sửa chữa,",
+    "description": "Cung cấp hệ sinh thái dịch vụ kỹ thuật trọn gói từ khâu thiết kế, lắp đặt đến quản lý và vận hành dự án. Đội ngũ kỹ sư giàu kinh nghiệm của chúng tôi đảm nhận toàn bộ quy trình bảo hành, bảo trì định kỳ và sửa chữa nhanh chóng, đảm bảo hệ thống của khách hàng luôn hoạt động ổn định và xuyên suốt.",
+    "features": [
+      "Thiết kế & Lắp đặt hệ thống trọn gói",
+      "Quản lý dự án & Vận hành chuyên nghiệp",
+      "Dịch vụ bảo hành & Bảo trì định kỳ",
+      "Sửa chữa & Cung cấp linh kiện thay thế"
+    ],
+    "color": "teal",
+    "image": "/uploads/services/1776307583990-1590651131-1374659146-cung-c-p-d-ch-v-k-thu-t-thi-t-k-l-p-t-qu-n-ly-d-an-v-n-hanh-d-an-b-o-hanh-b-o-tri-s-a-ch-a-1.jpg"
   },
   {
     "id": "quan-trac-vinh-thanh",
     "slug": "quan-trac",
     "icon": "Activity",
-    "title": "Quan trắc môi trường",
+    "title": "Quan trắc Tự động & Phân tích Hiện trường",
     "shortDescription": "Cung cấp trạm quan trắc tự động liên tục và dịch vụ lấy mẫu phân tích tại hiện trường.",
-    "description": "Lắp đặt và vận hành các hệ thống quan trắc nước thải, khí thải tự động (CEMS). Cung cấp dịch vụ lấy mẫu và phân tích chỉ tiêu môi trường nhanh chóng, chính xác.",
-    "features": ["Trạm quan trắc nước thải tự động", "Trạm quan trắc khí thải tự động", "Lấy mẫu hiện trường 24/7", "Truyền dữ liệu về Sở TN&MT"],
-    "color": "slate"
+    "description": "Giải pháp quan trắc môi trường toàn diện với hệ thống trạm tự động, liên tục cho nước thải và khí thải. Chúng tôi cung cấp dịch vụ lấy mẫu chuyên nghiệp tại hiện trường và phân tích các chỉ tiêu môi trường với độ chính xác cao, giúp doanh nghiệp kiểm soát tốt các nguồn thải và tuân thủ quy định pháp luật.",
+    "features": [
+      "Lắp đặt trạm quan trắc tự động (CEMS)",
+      "Dịch vụ lấy mẫu & Phân tích tại chỗ",
+      "Hệ thống giám sát dữ liệu online 24/7",
+      "Truyền dữ liệu quan trắc về Sở TN&MT"
+    ],
+    "color": "slate",
+    "image": "/uploads/services/1776307169132-1590651120-951023127-quan-tr-c-moi-tr-ng-l-p-bao-cao-quan-tr-c.jpg"
   },
   {
     "id": "van-hanh-bao-tri",
-    "slug": "van-hanh-bao-tri",
-    "icon": "Wrench",
-    "title": "Vận hành & Bảo trì",
-    "shortDescription": "Dịch vụ quản lý vận hành (O&M) trọn gói và bảo trì định kỳ hệ thống xử lý môi trường.",
-    "description": "Đảm bảo hệ thống xử lý hoạt động ổn định và hiệu quả nhất thông qua dịch vụ vận hành trọn gói, bảo trì máy móc thiết bị, sửa chữa nhanh và nâng cấp công nghệ cho các hệ thống hiện hữu.",
-    "features": ["Quản lý vận hành (O&M) trọn gói", "Bảo trì & Bảo dưỡng định kỳ", "Cung cấp hóa chất & Vật tư", "Nâng cấp & Cải tạo hệ thống"],
-    "color": "green"
+    "slug": "tu-van-lap-bao-cao-danh-gia",
+    "icon": "ShieldCheck",
+    "title": "Tư vấn Hồ sơ Pháp lý Môi trường",
+    "shortDescription": "Tư vấn lập báo cáo đánh giá tác động môi trường, kế hoạch bảo vệ\nmôi trường, các hồ sơ pháp lý và thủ tục về môi trường khác.",
+    "description": "Hỗ trợ doanh nghiệp hoàn thiện các thủ tục pháp lý môi trường cần thiết suốt vòng đời dự án. Từ lập báo cáo Đánh giá tác động môi trường (ĐTM), Kế hoạch bảo vệ môi trường đến các hồ sơ cấp phép và thủ tục pháp lý phức tạp khác, chúng tôi đồng hành cùng khách hàng để đảm bảo tuân thủ mọi quy định pháp luật hiện hành.",
+    "features": [
+      "Báo cáo Đánh giá tác động môi trường (ĐTM)",
+      "Giấy phép & Kế hoạch bảo vệ môi trường",
+      "Báo cáo công tác bảo vệ môi trường năm",
+      "Tư vấn tuân thủ quy định luật môi trường"
+    ],
+    "color": "green",
+    "image": "/uploads/services/1776308275210-1590651126-558802580-t-v-n-l-p-bao-cao-anh-gia-tac-ng-moi-tr-ng-k-ho-ch-b-o-v-moi-tr-ng-cac-h-s-phap-ly-va-th-t-c-v-moi-tr-ng-khac-2048x713.jpg"
   }
 ]

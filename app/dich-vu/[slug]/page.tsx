@@ -1,12 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { Container } from '@/components/ui/Container'
+import { PageBanner } from '@/components/ui/PageBanner'
+import { getServiceBySlug, getServices } from '@/lib/data/services'
+import { Activity, CheckCircle, Database, Droplets, Factory, FileText, Settings, ShieldCheck, Waves, Wind, Wrench, Zap } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getServiceBySlug, getServices } from '@/lib/data/services'
-import { Container } from '@/components/ui/Container'
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { ChevronLeft, CheckCircle, Droplets, Waves, Wind, Activity, FileText, Database } from 'lucide-react'
-import { PageBanner } from '@/components/ui/PageBanner'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -19,6 +20,11 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Activity,
   FileText,
   Database,
+  Settings,
+  ShieldCheck,
+  Factory,
+  Zap,
+  Wrench,
 }
 
 export async function generateStaticParams() {
@@ -68,7 +74,25 @@ export default async function ServiceDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <AnimatedSection className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Chi tiết dịch vụ</h2>
+              {/* Service Image (Schematic/Technical) */}
+              {service.image ? (
+                <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white p-4">
+                  <img 
+                    src={service.image} 
+                    alt={`Sơ đồ kỹ thuật ${service.title}`} 
+                    className="w-full h-auto object-contain rounded-xl"
+                  />
+                </div>
+              ) : (
+                <div className="aspect-[21/9] rounded-2xl bg-gradient-to-br from-green-50 to-blue-50 border border-green-100 flex items-center justify-center mb-12">
+                  <div className="text-center text-gray-400">
+                    <Icon className="h-12 w-12 mx-auto mb-2 opacity-20" />
+                    <p className="text-sm">Hình ảnh minh họa hệ thống {service.title.toLowerCase()}</p>
+                  </div>
+                </div>
+              )}
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 font-display">Chi tiết hoạt động</h2>
               <div className="prose prose-green max-w-none mb-10">
                 <p className="text-gray-600 leading-relaxed text-lg mb-8">
                   {service.description}
@@ -77,19 +101,11 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Phạm vi công việc</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {service.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div key={feature} className="flex items-start gap-4 p-5 rounded-2xl bg-gray-50/50 border border-gray-100/80 hover:bg-white hover:shadow-md transition-all">
                       <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
                       <span className="text-gray-700 font-medium">{feature}</span>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              {/* Placeholder image for service */}
-              <div className="aspect-[21/9] rounded-2xl bg-gradient-to-br from-green-50 to-blue-50 border border-green-100 flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <Icon className="h-12 w-12 mx-auto mb-2 opacity-20" />
-                  <p className="text-sm">Hình ảnh minh họa hệ thống {service.title.toLowerCase()}</p>
                 </div>
               </div>
             </AnimatedSection>

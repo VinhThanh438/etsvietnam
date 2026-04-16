@@ -8,6 +8,7 @@ export interface Service {
   slug: string
   icon: string
   title: string
+  image?: string
   shortDescription: string
   description: string
   features: string[]

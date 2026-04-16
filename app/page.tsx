@@ -1,17 +1,16 @@
-import type { Metadata } from 'next'
-import { getSiteConfig } from '@/lib/data/site'
-import { getServices } from '@/lib/data/services'
-import { getFeaturedProjects } from '@/lib/data/projects'
 import { getFeaturedNews } from '@/lib/data/news'
-import { getPartners } from '@/lib/data/site'
+import { getFeaturedProjects } from '@/lib/data/projects'
+import { getServices } from '@/lib/data/services'
+import { getPartners, getSiteConfig } from '@/lib/data/site'
+import type { Metadata } from 'next'
 
-import { HeroSection } from '@/components/sections/HeroSection'
 import { AboutSection } from '@/components/sections/AboutSection'
-import { ExpertiseSection } from '@/components/sections/ExpertiseSection'
-import { ServicesSection } from '@/components/sections/ServicesSection'
-import { ProjectsSection } from '@/components/sections/ProjectsSection'
-import { PartnersSection } from '@/components/sections/PartnersSection'
 import { ContactSection } from '@/components/sections/ContactSection'
+import { ExpertiseSection } from '@/components/sections/ExpertiseSection'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { PartnersSection } from '@/components/sections/PartnersSection'
+import { ProjectsSection } from '@/components/sections/ProjectsSection'
+import { ServicesSection } from '@/components/sections/ServicesSection'
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getSiteConfig()

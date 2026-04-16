@@ -12,7 +12,7 @@ export function PageBanner({ children, className, containerClassName }: PageBann
   return (
     <section
       style={{
-        backgroundImage: "linear-gradient(to right, rgba(30, 46, 30, 0.69), rgba(8, 46, 23, 0.69)), url('/images/banner.png')",
+        backgroundImage: "linear-gradient(to right, rgba(41, 46, 41, 0.69), rgba(13, 26, 18, 0.69)), url('/images/banner.png')",
       }}
       className={cn('bg-cover bg-center py-22 text-white', className)}
     >

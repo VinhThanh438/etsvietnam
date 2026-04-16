@@ -9,7 +9,7 @@ const colorOptions = ['green', 'blue', 'amber', 'purple', 'teal', 'slate', 'red'
 const iconOptions = ['Droplets', 'Waves', 'Wind', 'Flame', 'FileText', 'Activity', 'Wrench', 'Shield', 'Zap', 'Factory']
 
 const emptyService: Partial<Service> = {
-  title: '', slug: '', icon: 'Droplets', shortDescription: '', description: '', features: [], color: 'green',
+  title: '', slug: '', icon: 'Droplets', image: '', shortDescription: '', description: '', features: [], color: 'green',
 }
 
 export default function ServicesPage() {
@@ -21,6 +21,7 @@ export default function ServicesPage() {
   const [search, setSearch] = useState('')
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
   const [featuresInput, setFeaturesInput] = useState('')
+  const [imageFile, setImageFile] = useState<File | null>(null)
 
   const fetchData = useCallback(async () => {
     const res = await fetch('/api/admin/services')
@@ -34,23 +35,39 @@ export default function ServicesPage() {
     setEditing({ ...emptyService })
     setIsNew(true)
     setFeaturesInput('')
+    setImageFile(null)
   }
 
   const openEdit = (service: Service) => {
     setEditing({ ...service })
     setIsNew(false)
     setFeaturesInput(service.features.join('\n'))
+    setImageFile(null)
   }
 
   const handleSave = async () => {
     if (!editing?.title) return
     setSaving(true)
     try {
+      let imageUrl = editing.image || ''
+
+      if (imageFile) {
+        const formData = new FormData()
+        formData.append('file', imageFile)
+        formData.append('folder', 'services')
+        const uploadRes = await fetch('/api/admin/upload', { method: 'POST', body: formData })
+        if (uploadRes.ok) {
+          const { url } = await uploadRes.json()
+          imageUrl = url
+        }
+      }
+
       const slug = editing.slug || slugify(editing.title)
       const data = {
         ...editing,
         id: isNew ? slug : editing.id,
         slug,
+        image: imageUrl,
         features: featuresInput.split('\n').map(f => f.trim()).filter(Boolean),
       }
 
@@ -137,6 +154,11 @@ export default function ServicesPage() {
                 }}><Trash2 size={13} /></button>
               </div>
             </div>
+            {s.image && (
+              <div style={{ width: '100%', height: '120px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.75rem', background: '#1e293b' }}>
+                <img src={s.image} alt={s.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            )}
             <h3 style={{ color: 'var(--admin-text)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.375rem' }}>{s.title}</h3>
             <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem', lineHeight: 1.5 }}>{s.shortDescription}</p>
             <div style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
@@ -198,6 +220,32 @@ export default function ServicesPage() {
               <div style={{ gridColumn: '1 / -1' }}>
                 <label style={labelStyle}>Tính năng (mỗi dòng một tính năng)</label>
                 <textarea style={{...inputStyle, minHeight: '80px', resize: 'vertical'}} value={featuresInput} onChange={e => setFeaturesInput(e.target.value)} placeholder="Nước thải sinh hoạt&#10;Nước thải công nghiệp&#10;..." />
+              </div>
+            </div>
+            
+            <div style={{ marginTop: '1.5rem', borderTop: '1px solid #334155', paddingTop: '1.5rem' }}>
+              <label style={labelStyle}>Ảnh sơ đồ / Thiết bị kỹ thuật</label>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                {(editing.image || imageFile) && (
+                  <div style={{ width: '150px', height: '100px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: '#1e293b' }}>
+                    <img 
+                      src={imageFile ? URL.createObjectURL(imageFile) : editing.image} 
+                      alt="Preview" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                )}
+                <div style={{ flex: 1 }}>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={e => setImageFile(e.target.files?.[0] || null)} 
+                    style={{ ...inputStyle, padding: '0.5rem' }} 
+                  />
+                  <p style={{ fontSize: '0.6875rem', color: 'var(--admin-text-muted)', marginTop: '0.5rem' }}>
+                    Ảnh này sẽ hiển thị ở đầu trang chi tiết dịch vụ (sơ đồ công nghệ, bản vẽ kỹ thuật...).
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PageBanner } from "@/components/ui/PageBanner";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { getSiteConfig } from "@/lib/data/site";
-import { Award, CheckCircle, Leaf, Phone, Users } from "lucide-react";
+import { Award, FileCheck, Phone, ShieldCheck, Users } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,24 +42,24 @@ const milestones = [
 
 const values = [
   {
-    icon: CheckCircle,
-    title: "Chất lượng",
-    desc: "Cam kết giải pháp tối ưu, hiệu quả vượt mong đợi.",
-  },
-  {
-    icon: Award,
-    title: "Uy tín",
-    desc: "Xây dựng niềm tin dựa trên kết quả thực tế.",
-  },
-  {
-    icon: Leaf,
-    title: "Bền vững",
-    desc: "Vì một Việt Nam phát triển xanh và sạch hơn.",
+    icon: ShieldCheck,
+    title: "UY TÍN",
+    desc: "Toàn bộ hoạt động kinh doanh của ETS VIỆT NAM lấy khách hàng làm trọng tâm phục vụ. Hơn ai hết đội ngũ ETS VIỆT NAM luôn hết mình và đưa ra các giải pháp tối ưu nhất trong quá trình tư vấn dịch vụ và thi công cho khách hàng.",
   },
   {
     icon: Users,
-    title: "Tâm huyết",
-    desc: "Đội ngũ nhân sự chuyên môn cao và cùng chí hướng.",
+    title: "CHẤT LƯỢNG",
+    desc: "ETS VIỆT NAM tự hào đầu tư đổi mới, trang bị thêm máy móc thiết bị, chú trọng phát huy sáng tạo sáng kiến cải tiến kỹ thuật. Nâng cao tầm nhìn, kiến thức của kỹ sư đặc biệt trau dồi và tiếp cận các công nghệ mới trên thị trường.",
+  },
+  {
+    icon: Award,
+    title: "TIẾN ĐỘ",
+    desc: "Phát huy tối đa nguồn nội lực về tài chính, nhân lực, vật tư, thiết bị tăng cường hợp tác với các đối tác tin cậy trong suốt quá trình thi công để đảm bảo tiến độ nhanh nhất, góp phần tiết kiệm chi phí của doanh nghiệp, sớm đưa công trình dự án vào khai thác sử dụng phục vụ cho sản xuất, kinh doanh.",
+  },
+  {
+    icon: FileCheck,
+    title: "HIỆU QUẢ",
+    desc: "Tiêu chí quan trọng nhất của một doanh nghiệp phát triển ổn định bền vững là hiệu quả kinh tế – xã hội của hoạt động sản xuất kinh doanh. Chúng tôi không ngừng nghiên cứu, áp dụng các giải pháp tối ưu để rút ngắn thời gian thi công, tiết kiệm tối đa chi phí cho khách hàng, đảm bảo an toàn trong quá trình sử dụng công trình.",
   },
 ];
 
@@ -91,7 +91,7 @@ export default async function AboutPage() {
       {/* Introduction Letter & General Info */}
       <IntroductionSection />
 
-      {/* Core values */}
+      {/* Core values - Modern Interactive Grid */}
       <section className="py-24 bg-gray-50">
         <Container>
           <AnimatedSection className="mb-12">
@@ -100,17 +100,34 @@ export default async function AboutPage() {
               title="Những gì chúng tôi tin tưởng"
             />
           </AnimatedSection>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map(({ icon: Icon, title, desc }, i) => (
-              <AnimatedSection key={title} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 mb-4">
-                    <Icon className="h-7 w-7 text-green-600" />
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="group relative h-[440px] rounded-[2.5rem] bg-gray-50/50 border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-green-900/10 hover:border-green-200">
+                  {/* Default Content */}
+                  <div className="absolute inset-0 p-10 flex flex-col items-center justify-center text-center transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+                    <div className="w-24 h-24 rounded-[2.5rem] bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center mb-10 relative">
+                      <div className="absolute inset-0 bg-green-500/5 rounded-[2.5rem] animate-pulse" />
+                      <Icon className="h-10 w-10 text-green-600 relative z-10" />
+                    </div>
+                    <h3 className="text-2xl font-black text-gray-900 tracking-tight mb-4">{title}</h3>
+                    <div className="w-10 h-1 bg-green-500/20 rounded-full group-hover:w-20 transition-all duration-500" />
+                    <p className="mt-6 text-[11px] text-gray-400 font-bold uppercase tracking-[0.2em] bg-gray-100 px-4 py-1.5 rounded-full">Xem chi tiết</p>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {desc}
-                  </p>
+
+                  {/* Hover Content */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-emerald-800 p-8 flex flex-col items-start justify-start opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out overflow-y-auto custom-scrollbar">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4 shrink-0">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-black text-white mb-2 tracking-tight uppercase shrink-0">{title}</h3>
+                    {/* The Green Line - Ensuring it shows for all */}
+                    <div className="w-12 h-1 min-h-[4px] bg-green-400 mb-5 rounded-full shrink-0" />
+                    <p className="text-white/95 text-[13px] leading-relaxed font-medium">
+                      {desc}
+                    </p>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
