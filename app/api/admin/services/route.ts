@@ -1,85 +1,114 @@
 import { NextRequest } from 'next/server'
 import { verifySession } from '@/lib/auth'
-import { readJsonFile, writeJsonFile } from '@/lib/data-manager'
+import { supabaseAdmin } from '@/lib/supabase'
+import { deleteUploadedFile } from '@/lib/data-manager'
 import type { Service } from '@/lib/types'
+
+// ── Helper: flatten Supabase row → Service (for admin responses) ──────────
+function rowToService(row: Record<string, unknown>): Service {
+  const data = (row.data as Partial<Service>) ?? {}
+  return {
+    id: (row.id as string) ?? '',
+    slug: (row.slug as string) ?? '',
+    title: (row.title as string) ?? '',
+    icon: data.icon ?? 'Droplets',
+    image: data.image ?? '',
+    shortDescription: data.shortDescription ?? '',
+    description: data.description ?? '',
+    features: data.features ?? [],
+    color: data.color ?? 'green',
+  }
+}
+
+function bodyToRow(body: Partial<Service>) {
+  return {
+    id: body.slug ?? body.id,
+    slug: body.slug,
+    title: body.title ?? '',
+    data: {
+      icon: body.icon ?? 'Droplets',
+      image: body.image ?? '',
+      shortDescription: body.shortDescription ?? '',
+      description: body.description ?? '',
+      features: body.features ?? [],
+      color: body.color ?? 'green',
+    },
+  }
+}
 
 export async function GET() {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const services = await readJsonFile<Service[]>('services.json')
-  return Response.json(services)
+  const { data, error } = await supabaseAdmin
+    .from('services')
+    .select('*')
+    .order('created_at', { ascending: true })
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json((data as Record<string, unknown>[]).map(rowToService))
 }
 
 export async function POST(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const body = await request.json()
-  const services = await readJsonFile<Service[]>('services.json')
+  const body: Partial<Service> = await request.json()
+  const row = bodyToRow(body)
 
-  const newService: Service = {
-    id: body.slug || body.id,
-    slug: body.slug,
-    icon: body.icon || 'Droplets',
-    title: body.title,
-    image: body.image || '',
-    shortDescription: body.shortDescription || '',
-    description: body.description || '',
-    features: body.features || [],
-    color: body.color || 'green',
-  }
+  const { data, error } = await supabaseAdmin
+    .from('services')
+    .insert(row)
+    .select()
+    .single()
 
-  services.push(newService)
-  await writeJsonFile('services.json', services)
-
-  return Response.json({ success: true, data: newService }, { status: 201 })
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json({ success: true, data }, { status: 201 })
 }
 
 export async function PUT(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const body: Partial<Service> = await request.json()
+  if (!body.id) return Response.json({ error: 'Missing id' }, { status: 400 })
+
+  const row = bodyToRow(body)
+
+  // Fetch old image BEFORE updating (for cleanup)
+  const { data: existing } = await supabaseAdmin
+    .from('services')
+    .select('data')
+    .eq('id', body.id)
+    .single()
+
+  const { data, error } = await supabaseAdmin
+    .from('services')
+    .update(row)
+    .eq('id', body.id)
+    .select()
+    .single()
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+
+  // Delete old image file if replaced
+  const oldImage = (existing?.data as { image?: string })?.image
+  if (oldImage && oldImage !== body.image && oldImage.startsWith('/uploads/')) {
+    await deleteUploadedFile(oldImage)
   }
 
-  const body = await request.json()
-  const services = await readJsonFile<Service[]>('services.json')
-  const index = services.findIndex((s) => s.id === body.id)
-
-  if (index === -1) {
-    return Response.json({ error: 'Không tìm thấy dịch vụ' }, { status: 404 })
-  }
-
-  services[index] = { ...services[index], ...body }
-  await writeJsonFile('services.json', services)
-
-  return Response.json({ success: true, data: services[index] })
+  return Response.json({ success: true, data })
 }
 
 export async function DELETE(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { searchParams } = request.nextUrl
-  const id = searchParams.get('id')
+  const id = request.nextUrl.searchParams.get('id')
+  if (!id) return Response.json({ error: 'Missing id' }, { status: 400 })
 
-  if (!id) {
-    return Response.json({ error: 'Missing id' }, { status: 400 })
-  }
+  const { error } = await supabaseAdmin.from('services').delete().eq('id', id)
+  if (error) return Response.json({ error: error.message }, { status: 500 })
 
-  const services = await readJsonFile<Service[]>('services.json')
-  const filtered = services.filter((s) => s.id !== id)
-
-  if (filtered.length === services.length) {
-    return Response.json({ error: 'Không tìm thấy dịch vụ' }, { status: 404 })
-  }
-
-  await writeJsonFile('services.json', filtered)
   return Response.json({ success: true })
 }

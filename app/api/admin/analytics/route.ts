@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const data = await getAnalytics()
     return NextResponse.json(data)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ pageviews: 0, seoTraffic: 0, events: 0 }, { status: 500 })
   }
 }

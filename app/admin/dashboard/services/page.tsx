@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { Plus, Pencil, Trash2, X, Save, Loader2, Search } from 'lucide-react'
 import type { Service } from '@/lib/types'
 import { slugify } from '@/lib/utils'
+import { Loader2, Pencil, Plus, Save, Search, Trash2, X } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 const colorOptions = ['green', 'blue', 'amber', 'purple', 'teal', 'slate', 'red', 'orange']
 const iconOptions = ['Droplets', 'Waves', 'Wind', 'Flame', 'FileText', 'Activity', 'Wrench', 'Shield', 'Zap', 'Factory']
@@ -29,6 +30,7 @@ export default function ServicesPage() {
     setLoading(false)
   }, [])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchData() }, [fetchData])
 
   const openNew = () => {
@@ -162,10 +164,10 @@ export default function ServicesPage() {
             <h3 style={{ color: 'var(--admin-text)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.375rem' }}>{s.title}</h3>
             <p style={{ color: 'var(--admin-text-light)', fontSize: '0.8125rem', lineHeight: 1.5 }}>{s.shortDescription}</p>
             <div style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
-              {s.features.slice(0, 3).map(f => (
+              {s.features?.slice(0, 3).map(f => (
                 <span key={f} style={{ fontSize: '0.6875rem', padding: '1px 6px', borderRadius: '4px', background: 'var(--admin-bg)', color: 'var(--admin-text-light)' }}>{f}</span>
               ))}
-              {s.features.length > 3 && <span style={{ fontSize: '0.6875rem', color: '#475569' }}>+{s.features.length - 3}</span>}
+              {s.features?.length > 3 && <span style={{ fontSize: '0.6875rem', color: '#475569' }}>+{s.features.length - 3}</span>}
             </div>
           </div>
         ))}

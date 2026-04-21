@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { Save, Loader2, Plus, Trash2 } from 'lucide-react'
+import { Loader2, Plus, Save, Trash2 } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface SiteConfig {
   company: {
@@ -31,6 +32,7 @@ export default function SettingsPage() {
     setLoading(false)
   }, [])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchData() }, [fetchData])
 
   const handleSave = async () => {

@@ -1,91 +1,96 @@
 import { NextRequest } from 'next/server'
 import { verifySession } from '@/lib/auth'
-import { readJsonFile, writeJsonFile, deleteUploadedFile } from '@/lib/data-manager'
+import { supabaseAdmin } from '@/lib/supabase'
+import { deleteUploadedFile } from '@/lib/data-manager'
 import type { Partner } from '@/lib/types'
 
 export async function GET() {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const partners = await readJsonFile<Partner[]>('partners.json')
-  return Response.json(partners)
+  const { data, error } = await supabaseAdmin
+    .from('partners')
+    .select('*')
+    .order('sort_order', { ascending: true })
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json(data)
 }
 
 export async function POST(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const body: Partial<Partner> = await request.json()
+
+  const row = {
+    id: body.id ?? body.name!.toLowerCase().replace(/\s+/g, '-'),
+    name: body.name ?? '',
+    logo: body.logo ?? '',
+    website: body.website ?? '#',
   }
 
-  const body = await request.json()
-  const partners = await readJsonFile<Partner[]>('partners.json')
+  const { data, error } = await supabaseAdmin
+    .from('partners')
+    .insert(row)
+    .select()
+    .single()
 
-  const newPartner: Partner = {
-    id: body.id || body.name.toLowerCase().replace(/\s+/g, '-'),
-    name: body.name,
-    logo: body.logo || '',
-    website: body.website || '#',
-  }
-
-  partners.push(newPartner)
-  await writeJsonFile('partners.json', partners)
-
-  return Response.json({ success: true, data: newPartner }, { status: 201 })
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json({ success: true, data }, { status: 201 })
 }
 
 export async function PUT(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const body = await request.json()
-  const partners = await readJsonFile<Partner[]>('partners.json')
-  const index = partners.findIndex((p) => p.id === body.id)
+  const body: Partial<Partner> = await request.json()
+  if (!body.id) return Response.json({ error: 'Missing id' }, { status: 400 })
 
-  if (index === -1) {
-    return Response.json({ error: 'Không tìm thấy đối tác' }, { status: 404 })
-  }
+  // Fetch old logo for cleanup
+  const { data: existing } = await supabaseAdmin
+    .from('partners')
+    .select('logo')
+    .eq('id', body.id)
+    .single()
 
-  const oldLogo = partners[index].logo
-  partners[index] = { ...partners[index], ...body }
+  const { data, error } = await supabaseAdmin
+    .from('partners')
+    .update({ name: body.name, logo: body.logo, website: body.website })
+    .eq('id', body.id)
+    .select()
+    .single()
 
-  if (oldLogo && oldLogo !== partners[index].logo && oldLogo.startsWith('/uploads/')) {
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+
+  const oldLogo = existing?.logo as string | undefined
+  if (oldLogo && oldLogo !== body.logo && oldLogo.startsWith('/uploads/')) {
     await deleteUploadedFile(oldLogo)
   }
 
-  await writeJsonFile('partners.json', partners)
-
-  return Response.json({ success: true, data: partners[index] })
+  return Response.json({ success: true, data })
 }
 
 export async function DELETE(request: NextRequest) {
   const session = await verifySession()
-  if (!session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const id = request.nextUrl.searchParams.get('id')
+  if (!id) return Response.json({ error: 'Missing id' }, { status: 400 })
+
+  const { data: existing } = await supabaseAdmin
+    .from('partners')
+    .select('logo')
+    .eq('id', id)
+    .single()
+
+  const { error } = await supabaseAdmin.from('partners').delete().eq('id', id)
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+
+  const logo = existing?.logo as string | undefined
+  if (logo && logo.startsWith('/uploads/')) {
+    await deleteUploadedFile(logo)
   }
 
-  const { searchParams } = request.nextUrl
-  const id = searchParams.get('id')
-
-  if (!id) {
-    return Response.json({ error: 'Missing id' }, { status: 400 })
-  }
-
-  const partners = await readJsonFile<Partner[]>('partners.json')
-  const partnerToDelete = partners.find((p) => p.id === id)
-  if (!partnerToDelete) {
-    return Response.json({ error: 'Không tìm thấy đối tác' }, { status: 404 })
-  }
-
-  if (partnerToDelete.logo && partnerToDelete.logo.startsWith('/uploads/')) {
-    await deleteUploadedFile(partnerToDelete.logo)
-  }
-
-  const filtered = partners.filter((p) => p.id !== id)
-
-  await writeJsonFile('partners.json', filtered)
   return Response.json({ success: true })
 }

@@ -1,22 +1,9 @@
 /**
- * Data management utilities for reading/writing JSON data files.
- * Used by admin API routes for CRUD operations.
+ * Data management utilities — file upload helpers only.
+ * JSON read/write logic has been removed; all data now lives in Supabase.
  */
 import fs from 'fs/promises'
 import path from 'path'
-
-const DATA_DIR = path.join(process.cwd(), 'data')
-
-export async function readJsonFile<T>(filename: string): Promise<T> {
-  const filePath = path.join(DATA_DIR, filename)
-  const content = await fs.readFile(filePath, 'utf-8')
-  return JSON.parse(content) as T
-}
-
-export async function writeJsonFile<T>(filename: string, data: T): Promise<void> {
-  const filePath = path.join(DATA_DIR, filename)
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2) + '\n', 'utf-8')
-}
 
 export async function ensureDir(dirPath: string): Promise<void> {
   try {
@@ -30,15 +17,11 @@ export async function ensureDir(dirPath: string): Promise<void> {
  * Save an uploaded file to public/uploads/{subfolder}
  * Returns the public URL path
  */
-export async function saveUploadedFile(
-  file: File,
-  subfolder: string
-): Promise<string> {
+export async function saveUploadedFile(file: File, subfolder: string): Promise<string> {
   const uploadDir = path.join(process.cwd(), 'public', 'uploads', subfolder)
   await ensureDir(uploadDir)
 
   const buffer = Buffer.from(await file.arrayBuffer())
-  // Sanitize filename
   const timestamp = Date.now()
   const safeName = file.name
     .replace(/[^a-zA-Z0-9._-]/g, '-')
@@ -52,7 +35,7 @@ export async function saveUploadedFile(
 }
 
 /**
- * Delete a file from public directory
+ * Delete a file from the public directory
  */
 export async function deleteUploadedFile(publicPath: string): Promise<boolean> {
   try {
@@ -71,7 +54,7 @@ export async function listUploadedFiles(subfolder: string): Promise<string[]> {
   const uploadDir = path.join(process.cwd(), 'public', 'uploads', subfolder)
   try {
     const files = await fs.readdir(uploadDir)
-    return files.map(f => `/uploads/${subfolder}/${f}`)
+    return files.map((f) => `/uploads/${subfolder}/${f}`)
   } catch {
     return []
   }

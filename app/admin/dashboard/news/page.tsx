@@ -229,7 +229,7 @@ export default function NewsPage() {
                 <span style={{ fontSize: '0.75rem', color: 'var(--admin-text-light)' }}>{formatDate(a.publishedAt)}</span>
                 <span style={{ fontSize: '0.75rem', color: 'var(--admin-text-light)' }}>{a.author}</span>
               </div>
-              {a.tags.length > 0 && (
+              {a.tags?.length > 0 && (
                 <div style={{ display: 'flex', gap: '0.25rem', marginTop: '0.375rem', flexWrap: 'wrap' }}>
                   {a.tags.map(t => (
                     <span key={t} style={{ fontSize: '0.6875rem', padding: '1px 6px', borderRadius: '4px', background: '#3b82f620', color: '#60a5fa' }}>

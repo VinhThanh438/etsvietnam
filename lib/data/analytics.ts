@@ -1,7 +1,8 @@
-import fs from 'fs/promises'
-import path from 'path'
-
-const filePath = path.join(process.cwd(), 'data/analytics.json')
+/**
+ * Data service: Analytics
+ * Reads/writes from Supabase. Falls back gracefully on error.
+ */
+import { supabaseAdmin } from '@/lib/supabase'
 
 export interface Analytics {
   pageviews: number
@@ -10,17 +11,66 @@ export interface Analytics {
   lastUpdated: string
 }
 
+const DEFAULT_ANALYTICS: Analytics = {
+  pageviews: 0,
+  seoTraffic: 0,
+  events: 0,
+  lastUpdated: new Date().toISOString(),
+}
+
 export async function getAnalytics(): Promise<Analytics> {
-  try {
-    const file = await fs.readFile(filePath, 'utf8')
-    return JSON.parse(file)
-  } catch (error) {
-    const defaultData = { pageviews: 0, seoTraffic: 0, events: 0, lastUpdated: new Date().toISOString() }
-    await saveAnalytics(defaultData)
-    return defaultData
+  const { data, error } = await supabaseAdmin
+    .from('analytics')
+    .select('*')
+    .eq('id', 'main')
+    .single()
+
+  if (error || !data) {
+    return { ...DEFAULT_ANALYTICS }
+  }
+
+  return {
+    pageviews: (data.pageviews as number) ?? 0,
+    seoTraffic: (data.seo_traffic as number) ?? 0,
+    events: (data.events as number) ?? 0,
+    lastUpdated: (data.last_updated as string) ?? new Date().toISOString(),
   }
 }
 
-export async function saveAnalytics(data: Analytics) {
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2))
+export async function saveAnalytics(analytics: Analytics): Promise<void> {
+  const { error } = await supabaseAdmin
+    .from('analytics')
+    .upsert(
+      {
+        id: 'main',
+        pageviews: analytics.pageviews,
+        seo_traffic: analytics.seoTraffic,
+        events: analytics.events,
+        last_updated: analytics.lastUpdated,
+      },
+      { onConflict: 'id' }
+    )
+
+  if (error) {
+    console.error('[analytics] Failed to save:', error.message)
+  }
+}
+
+/**
+ * Atomic increment — avoids read-modify-write race conditions.
+ * Uses Supabase RPC for safe concurrent updates.
+ */
+export async function incrementAnalytics(
+  field: 'pageviews' | 'seo_traffic' | 'events'
+): Promise<void> {
+  const { error } = await supabaseAdmin.rpc('increment_analytics', { field_name: field })
+  if (error) {
+    // Fallback: read-modify-write
+    const current = await getAnalytics()
+    const updated = { ...current, lastUpdated: new Date().toISOString() }
+    if (field === 'pageviews') updated.pageviews += 1
+    if (field === 'seo_traffic') updated.seoTraffic += 1
+    if (field === 'events') updated.events += 1
+    await saveAnalytics(updated)
+  }
 }
