@@ -83,7 +83,7 @@ export default async function AboutPage() {
       {/* Hero */}
       <PageBanner>
         <AnimatedSection>
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mt-8">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
               Về chúng tôi
             </span>

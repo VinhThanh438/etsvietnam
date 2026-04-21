@@ -1,10 +1,10 @@
 'use client'
 
-import { CheckCircle, Target, Eye, Users } from 'lucide-react'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { useInView, animate } from 'framer-motion'
+import { animate, useInView } from 'framer-motion'
+import { CheckCircle, Eye, Target, Users } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 // Note: This is a Server Component — motion wrappers in children are Client Components

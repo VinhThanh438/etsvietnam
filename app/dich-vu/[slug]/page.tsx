@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     <>
       {/* Hero */}
       <PageBanner>
-          <AnimatedSection className="flex flex-col md:flex-row gap-8 items-start">
+          <AnimatedSection className="flex flex-col md:flex-row gap-8 items-start mt-8">
             <div className="h-16 w-16 md:h-20 md:w-20 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center">
               <Icon className="h-8 w-8 md:h-10 md:w-10 text-green-300" />
             </div>

@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
-import { getNewsByTag, getAllTags } from '@/lib/data/news'
 import { NewsSection } from '@/components/sections/NewsSection'
-import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import Link from 'next/link'
+import { Container } from '@/components/ui/Container'
 import { PageBanner } from '@/components/ui/PageBanner'
+import { getAllTags, getNewsByTag } from '@/lib/data/news'
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export async function generateMetadata(
   { params }: { params: Promise<{ tag: string }> }
@@ -36,7 +36,7 @@ export default async function TagPage(
     <>
       <PageBanner>
           <AnimatedSection>
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mt-8">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
                 Bài viết theo hashtag
               </span>

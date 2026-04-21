@@ -1,13 +1,10 @@
-import type { Metadata } from 'next'
-import { getSiteConfig } from '@/lib/data/site'
-import { getProjects } from '@/lib/data/projects'
 import { ProjectsSection } from '@/components/sections/ProjectsSection'
-import { Container } from '@/components/ui/Container'
-import { SectionTitle } from '@/components/ui/SectionTitle'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PageBanner } from '@/components/ui/PageBanner'
 import { SidebarProjects } from '@/components/ui/SidebarProjects'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { getProjects } from '@/lib/data/projects'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Dự án | Công trình đã thực hiện',
@@ -22,7 +19,7 @@ export default async function ProjectsPage() {
       {/* Page Header */}
       <PageBanner>
           <AnimatedSection>
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mt-8">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
                 Công trình tiêu biểu
               </span>

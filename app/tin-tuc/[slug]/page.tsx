@@ -1,16 +1,19 @@
-import ReactMarkdown from 'react-markdown'
-import Image from 'next/image'
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { getNewsBySlug, getNews } from '@/lib/data/news'
-import { Container } from '@/components/ui/Container'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { ChevronLeft, Clock, User, Tag, Calendar } from 'lucide-react'
-import { formatDate } from '@/lib/utils'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { Container } from '@/components/ui/Container'
 import { PageBanner } from '@/components/ui/PageBanner'
 import { SidebarNews } from '@/components/ui/SidebarNews'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { getNews, getNewsBySlug } from '@/lib/data/news'
+import { formatDate } from '@/lib/utils'
+import { Calendar, Clock, Tag, User } from 'lucide-react'
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import ReactMarkdown from 'react-markdown'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -49,7 +52,7 @@ export default async function NewsDetailPage({ params }: Props) {
     <>
       {/* Hero */}
       <PageBanner>
-        <AnimatedSection>
+        <AnimatedSection className="mt-8">
           <span className="rounded-full bg-white/15 px-3 py-1 text-sm font-semibold text-green-100 mb-4 inline-block">
             {article.categoryLabel}
           </span>

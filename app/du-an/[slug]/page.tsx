@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { getProjectBySlug, getProjects } from '@/lib/data/projects'
-import { Container } from '@/components/ui/Container'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { MapPin, Calendar, Zap, ChevronLeft, Tag } from 'lucide-react'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { Container } from '@/components/ui/Container'
 import { PageBanner } from '@/components/ui/PageBanner'
 import { SidebarProjects } from '@/components/ui/SidebarProjects'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { getProjectBySlug, getProjects } from '@/lib/data/projects'
+import { Calendar, MapPin, Tag, Zap } from 'lucide-react'
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     <>
       {/* Hero */}
       <PageBanner>
-          <AnimatedSection>
+          <AnimatedSection className="mt-8">
             <span className="rounded-full bg-white/15 px-3 py-1 text-sm font-semibold text-green-100 mb-4 inline-block">
               {project.categoryLabel}
             </span>

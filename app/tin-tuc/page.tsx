@@ -2,8 +2,8 @@ import { NewsSection } from '@/components/sections/NewsSection'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PageBanner } from '@/components/ui/PageBanner'
-import { SidebarNews } from '@/components/ui/SidebarNews'
 import { Pagination } from '@/components/ui/Pagination'
+import { SidebarNews } from '@/components/ui/SidebarNews'
 import { getNews } from '@/lib/data/news'
 import type { Metadata } from 'next'
 
@@ -32,7 +32,7 @@ export default async function NewsPage({ searchParams }: NewsPageProps) {
     <>
       <PageBanner>
           <AnimatedSection>
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mt-8">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-green-100 mb-5">
                 Cẩm nang môi trường
               </span>
