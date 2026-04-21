@@ -1,9 +1,9 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ChevronDown, Shield, Award, CheckCircle, Briefcase, Users, Timer, GraduationCap } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
-import { useState, useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowRight, Award, Briefcase, CheckCircle, ChevronDown, GraduationCap, Shield, Timer, Users } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export function HeroSection({ slides, stats = [] }: { slides?: { id: string, image: string }[], stats?: { value: string, label: string }[] }) {
   const [currentSlide, setCurrentSlide] = useState(0)

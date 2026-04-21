@@ -208,8 +208,6 @@ export function Header({ config }: HeaderProps) {
           </Container>
         </div>
       </header>
-      {/* Spacer for sticky header */}
-      <div className="h-8" />
     </>
   )
 }
