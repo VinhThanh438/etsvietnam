@@ -19,7 +19,7 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
   const yearsExp = stats.find(s => s.label.toLowerCase().includes('kinh nghiệm'))?.value || '8+'
 
   return (
-    <section className="relative min-h-screen max-h-[700px] flex items-center overflow-hidden bg-gray-950">
+    <section className="relative min-h-screen lg:h-screen lg:max-h-[800px] flex items-center overflow-hidden bg-gray-950">
       {/* Animated gradient background */}
       <div className="absolute inset-0">
         {/* Background Slideshow */}
@@ -61,10 +61,10 @@ export function HeroSection({ slides, stats = [] }: { slides?: { id: string, ima
 
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Main Content */}
-          <div className="lg:col-span-7 xl:col-span-8 mt-8">
+          <div className="lg:col-span-7 xl:col-span-8 lg:mt-8">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
